@@ -3,6 +3,9 @@ import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
+import {Link, Redirect} from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -18,6 +21,11 @@ export class LoginForm extends React.Component {
                 </div>
             );
         }
+
+        if (this.props.loggedIn) {
+            return <Redirect to="/dashboard" />;
+        }
+
         return (
             <form
                 className="login-form"
@@ -49,7 +57,12 @@ export class LoginForm extends React.Component {
     }
 }
 
-export default reduxForm({
-    form: 'login',
-    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm);
+const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default compose(
+    connect(mapStateToProps),
+    reduxForm({ form: 'login',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username')) 
+}))(LoginForm);
