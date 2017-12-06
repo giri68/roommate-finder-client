@@ -4,23 +4,18 @@ import {Link, Redirect} from 'react-router-dom';
 
 import LoginForm from './login-form';
 
-export function LandingPage(props) {
-    // If we are logged in redirect straight to the user's dashboard
-    if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
-    }
+export default function LandingPage(props) {
 
     return (
         <div className="home">
-            <h2>Welcome to Foo App</h2>
-            <LoginForm />
-            <Link to="/register">Register</Link>
+           
+            <p> Don't just look for a great apartment, look for a great roommate tool</p>
+            <button>Get Started</button>
+            <div>
+            <span className="landing-text">Already have an account?</span>
+            <span className="login-link"><Link to="/login">Login</Link></span>
+            </div>
         </div>
     );
 }
 
-const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
-});
-
-export default connect(mapStateToProps)(LandingPage);
