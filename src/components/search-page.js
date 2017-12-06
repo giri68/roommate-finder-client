@@ -1,28 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import {findARoom} from '../actions/user';
 
 
 
-export function SearchPage(props) {
+
+export  class SearchPage extends React.Component {
     
-    return (
+
+     click() {
+        this.props.dispatch(findARoom());
+    }
+    
+    render(){  
+        return (  
         <div className="searchPage">
             <div>
-              <Link to="/register">Find a room</Link>
+            <p  onClick={() => this.click()}> <Link to="/register">Find a room</Link></p>
             </div>
             <div>
-            <Link to="/register">Fill a room</Link>
+            <p  onClick={() => this.click()}><Link to="/register">Fill a room</Link></p>
             </div>
             <div>
-           <Link to="/register">Find a roommate</Link>
+            <p  onClick={() => this.click()}><Link to="/register">Find a roommate</Link></p>
             </div>
         </div>
-    );
+        );
+    };
 }
 
-const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
-});
+export default connect()(SearchPage);
 
-export default connect(mapStateToProps)(SearchPage);
