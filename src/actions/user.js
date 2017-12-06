@@ -19,8 +19,6 @@ export const findARoommate = () => ({
     type: FIND_A_ROOMMATE
 });
 
-
-
 export const registerUser = user => dispatch => {
     return fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
