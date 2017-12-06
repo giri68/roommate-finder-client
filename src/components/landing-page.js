@@ -10,7 +10,7 @@ export default function LandingPage(props) {
         <div className="home">
            
             <p> Don't just look for a great apartment, look for a great roommate tool</p>
-            <button>Get Started</button>
+            <button><Link to="/searchPage">Get Started</Link></button>
             <div>
             <span className="landing-text">Already have an account?</span>
             <span className="login-link"><Link to="/login">Login</Link></span>
