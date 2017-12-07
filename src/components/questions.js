@@ -48,6 +48,13 @@ export class Questions extends React.Component {
               name="age"
               validate={[required, nonEmpty, minValue18]}
           />
+                    <label htmlFor="gender">Gender</label>
+          <Field
+              component={Input}
+              type="text"
+              name="gender"
+              validate={[required, nonEmpty, minValue18]}
+          />
           <h1>Apartment Criteria</h1>
           <label htmlFor="city">City</label>
           <Field
@@ -81,9 +88,114 @@ export class Questions extends React.Component {
            <label htmlFor="pets">Do you have pets?</label>
           <Field
               component={Input}
-              type="yes/no"
+              type="text"
               name="pets"
-              validate={[required, nonEmpty, minValue100]}
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="pets2">How likely are you to live with someone who had pets?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="pets2"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="music">Do you listen to loud music in your living space?</label>
+          <Field
+              component={Input}
+              type="text"
+              name="music"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="music2">How likely are you to live with someone who listens to loud music?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="music2"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="cigarettes">Do you smoke cigarettes?</label>
+          <Field
+              component={Input}
+              type="text"
+              name="cigarettes"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="cigarettes2">How likely are you to live with someone who smokes cigarettes?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="cigarettes2"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="alcohol">Do you consume alcohol?</label>
+          <Field
+              component={Input}
+              type="text"
+              name="alcohol"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="alcohol2">How likely are you to live with someone who consumes alcohol?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="alcohol2"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="marijuana">Do you smoke marijuana?</label>
+          <Field
+              component={Input}
+              type="text"
+              name="marijuana"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="marijuana2">How likely are you to live with someone who smokes marijuana?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="marijuana2"
+              validate={[required, nonEmpty]}
+          />
+                    <label htmlFor="sleep">Are you up at odd hours of the night/morning?</label>
+          <Field
+              component={Input}
+              type="text"
+              name="sleep"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="sleep2">How likely are you to live with someone who is awake at odd hours of the day?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="sleep2"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="guests">Do you have guests over frequently, including, but not limited to significant others? </label>
+          <Field
+              component={Input}
+              type="text"
+              name="guests"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="guests2">How likely are you to live with someone who has guests over frequently?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="guests2"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="clean">On a scale from 1-5, how clean are you, 5 being very clean.  </label>
+          <Field
+              component={Input}
+              type="number"
+              name="clean"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="clean2">How likely are you to live with someone who has guests over frequently?</label>
+          <Field
+              component={Input}
+              type="number"
+              name="clean2"
+              validate={[required, nonEmpty]}
           />
           <button
               type="submit"
