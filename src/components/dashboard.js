@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 import {getAllUsers} from '../actions/user'; 
 import {Redirect} from 'react-router-dom';
+import '../styles/dashboard.css'; 
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -20,7 +21,7 @@ export class Dashboard extends React.Component {
         }
 
         let currentMatches = this.props.profileMatches.map((match, index ) => (
-            <div key={index}>   
+            <div className="dashboard-match-result" key={index}>   
                 <h2> {match.username }</h2>
             </div>
         )); 
