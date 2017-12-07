@@ -4,6 +4,12 @@ import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 
+// THIS IS OURS. WILL NEED TO BE REWORKED 
+export const GET_ALL_USERS = 'GET_ALL_USERS'; 
+export const getAllUsers = () => ({
+    type: GET_ALL_USERS
+}); 
+
 export const FIND_A_ROOM = 'FIND_A_ROOM';
 export const findARoom = () => ({
     type: FIND_A_ROOM
