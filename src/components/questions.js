@@ -9,10 +9,14 @@ import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 export class Questions extends React.Component {
 
   onSubmit(values) {
-    const {firstName, lastName} = values;
-    const user = {firstName, lastName};
-    // return this.props.dispatch(saveQuestions(user))
-    //     .then(() => this.props.dispatch(login(username, password)));
+    const {firstName, lastName, age, gender, city, state, searchRadius, 
+      maxPrice, pets, pets2, music, music2, cigarettes, cigarettes2, alcohol, alcohol2, marijunana, 
+      marijuana2, sleep, sleep2, guests, guests2, clean, clean2} = values;
+    const user = {firstName, lastName, age, gender, city, state, searchRadius, 
+      maxPrice, pets, pets2, music, music2, cigarettes, cigarettes2, alcohol, alcohol2, marijunana, 
+      marijuana2, sleep, sleep2, guests, guests2, clean, clean2};
+      console.log(user)
+    return this.props.dispatch(saveQuestions(user))
   }
 
   render() {
