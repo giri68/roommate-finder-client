@@ -8,7 +8,7 @@ export default function LandingPage(props) {
 
     return (
         <div className="home">
-           
+            <h1>Roommate Finder</h1>
             <p> Don't just look for a great apartment, look for a great roommate tool</p>
             <button><Link to="/searchPage">Get Started</Link></button>
             <div>

@@ -21,20 +21,6 @@ export class RegistrationForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <label htmlFor="firstName">First Name</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="firstName"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-                <label htmlFor="lastName">Last Name</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="lastName"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
                 <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
