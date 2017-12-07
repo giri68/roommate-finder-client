@@ -5,16 +5,18 @@ import Input from './input';
 import {Field, reduxForm, focus} from 'redux-form';
 import { compose } from 'redux';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {saveQuestions} from '../actions/user';
 
 export class Questions extends React.Component {
 
   onSubmit(values) {
     const {firstName, lastName, age, gender, city, state, searchRadius, 
-      maxPrice, pets, pets2, music, music2, cigarettes, cigarettes2, alcohol, alcohol2, marijunana, 
+      maxPrice, pets, pets2, music, music2, cigarettes, cigarettes2, alcohol, alcohol2, marijuana, 
       marijuana2, sleep, sleep2, guests, guests2, clean, clean2} = values;
     const user = {firstName, lastName, age, gender, city, state, searchRadius, 
-      maxPrice, pets, pets2, music, music2, cigarettes, cigarettes2, alcohol, alcohol2, marijunana, 
+      maxPrice, pets, pets2, music, music2, cigarettes, cigarettes2, alcohol, alcohol2, marijuana, 
       marijuana2, sleep, sleep2, guests, guests2, clean, clean2};
+      user.username = this.props.currentUser.username
       console.log(user)
     return this.props.dispatch(saveQuestions(user))
   }
@@ -28,7 +30,8 @@ export class Questions extends React.Component {
   const minValue100= minValue(100)
 
       return (
-          <form className="profile" onSubmit={values => this.onSubmit(values)}>
+          <form className="profile" onSubmit={this.props.handleSubmit(values =>
+            this.onSubmit(values))}>
           <p>To help us better match you with potential roommates, please tell us a little bit about yourself and what you're looking for.</p>
           <h1>Basic Info</h1>
           <label htmlFor="firstName">First Name</label>
@@ -211,8 +214,12 @@ export class Questions extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  currentUser: state.auth.currentUser
+});
+
 export default compose(
-  connect(),
+  connect(mapStateToProps),
   reduxForm({form: 'questions',
   onSubmitFail: (errors, dispatch) => dispatch(focus('questions'))
 }))(Questions)
