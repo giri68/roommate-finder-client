@@ -27,7 +27,7 @@ export default function reducer(state = initialState, action) {
       });
   } else if (action.type === DISPLAY_ALL_USERS) {
       return Object.assign({}, state, {
-          profileMatch: action.users
+          profileMatches: action.users
       }); 
   }
   return state;

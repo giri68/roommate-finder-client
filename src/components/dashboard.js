@@ -19,6 +19,12 @@ export class Dashboard extends React.Component {
             return <Redirect to="/" />;
         }
 
+        let currentMatches = this.props.profileMatches.map((match, index ) => (
+            <div key={index}>   
+                <h2> {match.username }</h2>
+            </div>
+        )); 
+
         return (
             <div className="dashboard">
                 <div className="dashboard-username">
@@ -28,6 +34,7 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
+                { currentMatches }
             </div>
         );
     }

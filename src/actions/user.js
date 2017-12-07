@@ -17,6 +17,7 @@ export const getAllUsers = () => dispatch => {
     return fetch(`${API_BASE_URL}/api/users`, {
         method: 'GET', 
     })
+    .then(res => res.json())
     .then(users => {
         dispatch(displayAllUsers(users))
     }); 
