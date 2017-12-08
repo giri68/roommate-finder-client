@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
-
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import SearchPage from './search-page';
+import {UserProfile} from './user-profile';
 import LoginForm from './login-form';
 import Dashboard from './dashboard';
 import Questions from './questions';

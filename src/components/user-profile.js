@@ -2,143 +2,129 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export class UserProfile extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      nameInputDisplayed: false,
       cityInputDisplayed: false,
       stateInputDisplayed: false,
       ageInputDisplayed: false,
       bioInputDisplayed: false,
       interestsInputDisplayed: false,
       musicInputDisplayed: false,
-      movieInputDislayed:false,
+      movieInputDislayed: false,
       tvInputDisplayed: false
     }
   }
 
-  handleNameInputToggle(){
-    this.setState({inputDisplayed: !this.state.inputDisplayed})
+  
+  handlCityInputToggle() {
+    this.setState({ cityInputDisplayed: !this.state.cityInputDisplayed })
   }
-  handlCityInputToggle(){
-    this.setState({cityInputDisplayed: !this.state.cityInputDisplayed})
+  handleStateInputToggle() {
+    this.setState({ stateInputDisplayed: !this.state.stateInputDisplayed })
   }
-  handleStateInputToggle(){
-    this.setState({stateInputDisplayed: !this.state.stateInputDisplayed})
+  handleAgeInputToggle() {
+    this.setState({ ageInputDisplayed: !this.state.ageInputDisplayed })
   }
-  handleAgeInputToggle(){
-    this.setState({ageInputDisplayed: !this.state.ageInputDisplayed})
+  handleBioInputToggle() {
+    this.setState({ bioInputDisplayed: !this.state.bioInputDisplayed })
   }
-  handleBioInputToggle(){
-    this.setState({bioInputDisplayed: !this.state.bioInputDisplayed})
+  handleInterestsInputToggle() {
+    this.setState({ interestsInputDisplayed: !this.state.interestsInputDisplayed })
   }
-  handleInterestsInputToggle(){
-    this.setState({interestsInputDisplayed: !this.state.interestsInputDisplayed})
+  handleMusicInputToggle() {
+    this.setState({ musicInputDisplayed: !this.state.musicInputDisplayed })
   }
-  handleMusicInputToggle(){
-    this.setState({musicInputDisplayed: !this.state.musicInputDisplayed})
+  handleMovieInputToggle() {
+    this.setState({ movieInputDislayed: !this.state.movieInputDislayed })
   }
-  handleMovieInputToggle(){
-    this.setState({movieInputDislayed: !this.state.movieInputDislayed})
-  }
-  handleTvInputToggle(){
-    this.setState({tvInputDisplayed: !this.state.tvInputDisplayed})
+  handleTvInputToggle() {
+    this.setState({ tvInputDisplayed: !this.state.tvInputDisplayed })
   }
 
   render() {
-    var name, state, city, age, movies, music, tv, interests, bio;
-    if(this.state.nameInputDisplayed){
-        name = <input className="input"></input>;
+    var state, city, age, movies, music, tv, interests, bio;
+    
+    if (this.state.cityInputDisplayed) {
+      city = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
     } else {
-      name = this.props.name;
+      city = <div>{this.props.city}<button onClick={() => this.handlCityInputToggle()}>edit</button></div>
     }
-    if(this.state.cityInputDisplayed){
-      city = <input className="input"></input>;
+    if (this.state.stateInputDisplayed) {
+      state = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+
     } else {
-      city = this.props.city;
+      state = <div>{this.props.state}<button onClick={() => this.handleStateInputToggle()}>edit</button></div>;
     }
-    if(this.state.stateInputDisplayed){
-      state = <input className="input"></input>;
+    if (this.state.ageInputDisplayed) {
+      age = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
     } else {
-     state = <div>{this.props.state}<button onClick={() => this.handleStateInputToggle()}>edit</button></div>
+      age = <div>{this.props.age} <button onClick={() => this.handleAgeInputToggle()}>edit</button></div>;
     }
-    if(this.state.ageInputDisplayed){
-      age = <input className="input"></input>;
+    if (this.state.bioInputDisplayed) {
+      bio = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
     } else {
-      age = this.props.age;
+      bio = <div>{this.props.bio}<button onClick={() => this.handleBioInputToggle()}>edit</button></div>;
     }
-    if(this.state.bioInputDisplayed){
-      bio = <form><input className="input"></input></form>;
+    if (this.state.interestsInputDisplayed) {
+      interests = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
     } else {
-      bio = this.props.bio;
+      interests = <div>{this.props.interests}<button onClick={() => this.handleInterestsInputToggle()}>edit</button></div>;
     }
-    if(this.state.interestsInputDisplayed){
-      interests = <input className="input"></input>;
+    if (this.state.movieInputDislayed) {
+      movies = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
     } else {
-      interests = this.props.interests;
+      movies = <div>{this.props.movies}<button onClick={() => this.handleMovieInputToggle()}>edit</button></div>;
     }
-    if(this.state.movieInputDislayed){
-     movies = <input className="input"></input>;
+    if (this.state.musicInputDisplayed) {
+      music = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
     } else {
-      movies = this.props.movies;
+      music = <div>{this.props.music}<button onClick={() => this.handleMusicInputToggle()}>edit</button></div>;
     }
-    if(this.state.musicInputDisplayed){
-      music = <input className="input"></input>;
-     } else {
-       music = this.props.music;
-     }
-     if(this.state.tvInputDisplayed){
-      tv = <input className="input"></input>;
-     } else {
-       tv = this.props.tv;
-     }
-     
+    if (this.state.tvInputDisplayed) {
+      tv = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+    } else {
+      tv = <div>{this.props.tv} <button onClick={() => this.handleTvInputToggle()}>edit</button></div>;
+    }
+
     var fullName = `${this.props.firstName} ${this.props.lastName}`;
     return (
       <div id="search-user-profile">
         <div className="search-user-profile-name">
           <h3>Name: {fullName}</h3>
-          </div>
+        </div>
         <div className="search-user-profile-city">
           city: {city}
-          <button onClick={() => this.handlCityInputToggle()}>edit</button>
-          </div>
+        </div>
         <div className="search-user-profile-state">
           state: {state}
-          {/* <button onClick={() => this.handleStateInputToggle()}>edit</button> */}
-          </div>
+        </div>
         <div className="search-user-profile-age">
           age: {age}
-          <button onClick={() => this.handleAgeInputToggle()}>edit</button>
-          </div>
+        </div>
         <div className="search-user-profile-bio">
           bio: {bio}
-          <button onClick={() => this.handleBioInputToggle()}>edit</button>
-          </div>
+        </div>
         <div className="search-user-profile-interests">
-        interests: {interests}
-        <button onClick={() => this.handleInterestsInputToggle()}>edit</button>
+          interests: {interests}
         </div>
         <div className="search-user-profile-music">
           music: {music}
-          <button onClick={() => this.handleMusicInputToggle()}>edit</button>
-         </div>
+        </div>
         <div className="search-user-profile-movies">
           movies: {movies}
-          <button onClick={() => this.handleMovieInputToggle()}>edit</button>
-         </div>
+        </div>
         <div className="search-user-profile-tv">
           tv: {tv}
-          <button onClick={() => this.handleTvInputToggle()}>edit</button>
-         </div>
+        </div>
       </div>
     )
   }
 }
 
 export const mapStateToProps = state => ({
-  
-  firstName: state.auth.currentUser.firstName,
+
+  firstName: state.auth.currentUser.firstName ? state.auth.currentUser.firstName : null,
   lastName: state.auth.currentUser.lastName,
   city: state.auth.currentUser.city,
   state: state.auth.currentUser.state,
