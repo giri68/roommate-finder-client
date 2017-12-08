@@ -27,32 +27,37 @@ export class LoginForm extends React.Component {
         }
 
         return (
-            <form
-                className="login-form"
-                onSubmit={this.props.handleSubmit(values =>
-                    this.onSubmit(values)
-                )}>
-                {error}
-                <label htmlFor="username">Username</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    id="username"
-                    validate={[required, nonEmpty]}
-                />
-                <label htmlFor="password">Password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="password"
-                    id="password"
-                    validate={[required, nonEmpty]}
-                />
-                <button disabled={this.props.pristine || this.props.submitting}>
-                    Log in
-                </button>
-            </form>
+            <div>
+                <form
+                    className="login-form"
+                    onSubmit={this.props.handleSubmit(values =>
+                        this.onSubmit(values)
+                    )}>
+                    {error}
+                    <label htmlFor="username">Username</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="username"
+                        id="username"
+                        validate={[required, nonEmpty]}
+                    />
+                    <label htmlFor="password">Password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="password"
+                        id="password"
+                        validate={[required, nonEmpty]}
+                    />
+                    <button disabled={this.props.pristine || this.props.submitting}>
+                        Log in
+                    </button>
+                    
+                </form>
+                <Link to="/">Back</Link>
+                <Link to="/searchPage">Create Account</Link>
+            </div>
         );
     }
 }
