@@ -2,4 +2,19 @@
     background-color: rgb(226, 226, 226); 
     padding: 30px; 
     margin: 20px; 
+    border-radius: 5px; 
+}
+
+.dashboard-half {
+    display: inline-block; 
+    width: 50%; 
+}
+
+.map {
+    background-color: rgb(226, 226, 226); 
+    height: 500px;
+    width: 90%; 
+    margin-top: 0px; 
+    position: relative; 
+    top: -458px;  
 }
