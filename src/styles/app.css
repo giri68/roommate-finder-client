@@ -1,0 +1,9 @@
+.view-window {
+    margin: 100px; 
+}
+
+@media screen and (max-width: 800px) {
+    .view-window {
+        margin: 40px; 
+    }
+}

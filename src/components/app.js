@@ -10,6 +10,7 @@ import Dashboard from './dashboard';
 import Questions from './questions';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
+import '../styles/app.css'; 
 
 export class App extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -45,12 +46,14 @@ export class App extends React.Component {
         return (
             <div className="app">
                 <HeaderBar />
-                <Route exact path="/" component={LandingPage} />
-                <Route exact path="/login" component={LoginForm} />
-                <Route exact path="/searchPage" component={SearchPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/register" component={RegistrationPage} />
-                <Route exact path="/questions" component={Questions} />
+                <div className="view-window">
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/login" component={LoginForm} />
+                    <Route exact path="/searchPage" component={SearchPage} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/register" component={RegistrationPage} />
+                    <Route exact path="/questions" component={Questions} />
+                </div>
             </div>
         );
     }
