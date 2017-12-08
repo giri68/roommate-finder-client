@@ -3,3 +3,17 @@
     padding: 30px; 
     margin: 20px; 
 }
+
+.dashboard-half {
+    display: inline-block; 
+    width: 49%; 
+}
+
+.map {
+    background-color: rgb(226, 226, 226); 
+    height: 500px;
+    width: 90%; 
+    margin-top: 0px; 
+    position: relative; 
+    top: -458px;  
+}
