@@ -28,7 +28,14 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="dashboard">
-                { currentMatches }
+                <div className="dashboard-half">
+                    <div className="map">
+                    
+                    </div>
+                </div>
+                <div className="dashboard-half">
+                    { currentMatches }
+                </div>
             </div>
         );
     }
