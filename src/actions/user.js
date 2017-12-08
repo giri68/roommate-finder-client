@@ -83,3 +83,27 @@ export const saveQuestions = (user) => dispatch => {
             }
         });
 };
+
+export const SET_SELECTED_USER = "SET_SELECTED_USER"; 
+export const setSelectedUser = user => ({
+    type: SET_SELECTED_USER, 
+    user
+}); 
+
+
+export const SET_REDIRECT_DISPLAY_FALSE = "SET_REDIRECT_DISPLAY_FALSE"; 
+export const setRedirectDisplayFalse = user => ({
+    type: SET_REDIRECT_DISPLAY_FALSE 
+}); 
+
+export const getSelectedUser = (username) => dispatch => {
+    return fetch(`${API_BASE_URL}/api/users/${username}`, {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(user => {
+        dispatch(setSelectedUser(user))
+    })
+    .then(() => dispatch(setRedirectDisplayFalse()));  
+}
+

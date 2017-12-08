@@ -8,8 +8,9 @@ import {UserProfile} from './user-profile';
 import LoginForm from './login-form';
 import Dashboard from './dashboard';
 import Questions from './questions';
-import userProfile from './user-profile'
+import userProfile from './user-profile';
 import RegistrationPage from './registration-page';
+import searchUserProfile from './search-user-profile'; 
 import {refreshAuthToken} from '../actions/auth';
 import '../styles/app.css'; 
 
@@ -55,6 +56,7 @@ export class App extends React.Component {
                     <Route exact path="/register" component={RegistrationPage} />
                     <Route exact path="/questions" component={Questions} />
                     <Route exact path="/profile" component={userProfile} />
+                    <Route exact path="/search-user-profile" component={searchUserProfile} />
                 </div>
             </div>
         );
