@@ -48,6 +48,7 @@ export class App extends React.Component {
                 <HeaderBar />
                 <div className="view-window">
                     <Route exact path="/" component={LandingPage} />
+                    {/* <Route exact path="/" component={UserProfile} /> */}
                     <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/searchPage" component={SearchPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
