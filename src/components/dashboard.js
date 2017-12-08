@@ -17,7 +17,7 @@ export class Dashboard extends React.Component {
 
     render() {
         if (!this.props.loggedIn) {
-            return <Redirect to="/" />;
+            return <Redirect to="/login" />;
         }
 
         let currentMatches = this.props.profileMatches.map((match, index ) => (
