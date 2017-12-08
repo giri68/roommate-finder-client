@@ -22,7 +22,7 @@ export class Dashboard extends React.Component {
 
         let currentMatches = this.props.profileMatches.map((match, index ) => (
             <div className="dashboard-match-result" key={index}>   
-                <h2> {match.username }</h2>
+                <h3> {match.username }</h3>
             </div>
         )); 
 

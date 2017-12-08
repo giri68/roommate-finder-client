@@ -12,7 +12,7 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="home">
-            <h2>Register for Roommate Finder</h2>
+            <h2>Register</h2>
             <RegistrationForm />
             <span className="login-text">Already a member? </span>
             <span className="login-link"><Link to="/login">Login</Link></span>
