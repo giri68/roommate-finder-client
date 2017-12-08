@@ -24,10 +24,17 @@ export class HeaderBar extends React.Component {
                 <Link to="/questions">Questions</Link>
             )
         }
+        let dashboardButton; 
+        if(this.props.loggedIn) {
+            dashboardButton = (
+                <Link to="/dashboard">Dashboard</Link>
+            )
+        }
         return (
             <div className="header-bar">
                 {logOutButton}
                 {questionsButton}
+                {dashboardButton}
             </div>
         );
     }
