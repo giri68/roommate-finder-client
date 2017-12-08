@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, withRouter, Redirect} from 'react-router-dom';
 import Input from './input';
 import {Field, reduxForm, focus} from 'redux-form';
 import { compose } from 'redux';
@@ -8,6 +8,12 @@ import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 import {saveQuestions} from '../actions/user';
 
 export class Questions extends React.Component {
+
+    componentDidMount() {
+        if (!this.props.loggedIn) {
+            return;
+        }
+    }
 
   onSubmit(values) {
     const {firstName, lastName, age, gender, gender_bothered, city, state, max_distance, 
@@ -24,12 +30,15 @@ export class Questions extends React.Component {
   }
 
   render() {
+    if (!this.props.loggedIn) {
+        return <Redirect to="/" />;
+    }
 
     const minValue = min => value =>
     value && value < min ? `Must be at least ${min}` : undefined
-  const minValue18 = minValue(18)
-  const minValue1 = minValue(1)
-  const minValue100= minValue(100)
+    const minValue18 = minValue(18)
+    const minValue1 = minValue(1)
+    const minValue100= minValue(100)
 
       return (
           <form className="profile" onSubmit={this.props.handleSubmit(values =>
@@ -232,11 +241,12 @@ export class Questions extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.auth.currentUser
+    loggedIn: state.auth.currentUser !== null,
+    currentUser: state.auth.currentUser
 });
 
 export default compose(
-  connect(mapStateToProps),
-  reduxForm({form: 'questions',
-  onSubmitFail: (errors, dispatch) => dispatch(focus('questions'))
+    connect(mapStateToProps),
+    reduxForm({form: 'questions',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('questions'))
 }))(Questions)
