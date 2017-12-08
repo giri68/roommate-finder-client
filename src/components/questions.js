@@ -58,12 +58,20 @@ export class Questions extends React.Component {
               validate={[required, nonEmpty, minValue18]}
           />
                     <label htmlFor="gender">Gender</label>
+          <label>
           <Field
               component={Input}
-              type="text"
+              type="radio"
               name="gender"
-              validate={[required, nonEmpty, minValue18]}
-          />
+              value="male"
+          />Male</label>
+          <label>
+          <Field
+              component={Input}
+              type="radio"
+              name="gender"
+              value="female"
+          />Female</label>
           <h1>Apartment Criteria</h1>
           <label htmlFor="city">City</label>
           <Field
