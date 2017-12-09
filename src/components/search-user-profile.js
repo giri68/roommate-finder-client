@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'; 
 
 export class SearchUserProfile extends React.Component {
-
+  
   render() {
+
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login" />;
+    }
 
     let name; 
     if(this.props.firstName && this.props.lastName){
@@ -59,19 +64,25 @@ export class SearchUserProfile extends React.Component {
 }
 
 export const mapStateToProps = state => {
-  console.log("THIS IS THE ONE", state.user.selectedUser)
+  if (state.auth.currentUser) {
+    return {
+      loggedIn: state.auth.currentUser !== null,
+      id: state.user.selectedUser.id,
+      firstName: state.user.selectedUser.firstName,
+      lastName: state.user.selectedUser.lastName,
+      city: state.user.selectedUser.city,
+      state: state.user.selectedUser.state,
+      age: state.user.selectedUser.age,
+      bio: state.user.selectedUser.bio,
+      interests: state.user.selectedUser.interests,
+      music: state.user.selectedUser.music,
+      movies: state.user.selectedUser.movies,
+      tv: state.user.selectedUser.tv
+    }
+  }
   return {
-  id: state.user.selectedUser.id,
-  firstName: state.user.selectedUser.firstName,
-  lastName: state.user.selectedUser.lastName,
-  city: state.user.selectedUser.city,
-  state: state.user.selectedUser.state,
-  age: state.user.selectedUser.age,
-  bio: state.user.selectedUser.bio,
-  interests: state.user.selectedUser.interests,
-  music: state.user.selectedUser.music,
-  movies: state.user.selectedUser.movies,
-  tv: state.user.selectedUser.tv
-}};
+    loggedIn: state.auth.currentUser !== null
+  }
+};
 
 export default connect(mapStateToProps)(SearchUserProfile);
