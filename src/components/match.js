@@ -1,22 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {getAllUsers} from '../actions/user'; 
-import {Redirect} from 'react-router-dom';
+import {getSelectedUser} from '../actions/user'; 
+import {Redirect, Link} from 'react-router-dom';
 import '../styles/match.css'; 
 
 export class Match extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            user: this.props.user
-        }
+
+    handleMatchClick() {
+        // console.log("ITS WORKING", this.props.user.username)
+        this.props.dispatch(getSelectedUser(this.props.user.username))
+            .then(this.setState({redirectDisplayed: true}))
     }
 
     render() {
+        if (this.props.redirectDisplayed) {
+            return <Redirect to="/search-user-profile" />;
+        }
         return (
-            <div className="match">
-                <h3>{this.state.user.username}</h3>
+            <div className="match" onClick={() => this.handleMatchClick()}>
+                <h3>{this.props.user.username}</h3>
             </div>
         );
     }
@@ -25,6 +28,7 @@ export class Match extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
+        redirectDisplayed: state.user.redirectDisplayed, 
         username: state.auth.currentUser ? state.auth.currentUser.username : null
     };
 };
