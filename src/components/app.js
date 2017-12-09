@@ -4,11 +4,11 @@ import {Route, withRouter} from 'react-router-dom';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import SearchPage from './search-page';
-import {UserProfile} from './user-profile';
+
 import LoginForm from './login-form';
 import Dashboard from './dashboard';
 import Questions from './questions';
-import userProfile from './user-profile'
+import UserProfile from './user-profile';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import '../styles/app.css'; 
@@ -49,13 +49,13 @@ export class App extends React.Component {
                 <HeaderBar />
                 <div className="view-window">
                     <Route exact path="/" component={LandingPage} />
-                    {/* <Route exact path="/" component={UserProfile} /> */}
+                    
                     <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/searchPage" component={SearchPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/register" component={RegistrationPage} />
                     <Route exact path="/questions" component={Questions} />
-                    <Route exact path="/profile" component={userProfile} />
+                    <Route exact path="/profile" component={UserProfile} />
                 </div>
             </div>
         );
