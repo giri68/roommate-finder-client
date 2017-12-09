@@ -12,7 +12,7 @@ export class Dashboard extends React.Component {
         if (!this.props.loggedIn) {
             return;
         }
-        this.props.dispatch(fetchProtectedData());
+       
         this.props.dispatch(getAllUsers()); 
     }
 
@@ -29,7 +29,7 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <div className="dashboard-half">
                     <div className="map">
-                    
+                    {this.props.username}
                     </div>
                 </div>
                 <div className="dashboard-half">
