@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgb(68, 68, 90); 
 }
 
 input {
@@ -15,8 +16,22 @@ input {
 
 button {
   padding: 8px 20px; 
-  border: 1px solid rgb(155, 155, 155); 
+  border: 0px; 
   border-radius: 4px; 
   margin-top: 10px; 
   margin-bottom: 10px;
+}
+
+.button-blue {
+  background-color: rgb(120, 120, 158); 
+  color: white; 
+
+}
+
+h1, h2, h3, h4, h5, h6, p, label, a {
+  color: white; 
+}
+
+a {
+  text-decoration: none; 
 }

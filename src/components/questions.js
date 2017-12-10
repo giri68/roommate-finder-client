@@ -232,6 +232,7 @@ export class Questions extends React.Component {
             />
             <button
                 type="submit"
+                className="button-blue"
                 disabled={this.props.pristine || this.props.submitting}>
                 Submit
             </button>
