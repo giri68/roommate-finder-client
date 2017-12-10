@@ -1,0 +1,21 @@
+.search-page {
+    display: flex;
+    flex-direction: column;  
+    width: 100%;  
+}
+
+.section { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height:200px; 
+    transition: 0.3s;  
+    margin-bottom: 2px; 
+    background-color: rgb(120, 120, 158); 
+    cursor: pointer; 
+}
+
+.section:hover {
+    background-color: rgb(113, 113, 150); 
+}

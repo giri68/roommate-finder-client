@@ -1,5 +1,10 @@
 .view-window {
     margin: 70px 150px 100px 150px; 
+    height: 100%; 
+}
+
+.app { 
+    height: 100%; 
 }
 
 @media screen and (max-width: 800px) {

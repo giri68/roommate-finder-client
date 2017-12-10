@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {findARoom} from '../actions/user';
+import '../styles/search-page.css'; 
 
 export  class SearchPage extends React.Component {
 
@@ -11,16 +12,20 @@ export  class SearchPage extends React.Component {
     
     render(){  
         return (  
-        <div className="searchPage">
-            <div>
-            <p onClick={() => this.click()}> <Link to="/register">Find a room</Link></p>
+        <div className="search-page">
+            
+            <div className="section">
+                <p onClick={() => this.click()}> <Link to="/register">FIND A ROOM</Link></p>
             </div>
-            <div>
-            <p onClick={() => this.click()}><Link to="/register">Fill a room</Link></p>
+
+            <div className="section">
+                <p onClick={() => this.click()}><Link to="/register">FILL A ROOM</Link></p>
             </div>
-            <div>
-            <p onClick={() => this.click()}><Link to="/register">Find a roommate</Link></p>
+
+            <div className="section">
+                <p onClick={() => this.click()}><Link to="/register">FIND A ROOMMATE</Link></p>
             </div>
+            
         </div>
         );
     };
