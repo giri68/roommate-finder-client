@@ -27,7 +27,7 @@ export class LoginForm extends React.Component {
         }
 
         return (
-            <div>
+            <div className="limited-width">
                 <h2>Login</h2>
                 <form
                     className="login-form"

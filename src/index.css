@@ -44,3 +44,15 @@ h1, h2, h3, h4, h5, h6, p, label, a {
 a {
   text-decoration: none; 
 }
+
+.limited-width {
+  width: 300px; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+@media screnn and (max-width: 1000px) {
+  .limited-width {
+    width: 90%; 
+  }
+}
