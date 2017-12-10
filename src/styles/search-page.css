@@ -13,10 +13,10 @@
     height:200px; 
     transition: 0.3s;  
     margin-bottom: 2px; 
-    background-color: rgb(120, 120, 158); 
     cursor: pointer; 
+    background-color:rgb(118, 118, 139); 
 }
 
 .section:hover {
-    background-color: rgb(113, 113, 150); 
+    background-color:rgb(108, 108, 128);  
 }

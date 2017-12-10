@@ -15,20 +15,20 @@ export  class SearchPage extends React.Component {
         <div className="search-page">
             
             <div className="section">
-                <p onClick={() => this.click()}> <Link to="/register">FIND A ROOM</Link></p>
+                <h2 onClick={() => this.click()}> <Link to="/register">Find a Room</Link></h2>
             </div>
 
             <div className="section">
-                <p onClick={() => this.click()}><Link to="/register">FILL A ROOM</Link></p>
+                <h2 onClick={() => this.click()}><Link to="/register">Fill a Room</Link></h2>
             </div>
 
             <div className="section">
-                <p onClick={() => this.click()}><Link to="/register">FIND A ROOMMATE</Link></p>
+                <h2 onClick={() => this.click()}><Link to="/register">Find a Roomate</Link></h2>
             </div>
             
         </div>
         );
-    };
+    }
 }
 
 export default connect()(SearchPage);
