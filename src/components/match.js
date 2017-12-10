@@ -19,7 +19,9 @@ export class Match extends React.Component {
         }
         return (
             <div className="match" onClick={() => this.handleMatchClick()}>
-                <h3>{this.props.user.username}</h3>
+                <div className="profilePic">
+                </div>
+                <h3 className="profileName">{this.props.user.username}</h3>
             </div>
         );
     }
