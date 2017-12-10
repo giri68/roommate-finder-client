@@ -21,7 +21,7 @@ export class Match extends React.Component {
             <div className="match" onClick={() => this.handleMatchClick()}>
                 <div className="profilePic">
                 </div>
-                <h3 className="profileName">{this.props.user.username}</h3>
+                <p className="profileName"><strong>{this.props.user.username}</strong></p>
             </div>
         );
     }

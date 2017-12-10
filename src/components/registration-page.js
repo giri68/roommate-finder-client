@@ -12,7 +12,7 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="limited-width">
-            <h2>Register</h2>
+            <h1>Register</h1>
             <RegistrationForm />
             <p>Already a member? <span className="login-link"><Link to="/login">Login</Link></span></p>
         </div>
