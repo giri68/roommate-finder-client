@@ -9,8 +9,13 @@
 }
 
 .map {
+    background: url('../images/map.png') no-repeat center top; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover;
     background-color: rgb(226, 226, 226); 
-    height: 500px;
+    height: 450px;
     width: 90%; 
     margin-top: 0px; 
 }
