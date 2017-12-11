@@ -23,19 +23,10 @@ export const getAllUsers = () => dispatch => {
     }); 
 }
 
-export const FIND_A_ROOM = 'FIND_A_ROOM';
-export const findARoom = () => ({
-    type: FIND_A_ROOM
-});
-
-export const FILL_A_ROOM = 'FILL_A_ROOM';
-export const fillARoom = () => ({
-    type: FILL_A_ROOM
-});
-
-export const FIND_A_ROOMMATE = 'FIND_A_ROOMMATE';
-export const findARoommate = () => ({
-    type: FIND_A_ROOMMATE
+export const SET_LOOKING_FOR = 'FIND_A_ROOM';
+export const setLookingFor = (looking_for) => ({
+    type: SET_LOOKING_FOR, 
+    looking_for
 });
 
 export const registerUser = user => dispatch => {

@@ -40,8 +40,8 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     const {currentUser} = state.auth;
-    console.log('dashboard state', state);
     return {
         loggedIn: state.auth.currentUser !== null,
         username: state.auth.currentUser ? state.auth.currentUser.username : null,
