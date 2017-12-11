@@ -84,6 +84,29 @@ export const saveQuestions = (user) => dispatch => {
         });
 };
 
+export const filterUsers = (user) => dispatch => {
+    return fetch(`${API_BASE_URL}/api/users`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => console.log(res.json()))
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
 export const SET_SELECTED_USER = "SET_SELECTED_USER"; 
 export const setSelectedUser = user => ({
     type: SET_SELECTED_USER, 
@@ -106,4 +129,5 @@ export const getSelectedUser = (username) => dispatch => {
     })
     .then(() => dispatch(setRedirectDisplayFalse()));  
 }
+
 
