@@ -56,13 +56,14 @@ p, button, a, label {
   font-family: 'Roboto', sans-serif;
 }
 
-P {
+p {
   line-height: 150%; 
 }
 
 a {
   text-decoration: none; 
 }
+
 
 .limited-width {
   width: 300px; 

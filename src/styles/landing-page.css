@@ -22,3 +22,7 @@
     padding-top: 50px; 
     color: white; 
 }
+
+.login-link {
+    text-decoration: underline; 
+}
