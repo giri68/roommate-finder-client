@@ -1,5 +1,23 @@
 .landing-page {
-    width: 80%; 
+    width: 100%;
+    height: 400px;  
     margin-left: auto; 
     margin-right: auto; 
+    background-color: rgb(66, 66, 66); 
+    background: url('../images/landing-page-background.jpg') no-repeat center top; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover;
+}
+
+.text-section {
+    width: 30%; 
+    background:rgba(0, 0, 0, 0.6);  
+    height: calc(100% - 50px); 
+    float: right; 
+    padding-left: 50px;
+    padding-right: 50px;  
+    padding-top: 50px; 
+    color: white; 
 }
