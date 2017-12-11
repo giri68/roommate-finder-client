@@ -17,35 +17,35 @@ export class SearchUserProfile extends React.Component {
     }
     let city; 
     if(this.props.city){
-      city = <div className="search-user-profile-city">City: {this.props.city}</div>
+      city = <div className="search-user-profile-city"><p><strong>City:</strong> {this.props.city}</p></div>
     }
     let state; 
     if(this.props.state){
-      state =  <div className="search-user-profile-state">State: {this.props.state}</div>
+      state =  <div className="search-user-profile-state"><p><strong>State:</strong> {this.props.state}</p></div>
     }
     let age; 
     if(this.props.age){
-      age = <div className="search-user-profile-age">Age: {this.props.age}</div>
+      age = <div className="search-user-profile-age"><p><strong>Age:</strong> {this.props.age}</p></div>
     }
     let bio; 
     if(this.props.bio){
-      bio = <div className="search-user-profile-bio">Bio: {this.props.bio}</div>
+      bio = <div className="search-user-profile-bio"><p><strong>Bio:</strong> {this.props.bio}</p></div>
     }
     let interests; 
     if(this.props.interests){
-      interests = <div className="search-user-profile-interests">Interests: {this.props.interests}</div>
+      interests = <div className="search-user-profile-interests"><p><strong>Interests:</strong> {this.props.interests}</p></div>
     }
     let music; 
     if(this.props.music){
-      music = <div className="search-user-profile-music">Music: {this.props.music}</div>
+      music = <div className="search-user-profile-music"><p><strong>Music:</strong> {this.props.music}</p></div>
     }
     let movies; 
     if(this.props.movies){
-      movies = <div className="search-user-profile-movies">Movies: {this.props.movies}</div>
+      movies = <div className="search-user-profile-movies"><p><strong>Movies:</strong> {this.props.movies}</p></div>
     }
     let tv; 
     if(this.props.tv){
-      tv = <div className="search-user-profile-tv">TV: {this.props.tv}</div>
+      tv = <div className="search-user-profile-tv"><p><strong>TV:</strong> {this.props.tv}</p></div>
     }
 
     return (
