@@ -33,6 +33,7 @@ export class HeaderBar extends React.Component {
         }
         return (
             <div className="header-bar">
+                    <p className="nav-item"><Link to="/">Main</Link></p>
                     {logOutButton}
                     {questionsButton}
                     {dashboardButton}
