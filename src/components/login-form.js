@@ -56,8 +56,8 @@ export class LoginForm extends React.Component {
                     </button>
                     
                 </form>
-                <p><Link to="/">Back</Link></p>
-                <p><Link to="/searchPage">Create Account</Link></p>   
+                <p><Link className="login-link" to="/">Back</Link></p>
+                <p><Link className="login-link" to="/searchPage">Create Account</Link></p>   
             </div>
         );
     }
