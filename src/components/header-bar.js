@@ -33,7 +33,7 @@ export class HeaderBar extends React.Component {
         }
         let mainButton; 
         if(this.props.loggedIn) {
-            dashboardButton = (
+            mainButton = (
                 <p className="nav-item"><Link to="/">Main</Link></p>
             )
         }

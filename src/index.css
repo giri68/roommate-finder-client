@@ -55,6 +55,10 @@ p, button, a, label {
   font-family: 'Roboto', sans-serif;
 }
 
+P {
+  line-height: 150%; 
+}
+
 a {
   text-decoration: none; 
 }
