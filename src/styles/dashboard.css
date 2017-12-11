@@ -3,23 +3,20 @@
     display: flex; 
 }
 
-.dashboard-match-result {
-    background-color: rgb(226, 226, 226); 
-    padding: 30px; 
-    margin-bottom: 40px; 
-    border-radius: 5px; 
-}
-
 .dashboard-half {
     display: inline-block; 
     width: 50%; 
 }
 
 .map {
+    background: url('../images/map.png') no-repeat center top; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover;
     background-color: rgb(226, 226, 226); 
-    height: 500px;
-    width: 90%; 
+    height: 450px;
+    width: 85%; 
     margin-top: 0px; 
-    /* position: relative; 
-    top: -395px;   */
+    border: 10px solid white;
 }

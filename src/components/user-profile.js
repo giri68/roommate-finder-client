@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { saveQuestions } from '../actions/user';
+
 
 export class UserProfile extends React.Component {
   constructor(props) {
@@ -12,11 +14,36 @@ export class UserProfile extends React.Component {
       interestsInputDisplayed: false,
       musicInputDisplayed: false,
       movieInputDislayed: false,
-      tvInputDisplayed: false
+      tvInputDisplayed: false,
+      
     }
+    // this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  
+ 
+  handleFormSubmit(event, nextField) {
+    event.preventDefault();
+    console.log('testing value', this.city.value)
+    
+
+    const user = {
+      // city: '',
+      // state:'',
+      // // age: '',
+      // // bio: '',
+      // // interests: '',
+      // // music: '',
+      // // movie: '',
+      // // tv: ''
+    }
+    user[nextField] = this[nextField].value
+    // user.city = this.inputCity.value
+    // user.state = this.inputState.value
+    console.log('inut ciry', this.city.value, user);
+    console.log('this', this.props)
+    this.props.dispatch(saveQuestions(user))
+  }
+
   handlCityInputToggle() {
     this.setState({ cityInputDisplayed: !this.state.cityInputDisplayed })
   }
@@ -41,50 +68,103 @@ export class UserProfile extends React.Component {
   handleTvInputToggle() {
     this.setState({ tvInputDisplayed: !this.state.tvInputDisplayed })
   }
+  
 
   render() {
-    var state, city, age, movies, music, tv, interests, bio;
-    
+    var state, city, age, movies, music, tv, interests, bio, field, nextField;
+   
+
     if (this.state.cityInputDisplayed) {
-      city = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      nextField = 'city'
+      city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.city = input}></input>
+        <button type="submit">save</button>
+     
+      </form>
+         
+        
     } else {
-      city = <div>{this.props.city}<button onClick={() => this.handlCityInputToggle()}>edit</button></div>
+      city = <div>{this.props.city}
+        <button onClick={() => this.handlCityInputToggle()}>edit</button>
+      </div>
     }
     if (this.state.stateInputDisplayed) {
-      state = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      state = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputState = input}></input>
+        <button type="submit">save</button>
+      </form>
 
     } else {
-      state = <div>{this.props.state}<button onClick={() => this.handleStateInputToggle()}>edit</button></div>;
+      state = <div>
+        {this.props.state}
+        <button onClick={() => this.handleStateInputToggle()}>edit</button>
+      </div>;
     }
     if (this.state.ageInputDisplayed) {
-      age = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      age = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputAge = input}></input>
+        <button type="submit">save</button>
+      </form>
     } else {
-      age = <div>{this.props.age} <button onClick={() => this.handleAgeInputToggle()}>edit</button></div>;
+      age = <div>
+        {this.props.age}
+        <button onClick={() => this.handleAgeInputToggle()}>edit</button>
+      </div>;
     }
     if (this.state.bioInputDisplayed) {
-      bio = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      bio = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputBio = input}></input>
+        <button type="submit">save</button>
+      </form>
     } else {
-      bio = <div>{this.props.bio}<button onClick={() => this.handleBioInputToggle()}>edit</button></div>;
+      bio = <div>
+        {this.props.bio}
+        <button onClick={() => this.handleBioInputToggle()}>edit</button>
+      </div>;
     }
     if (this.state.interestsInputDisplayed) {
-      interests = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      interests = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputInterests = input}></input>
+        <button type="submit">save</button>
+      </form>
     } else {
-      interests = <div>{this.props.interests}<button onClick={() => this.handleInterestsInputToggle()}>edit</button></div>;
+      interests = <div>
+        {this.props.interests}
+        <button onClick={() => this.handleInterestsInputToggle()}>edit</button>
+      </div>;
     }
     if (this.state.movieInputDislayed) {
-      movies = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      movies = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputMovie = input}></input>
+        <button type="submit">save</button>
+      </form>
     } else {
-      movies = <div>{this.props.movies}<button onClick={() => this.handleMovieInputToggle()}>edit</button></div>;
+      movies = <div>
+        {this.props.movies}
+        <button onClick={() => this.handleMovieInputToggle()}>edit</button>
+      </div>;
     }
     if (this.state.musicInputDisplayed) {
-      music = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      music = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputMusic = input}></input>
+        <button type="submit">save</button>
+      </form>
     } else {
-      music = <div>{this.props.music}<button onClick={() => this.handleMusicInputToggle()}>edit</button></div>;
+      music = <div>
+        {this.props.music}
+        <button onClick={() => this.handleMusicInputToggle()}>edit</button>
+      </div>;
     }
     if (this.state.tvInputDisplayed) {
-      tv = <form onSubmit={(e) => e.preventDefault()}><input className="input"></input><button>save</button></form>
+      tv = <form onSubmit={e => this.handleFormSubmit(e)}>
+        <input className="input" ref={input => this.inputTv = input}></input>
+        <button type="submit">save</button>
+      </form>
     } else {
-      tv = <div>{this.props.tv} <button onClick={() => this.handleTvInputToggle()}>edit</button></div>;
+      tv = <div>
+        {this.props.tv}
+        <button onClick={() => this.handleTvInputToggle()}>edit</button>
+      </div>;
     }
 
     var fullName = `${this.props.firstName} ${this.props.lastName}`;
@@ -122,18 +202,19 @@ export class UserProfile extends React.Component {
   }
 }
 
-export const mapStateToProps = state => ({
-
-  firstName: state.auth.currentUser.firstName ? state.auth.currentUser.firstName : null,
-  lastName: state.auth.currentUser.lastName,
-  city: state.auth.currentUser.city,
-  state: state.auth.currentUser.state,
-  age: state.auth.currentUser.age,
-  bio: state.auth.currentUser.bio,
-  interests: state.auth.currentUser.interests,
-  music: state.auth.currentUser.music,
-  movies: state.auth.currentUser.movies,
-  tv: state.auth.currentUser.tv
-});
+export const mapStateToProps = state => {
+  console.log(state)
+  {
+  // firstName: state.auth.currentUser.firstName,
+  // lastName: state.auth.currentUser.lastName,
+  // city: state.auth.currentUser.city,
+  // state: state.auth.currentUser.state,
+  // age: state.auth.currentUser.age,
+  // bio: state.auth.currentUser.bio,
+  // interests: state.auth.currentUser.interests,
+  // music: state.auth.currentUser.music,
+  // movies: state.auth.currentUser.movies,
+  // tv: state.auth.currentUser.tv
+}};
 
 export default connect(mapStateToProps)(UserProfile);
