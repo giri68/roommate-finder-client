@@ -35,11 +35,12 @@ button {
 }
 
 .button-blue {
-  background-color: rgb(120, 120, 158); 
+  background-color: rgb(113, 113, 150); 
   color: white; 
+  cursor: pointer; 
 }
 .button-blue:hover {
-  background-color: rgb(113, 113, 150); 
+  background-color: rgb(91, 91, 117); 
   color: white; 
 }
 
