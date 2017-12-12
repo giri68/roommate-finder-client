@@ -40,6 +40,81 @@ export class Questions extends React.Component {
         const minValue1 = minValue(1)
         const minValue100= minValue(100)
 
+
+        let lookingFor; 
+console.log("QUESTIONS PAGE LOOKING FOR", this.props.looking_for)
+        if (this.props.looking_for === "find_a_room" || this.props.looking_for === "find_a_roommate") {
+          lookingFor = <div><h2>Apartment Criteria</h2>
+          <label htmlFor="city">City</label>
+          <Field
+              component={Input}
+              type="text"
+              name="city"
+              validate={[required, nonEmpty, isTrimmed]}
+          />
+          <label htmlFor="state">State</label>
+          <Field
+              component={Input}
+              type="text"
+              name="state"
+              validate={[required, nonEmpty, isTrimmed]}
+          />
+          <label htmlFor="max_distance">Search Radius(miles)</label>
+          <Field
+              component={Input}
+              type="number"
+              name="max_distance"
+              validate={[required, nonEmpty, minValue1]}
+          />
+          <label htmlFor="max_price">Maximum Price</label>
+          <Field
+              component={Input}
+              type="number"
+              name="max_price"
+              validate={[required, nonEmpty, minValue100]}
+          />
+          </div>
+        }
+        else if (this.props.looking_for === "fill_a_room") {
+lookingFor = <div><h2>Apartment Listing</h2>
+          <label htmlFor="address">Address</label>
+          <Field
+              component={Input}
+              type="text"
+              name="address"
+              validate={[required, nonEmpty, isTrimmed]}
+          />
+          <label htmlFor="city">City</label>
+          <Field
+              component={Input}
+              type="text"
+              name="city"
+              validate={[required, nonEmpty, isTrimmed]}
+          />
+          <label htmlFor="state">State</label>
+          <Field
+              component={Input}
+              type="text"
+              name="state"
+              validate={[required, nonEmpty, isTrimmed]}
+          />
+          <label htmlFor="zipcode">Zip Code</label>
+          <Field
+              component={Input}
+              type="number"
+              name="zipcode"
+              validate={[required, nonEmpty]}
+          />
+          <label htmlFor="max_price">Room Price</label>
+          <Field
+              component={Input}
+              type="number"
+              name="max_price"
+              validate={[required, nonEmpty]}
+          />
+          </div>
+        }
+      
         return (
             <form className="profile" onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values))}>
@@ -84,36 +159,7 @@ export class Questions extends React.Component {
                 value="female"
             />Female</label>
             <br /><br />
-            <h2>Apartment Criteria</h2>
-            <label htmlFor="city">City</label>
-            <Field
-                component={Input}
-                type="text"
-                name="city"
-                validate={[required, nonEmpty, isTrimmed]}
-            />
-            <label htmlFor="state">State</label>
-            <Field
-                component={Input}
-                type="text"
-                name="state"
-                validate={[required, nonEmpty, isTrimmed]}
-            />
-            <label htmlFor="max_distance">Search Radius(miles)</label>
-            <Field
-                component={Input}
-                type="number"
-                name="max_distance"
-                validate={[required, nonEmpty, minValue1]}
-            />
-            <label htmlFor="max_price">Maximum Price</label>
-            <Field
-                component={Input}
-                type="number"
-                name="max_price"
-                validate={[required, nonEmpty, minValue100]}
-            />
-            <br />
+          {lookingFor}
             <h2>Personality Profile</h2>
             <label htmlFor="pets_have">Do you have pets?</label>
             <Field
@@ -220,7 +266,7 @@ export class Questions extends React.Component {
                 name="cleanliness"
                 validate={[required, nonEmpty]}
             />
-            <label htmlFor="cleanliness_bothered">How likely are you to live with someone who has guests over frequently?</label>
+            <label htmlFor="cleanliness_bothered">On a scale from 1-5, how important is it for your roommate to be clean, 5 being very important? </label>
             <Field
                 component={Input}
                 type="number"
@@ -247,7 +293,8 @@ export class Questions extends React.Component {
 
 const mapStateToProps = (state) => ({
     loggedIn: state.auth.currentUser !== null,
-    currentUser: state.auth.currentUser
+    currentUser: state.auth.currentUser,
+    looking_for: state.user.looking_for
 });
 
 export default compose(

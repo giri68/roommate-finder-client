@@ -23,7 +23,7 @@ export const getAllUsers = () => dispatch => {
     }); 
 }
 
-export const SET_LOOKING_FOR = 'FIND_A_ROOM';
+export const SET_LOOKING_FOR = 'SET_LOOKING_FOR';
 export const setLookingFor = (looking_for) => ({
     type: SET_LOOKING_FOR, 
     looking_for
