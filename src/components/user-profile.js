@@ -24,7 +24,7 @@ export class UserProfile extends React.Component {
   handleFormSubmit(event, nextField) {
     event.preventDefault();
     console.log('testing value', this.city.value)
-    
+    console.log('this.city', this.props.firstName);
 
     const user = {
       // city: '',
@@ -37,9 +37,10 @@ export class UserProfile extends React.Component {
       // // tv: ''
     }
     user[nextField] = this[nextField].value
-    // user.city = this.inputCity.value
+    // user.city = this.city.value
     // user.state = this.inputState.value
-    console.log('inut ciry', this.city.value, user);
+    user.username = this.props.username
+    console.log('inut city', this.city.value, user);
     console.log('this', this.props)
     this.props.dispatch(saveQuestions(user))
   }
@@ -202,10 +203,10 @@ export class UserProfile extends React.Component {
   }
 }
 
-export const mapStateToProps = state => {
-  console.log(state)
-  {
-  // firstName: state.auth.currentUser.firstName,
+export const mapStateToProps = (state) => {
+  console.log('state12344', state)
+  return {
+   firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null
   // lastName: state.auth.currentUser.lastName,
   // city: state.auth.currentUser.city,
   // state: state.auth.currentUser.state,
@@ -215,6 +216,8 @@ export const mapStateToProps = state => {
   // music: state.auth.currentUser.music,
   // movies: state.auth.currentUser.movies,
   // tv: state.auth.currentUser.tv
+  //username: state.auth.currentUser
 }};
 
 export default connect(mapStateToProps)(UserProfile);
+

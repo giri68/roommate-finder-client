@@ -2,21 +2,78 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgb(50, 50, 61); 
+  height: 100%;
+}
+
+html { 
+  height: 100%;
+}
+
+.center {
+  text-align: center; 
 }
 
 input {
   padding: 8px; 
   border: 1px solid rgb(155, 155, 155); 
   border-radius: 4px; 
-  margin-top: 10px; 
-  margin-bottom: 10px; 
+  margin-top: 0px; 
+  margin-bottom: 20px; 
   width: 300px; 
 }
 
 button {
-  padding: 8px 20px; 
-  border: 1px solid rgb(155, 155, 155); 
+  padding: 10px 20px; 
+  border: 0px; 
   border-radius: 4px; 
   margin-top: 10px; 
   margin-bottom: 10px;
+  transition: 0.3s; 
+  font-size: 14px; 
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.button-blue {
+  background-color: rgb(113, 113, 150); 
+  color: white; 
+  cursor: pointer; 
+}
+.button-blue:hover {
+  background-color: rgb(91, 91, 117); 
+  color: white; 
+}
+
+h1, h2, h3, h4, h5, h6, p, a, label {
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+}
+
+p, button, a, label {
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  line-height: 150%; 
+}
+
+a {
+  text-decoration: none; 
+}
+
+
+.limited-width {
+  width: 300px; 
+  margin-top: 100px; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+@media screnn and (max-width: 1000px) {
+  .limited-width {
+    width: 90%; 
+  }
 }

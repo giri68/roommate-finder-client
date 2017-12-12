@@ -43,8 +43,10 @@ export class Questions extends React.Component {
         return (
             <form className="profile" onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values))}>
-            <p>To help us better match you with potential roommates, please tell us a little bit about yourself and what you're looking for.</p>
-            <h1>Basic Info</h1>
+            <h1 className="center" >Match Questions</h1>
+            <p className="center" >To help us better match you with potential roommates, please tell us a little bit about yourself and what you're looking for.</p>
+            <br />
+            <h2>Basic Info</h2>
             <label htmlFor="firstName">First Name</label>
             <Field
                 component={Input}
@@ -81,7 +83,8 @@ export class Questions extends React.Component {
                 name="gender"
                 value="female"
             />Female</label>
-            <h1>Apartment Criteria</h1>
+            <br /><br />
+            <h2>Apartment Criteria</h2>
             <label htmlFor="city">City</label>
             <Field
                 component={Input}
@@ -110,7 +113,8 @@ export class Questions extends React.Component {
                 name="max_price"
                 validate={[required, nonEmpty, minValue100]}
             />
-            <h1>Personality Profile</h1>
+            <br />
+            <h2>Personality Profile</h2>
             <label htmlFor="pets_have">Do you have pets?</label>
             <Field
                 component={Input}
@@ -232,6 +236,7 @@ export class Questions extends React.Component {
             />
             <button
                 type="submit"
+                className="button-blue"
                 disabled={this.props.pristine || this.props.submitting}>
                 Submit
             </button>

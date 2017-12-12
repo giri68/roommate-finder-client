@@ -23,19 +23,10 @@ export const getAllUsers = () => dispatch => {
     }); 
 }
 
-export const FIND_A_ROOM = 'FIND_A_ROOM';
-export const findARoom = () => ({
-    type: FIND_A_ROOM
-});
-
-export const FILL_A_ROOM = 'FILL_A_ROOM';
-export const fillARoom = () => ({
-    type: FILL_A_ROOM
-});
-
-export const FIND_A_ROOMMATE = 'FIND_A_ROOMMATE';
-export const findARoommate = () => ({
-    type: FIND_A_ROOMMATE
+export const SET_LOOKING_FOR = 'FIND_A_ROOM';
+export const setLookingFor = (looking_for) => ({
+    type: SET_LOOKING_FOR, 
+    looking_for
 });
 
 export const registerUser = user => dispatch => {
@@ -84,6 +75,29 @@ export const saveQuestions = (user) => dispatch => {
         });
 };
 
+export const filterUsers = (user) => dispatch => {
+    return fetch(`${API_BASE_URL}/api/users/filter`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => console.log(res.json()))
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
 export const SET_SELECTED_USER = "SET_SELECTED_USER"; 
 export const setSelectedUser = user => ({
     type: SET_SELECTED_USER, 
@@ -106,4 +120,5 @@ export const getSelectedUser = (username) => dispatch => {
     })
     .then(() => dispatch(setRedirectDisplayFalse()));  
 }
+
 

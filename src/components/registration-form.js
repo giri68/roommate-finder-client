@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
+import { connect } from 'react-redux';
 import {registerUser} from '../actions/user';
 import {login} from '../actions/auth';
 import Input from './input';
@@ -8,13 +9,15 @@ import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
         const {username, password} = values;
-        const user = {username, password};
+        const user = {username, password, looking_for: this.props.looking_for};
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
     }
 
     render() {
+
+        console.log("LOOKING_FOR", this.props.looking_for)
         return (
             <form
                 className="login-form"
@@ -43,6 +46,7 @@ export class RegistrationForm extends React.Component {
                     validate={[required, nonEmpty, matches('password')]}
                 />
                 <button
+                    className="button-blue"
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
@@ -52,8 +56,17 @@ export class RegistrationForm extends React.Component {
     }
 }
 
+
+export const mapStateToProps = state => ({
+    looking_for: state.user.looking_for, 
+    apples: "HEY THERE"
+}); 
+
+RegistrationForm = connect(mapStateToProps)(RegistrationForm);
+
 export default reduxForm({
     form: 'registration',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('registration', Object.keys(errors)[0]))
 })(RegistrationForm);
+

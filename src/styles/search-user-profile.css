@@ -1,0 +1,21 @@
+.search-user-profile {
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.search-user-profile:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.profile-picture {
+    float: left; 
+    width: 300px; 
+    height: 300px;  
+    margin-right: 70px; 
+    margin-bottom: 50px; 
+    border: 10px solid white; 
+    background-color: rgb(202, 202, 202); 
+}
