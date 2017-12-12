@@ -14,3 +14,17 @@
     width: 90%; 
     margin-top: 0px; 
 }
+
+
+#page-numbers {
+    list-style: none;
+    display: flex;
+}
+
+#page-numbers > li {
+    margin-right: 1em;
+    color: blue;
+    user-select: none;
+    cursor: pointer;
+}
+
