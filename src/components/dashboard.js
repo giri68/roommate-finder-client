@@ -21,6 +21,16 @@ export class Dashboard extends React.Component {
             currentPage: Number(event.target.id)
         });
     }
+    handleNext() {
+        this.setState({
+            currentPage: this.state.currentPage + 1
+        });
+    }
+    handlePrevious() {
+        this.setState({
+            currentPage: this.state.currentPage - 1
+        });
+    }
     componentDidMount() {
         if (!this.props.loggedIn) {
             return;
@@ -48,11 +58,15 @@ export class Dashboard extends React.Component {
         for (let i = 1; i <= Math.ceil(currentMatches.length / dataPerPage); i++) {
             pageNumbers.push(i);
         }
-
+       const next = (pageNumbers.length > currentPage) ? <button onClick= {() => this.handleNext()}>next</button> : null;
+       const previous = (currentPage > 1) ? <button onClick= {() => this.handlePrevious()}>previous</button> : null;
+          
+        
         const renderPageNumbers = pageNumbers.map(number => {
             return (
                 <li  key={number} id={number} onClick={this.handleClick}>
                     {number}
+                   
                 </li>
             );
         });
@@ -68,8 +82,12 @@ export class Dashboard extends React.Component {
                     {renderCurrent}
 
                     <ul id='page-numbers'>
+                        {previous}
                         {renderPageNumbers}
+                        {next}
                     </ul>
+                   
+                    
                 </div>
             </div>
         );
