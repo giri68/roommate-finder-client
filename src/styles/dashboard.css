@@ -20,3 +20,18 @@
     margin-top: 0px; 
     border: 10px solid white;
 }
+
+
+
+#page-numbers {
+    list-style: none;
+    display: flex;
+}
+
+#page-numbers > li {
+    margin-right: 1em;
+    color: blue;
+    user-select: none;
+    cursor: pointer;
+}
+
