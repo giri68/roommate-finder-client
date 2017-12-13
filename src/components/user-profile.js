@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { saveQuestions } from '../actions/user';
-
+import '../styles/profile.css';
 
 export class UserProfile extends React.Component {
   constructor(props) {
@@ -94,7 +94,7 @@ closeForm(){
       nextField = 'city'
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.city = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
          
         
@@ -108,7 +108,7 @@ closeForm(){
       nextField = 'state'
       state = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.state = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
 
     } else {
@@ -121,7 +121,7 @@ closeForm(){
       nextField = 'age'
       age = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.age = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
     } else {
       age = <div>
@@ -133,7 +133,7 @@ closeForm(){
       nextField = 'bio'
       bio = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.bio = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
     } else {
       bio = <div>
@@ -145,7 +145,7 @@ closeForm(){
       nextField = 'interests'
       interests = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.interests = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
     } else {
       interests = <div>
@@ -157,7 +157,7 @@ closeForm(){
       nextField = 'movies'
       movies = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.movies = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
     } else {
       movies = <div>
@@ -169,7 +169,7 @@ closeForm(){
       nextField = 'music'
       music = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.music = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
     } else {
       music = <div>
@@ -181,7 +181,7 @@ closeForm(){
       nextField = 'tv'
       tv = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.tv = input}></input>
-        <button type="submit">save</button>
+        <button className="buttonEdit" type="submit">save</button>
       </form>
     } else {
       tv = <div>
@@ -192,33 +192,37 @@ closeForm(){
 
     var fullName = `${this.props.firstName} ${this.props.lastName}`;
     return (
-      <div id="search-user-profile">
-        <div className="search-user-profile-name">
-          <h2>{fullName}</h2>
+      <div className="search-user-profile">
+        <div className="profile-picture">
         </div>
-        <div className="search-user-profile-city">
-          {city}
-        </div>
-        <div className="search-user-profile-state">
-          {state}
-        </div>
-        <div className="search-user-profile-age">
-          {age}
-        </div>
-        <div className="search-user-profile-bio">
-          {bio}
-        </div>
-        <div className="search-user-profile-interests">
-          {interests}
-        </div>
-        <div className="search-user-profile-music">
-          {music}
-        </div>
-        <div className="search-user-profile-movies">
-          {movies}
-        </div>
-        <div className="search-user-profile-tv">
-          {tv}
+        <div className="right-section">
+          <div className="search-user-profile-name">
+            <h2>{fullName}</h2>
+          </div>
+          <div className="search-user-profile-city">
+            {city}
+          </div>
+          <div className="search-user-profile-state">
+            {state}
+          </div>
+          <div className="search-user-profile-age">
+            {age}
+          </div>
+          <div className="search-user-profile-bio">
+            {bio}
+          </div>
+          <div className="search-user-profile-interests">
+            {interests}
+          </div>
+          <div className="search-user-profile-music">
+            {music}
+          </div>
+          <div className="search-user-profile-movies">
+            {movies}
+          </div>
+          <div className="search-user-profile-tv">
+            {tv}
+          </div>
         </div>
       </div>
     )

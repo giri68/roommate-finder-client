@@ -19,3 +19,12 @@
     border: 10px solid white; 
     background-color: rgb(202, 202, 202); 
 }
+
+.right-section {
+    float: right;
+    width: calc(100% - 400px);   
+}
+
+p { 
+    display: inline-block !important; 
+}

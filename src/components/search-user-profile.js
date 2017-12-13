@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'; 
-import '../styles/search-user-profile.css'; 
+import '../styles/profile.css'; 
 
 export class SearchUserProfile extends React.Component {
   
