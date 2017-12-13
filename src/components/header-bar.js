@@ -37,12 +37,19 @@ export class HeaderBar extends React.Component {
                 <p className="nav-item"><Link to="/">Main</Link></p>
             )
         }
+        let profileButton; 
+        if(this.props.loggedIn) {
+            profileButton = (
+                <p className="nav-item"><Link to="/profile">Main</Link></p>
+            )
+        }
         return (
             <div className="header-bar">
                     {mainButton}
                     {logOutButton}
                     {questionsButton}
                     {dashboardButton}
+                    {profileButton}
             </div>
         );
     }

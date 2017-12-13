@@ -15,11 +15,11 @@ export class UserProfile extends React.Component {
       musicInputDisplayed: false,
       movieInputDislayed: false,
       tvInputDisplayed: false,
-      
     }
     // this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 closeForm(){
+  console.log(this)
   this.setState({
     cityInputDisplayed: false,
     stateInputDisplayed: false,
@@ -30,6 +30,7 @@ closeForm(){
     movieInputDislayed: false,
     tvInputDisplayed: false
   })
+  console.log(this)
 }
  
   handleFormSubmit(event, nextField) {
@@ -38,21 +39,31 @@ closeForm(){
     //console.log('this.city', this.props.firstName);
 
     const user = {}
+
+
     user[nextField] = this[nextField].value
-    // user.city = this.city.value
-    // user.state = this.inputState.value
+    console.log(this)
+    // user[nextField] = this.refs[nextField].value
+
+
     user.username = this.props.username
     //console.log('inut city', this.city.value, user);
     //console.log('this', this.props)
     //console.log('user', user.movies)
     this.props.dispatch(saveQuestions(user))
-    this.closeForm()
+
+    // let capitalizedNext = `${nextField.charAt(0).toUpperCase()}()`;  
+
+    // console.log("THIS IS CAPITALIZEDNEXT: ",  capitalizedNext); 
+    // let funcName = `handle${capitalizedNext}InputToggle`; 
+    // this.props.dispatch(funcName)
+    this.closeForm(); 
   }
 
-  handlCityInputToggle() {
+  handleCityInputToggle() {
     this.setState({ cityInputDisplayed: !this.state.cityInputDisplayed })
   }
-  handleStateInputToggle() {
+  handleStateInputToggle() { 
     this.setState({ stateInputDisplayed: !this.state.stateInputDisplayed })
   }
   handleAgeInputToggle() {
@@ -84,13 +95,12 @@ closeForm(){
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" ref={input => this.city = input}></input>
         <button type="submit">save</button>
-     
       </form>
          
         
     } else {
       city = <div>{this.props.city}
-        <button onClick={() => this.handlCityInputToggle()}>edit</button>
+        <button onClick={() => this.handleCityInputToggle()}>edit</button>
       </div>
     }
     if (this.state.stateInputDisplayed) {
