@@ -19,12 +19,12 @@ export class Questions extends React.Component {
     const { firstName, lastName, age, gender, gender_bothered, city, state, max_distance,
       max_price, pets_have, pets_bothered, loud_music, loud_music_bothered, cigarettes, cigarettes_bothered,
       drinking_day_per_week, drinking_bothered, alt_smoking, alt_smoking_bothered, hour_awake, hours_bothered,
-      guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode } = values;
+      guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode, common_areas, common_areas_bothered } = values;
     const user = {
       firstName, lastName, age, gender, gender_bothered, city, state, max_distance,
       max_price, pets_have, pets_bothered, loud_music, loud_music_bothered, cigarettes, cigarettes_bothered,
       drinking_day_per_week, drinking_bothered, alt_smoking, alt_smoking_bothered, hour_awake, hours_bothered,
-      guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode
+      guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode, common_areas, common_areas_bothered
     };
     user.username = this.props.currentUser.username
     console.log(user)
@@ -338,7 +338,7 @@ export class Questions extends React.Component {
         />
 
         <div>
-          <label>Would you consider yourself a clean person? (Be honest!)</label>
+          <label>Would you consider yourself a slob? (Be honest!)</label>
           <div>
             <label>
               <Field name="cleanliness" component="input" type="radio" value="true" />
@@ -352,7 +352,7 @@ export class Questions extends React.Component {
             </label>
           </div>
         </div>
-        <label htmlFor="cleanliness_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone who is a clean person?</label>
+        <label htmlFor="cleanliness_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone who is clean?</label>
         <Field
           component={Input}
           type="number"
