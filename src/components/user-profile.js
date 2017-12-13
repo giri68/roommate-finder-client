@@ -37,28 +37,15 @@ closeForm(){
  
   handleFormSubmit(event, nextField) {
     event.preventDefault();
-    //console.log('testing value', this.city.value)
-    //console.log('this.city', this.props.firstName);
-
     const user = {}
-
-
-    user[nextField] = this[nextField].value
-    console.log(this)
+    if (nextField === 'state') {
+      user.state = this.stateInput.value
+    } else {
+      user[nextField] = this[nextField].value
+    }
     // user[nextField] = this.refs[nextField].value
-
-
     user.username = this.props.username
-    //console.log('inut city', this.city.value, user);
-    //console.log('this', this.props)
-    //console.log('user', user.movies)
     this.props.dispatch(saveQuestions(user))
-
-    // let capitalizedNext = `${nextField.charAt(0).toUpperCase()}()`;  
-
-    // console.log("THIS IS CAPITALIZEDNEXT: ",  capitalizedNext); 
-    // let funcName = `handle${capitalizedNext}InputToggle`; 
-    // this.props.dispatch(funcName)
     this.closeForm(); 
   }
 
@@ -114,7 +101,7 @@ closeForm(){
     if (this.state.stateInputDisplayed) {
       nextField = 'state'
       state = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" placeholder="State" ref={input => this.state = input}></input>
+        <input className="input" placeholder="State" ref={input => this.stateInput = input}></input>
         <button className="button-inline" type="submit">Save</button>
       </form>
 
@@ -204,7 +191,7 @@ closeForm(){
         </div>
         <div className="right-section">
           <div className="search-user-profile-name">
-            <h2>{fullName}</h2>
+            <h1>{fullName}</h1>
           </div>
           <div className="search-user-profile-city">
             {city}
