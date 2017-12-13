@@ -50,27 +50,35 @@ closeForm(){
   }
 
   handleCityInputToggle() {
+    this.closeForm();
     this.setState({ cityInputDisplayed: !this.state.cityInputDisplayed })
   }
-  handleStateInputToggle() { 
+  handleStateInputToggle() {
+    this.closeForm(); 
     this.setState({ stateInputDisplayed: !this.state.stateInputDisplayed })
   }
   handleAgeInputToggle() {
+    this.closeForm();
     this.setState({ ageInputDisplayed: !this.state.ageInputDisplayed })
   }
   handleBioInputToggle() {
+    this.closeForm();
     this.setState({ bioInputDisplayed: !this.state.bioInputDisplayed })
   }
   handleInterestsInputToggle() {
+    this.closeForm();
     this.setState({ interestsInputDisplayed: !this.state.interestsInputDisplayed })
   }
   handleMusicInputToggle() {
+    this.closeForm();
     this.setState({ musicInputDisplayed: !this.state.musicInputDisplayed })
   }
   handleMovieInputToggle() {
+    this.closeForm();
     this.setState({ movieInputDislayed: !this.state.movieInputDislayed })
   }
   handleTvInputToggle() {
+    this.closeForm();
     this.setState({ tvInputDisplayed: !this.state.tvInputDisplayed })
   }
   
