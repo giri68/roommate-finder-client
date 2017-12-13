@@ -128,7 +128,7 @@ closeForm(){
       nextField = 'age'
       age = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Age" ref={input => this.age = input}></input>
-        <button className="" type="submit">Save</button>
+        <button className="button-inline" type="submit">Save</button>
       </form>
     } else {
       age = <div>
@@ -140,7 +140,7 @@ closeForm(){
       nextField = 'bio'
       bio = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Bio" ref={input => this.bio = input}></input>
-        <button className="" type="submit">Save</button>
+        <button className="button-inline" type="submit">Save</button>
       </form>
     } else {
       bio = <div>
@@ -152,7 +152,7 @@ closeForm(){
       nextField = 'interests'
       interests = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Interests" ref={input => this.interests = input}></input>
-        <button className="" type="submit">Save</button>
+        <button className="button-inline" type="submit">Save</button>
       </form>
     } else {
       interests = <div>
@@ -164,7 +164,7 @@ closeForm(){
       nextField = 'movies'
       movies = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Movies" ref={input => this.movies = input}></input>
-        <button className="" type="submit">Save</button>
+        <button className="button-inline" type="submit">Save</button>
       </form>
     } else {
       movies = <div>
@@ -176,7 +176,7 @@ closeForm(){
       nextField = 'music'
       music = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Music" ref={input => this.music = input}></input>
-        <button className="" type="submit">Save</button>
+        <button className="button-inline" type="submit">Save</button>
       </form>
     } else {
       music = <div>
@@ -188,7 +188,7 @@ closeForm(){
       nextField = 'tv'
       tv = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="TV" ref={input => this.tv = input}></input>
-        <button className="" type="submit">Save</button>
+        <button className="button-inline" type="submit">Save</button>
       </form>
     } else {
       tv = <div>
