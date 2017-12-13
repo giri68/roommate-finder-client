@@ -10,6 +10,15 @@
     clear: both;
 }
 
+.buttonEdit {
+    background-color: red !important; 
+}
+
+.profile-section {
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+}
+
 .profile-picture {
     float: left; 
     width: 300px; 
@@ -26,8 +35,10 @@
     padding-top: 0px;    
 }
 
-p { 
+.profile-field {
     display: inline-block !important; 
+    margin-top: 3px; 
+    margin-bottom: 3px; 
 }
 
 h1 {

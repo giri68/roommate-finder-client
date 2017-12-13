@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { saveQuestions } from '../actions/user';
+import {Redirect} from 'react-router-dom'; 
 import '../styles/profile.css';
+
 
 export class UserProfile extends React.Component {
   constructor(props) {
@@ -87,106 +89,111 @@ closeForm(){
   
 
   render() {
+
+    if (!this.props.loggedIn) {
+      return <Redirect to="/login" />;
+    }
+
     var state, city, age, movies, music, tv, interests, bio, field, nextField;
    
 
     if (this.state.cityInputDisplayed) {
       nextField = 'city'
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.city = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="City" ref={input => this.city = input}></input>
+        <button className="button-inline" type="submit">Save</button>
       </form>
          
         
     } else {
-      city = <div>
-        <p>City: {this.props.city}</p>
-        <button onClick={() => this.handleCityInputToggle()}>edit</button>
+      city = <div className="profile-section">
+        <p className="profile-field">City: {this.props.city}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleCityInputToggle()}></i>
       </div>
     }
     if (this.state.stateInputDisplayed) {
       nextField = 'state'
       state = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.state = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="State" ref={input => this.state = input}></input>
+        <button className="button-inline" type="submit">Save</button>
       </form>
 
     } else {
       state = <div>
-        <p>State: {this.props.state}</p>
-        <button onClick={() => this.handleStateInputToggle()}>edit</button>
+        <p className="profile-field">State: {this.props.state}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleStateInputToggle()}></i>
       </div>;
     }
     if (this.state.ageInputDisplayed) {
       nextField = 'age'
       age = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.age = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="Age" ref={input => this.age = input}></input>
+        <button className="" type="submit">Save</button>
       </form>
     } else {
       age = <div>
-        <p>Age: {this.props.age}</p>
-        <button onClick={() => this.handleAgeInputToggle()}>edit</button>
+        <p className="profile-field">Age: {this.props.age}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleAgeInputToggle()}></i>
       </div>;
     }
     if (this.state.bioInputDisplayed) {
       nextField = 'bio'
       bio = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.bio = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="Bio" ref={input => this.bio = input}></input>
+        <button className="" type="submit">Save</button>
       </form>
     } else {
       bio = <div>
-        <p>Bio: {this.props.bio}</p>
-        <button onClick={() => this.handleBioInputToggle()}>edit</button>
+        <p className="profile-field">Bio: {this.props.bio}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleBioInputToggle()}></i>
       </div>;
     }
     if (this.state.interestsInputDisplayed) {
       nextField = 'interests'
       interests = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.interests = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="Interests" ref={input => this.interests = input}></input>
+        <button className="" type="submit">Save</button>
       </form>
     } else {
       interests = <div>
-        <p>Interests: {this.props.interests}</p>
-        <button onClick={() => this.handleInterestsInputToggle()}>edit</button>
+        <p className="profile-field">Interests: {this.props.interests}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleInterestsInputToggle()}></i>
       </div>;
     }
     if (this.state.movieInputDislayed) {
       nextField = 'movies'
       movies = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.movies = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="Movies" ref={input => this.movies = input}></input>
+        <button className="" type="submit">Save</button>
       </form>
     } else {
       movies = <div>
-        <p>Movies: {this.props.movies}</p>
-        <button onClick={() => this.handleMovieInputToggle()}>edit</button>
+        <p className="profile-field">Movies: {this.props.movies}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleMovieInputToggle()}></i>
       </div>;
     }
     if (this.state.musicInputDisplayed) {
       nextField = 'music'
       music = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.music = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="Music" ref={input => this.music = input}></input>
+        <button className="" type="submit">Save</button>
       </form>
     } else {
       music = <div>
-        <p>Music: {this.props.music}</p>
-        <button onClick={() => this.handleMusicInputToggle()}>edit</button>
+        <p className="profile-field">Music: {this.props.music}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleMusicInputToggle()}></i>
       </div>;
     }
     if (this.state.tvInputDisplayed) {
       nextField = 'tv'
       tv = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" ref={input => this.tv = input}></input>
-        <button className="buttonEdit" type="submit">save</button>
+        <input className="input" placeholder="TV" ref={input => this.tv = input}></input>
+        <button className="" type="submit">Save</button>
       </form>
     } else {
       tv = <div>
-        <p>TV: {this.props.tv}</p>
-        <button onClick={() => this.handleTvInputToggle()}>edit</button>
+        <p className="profile-field">TV: {this.props.tv}</p>
+        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleTvInputToggle()}></i>
       </div>;
     }
 
@@ -230,20 +237,22 @@ closeForm(){
 }
 
 export const mapStateToProps = (state) => {
-  console.log('state12344', state)
+  console.log('The current state is: ', state)
   return {
-   firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null,
-  lastName: state.auth.currentUser ? state.auth.currentUser.lastName : null,
-  city: state.auth.currentUser ? state.auth.currentUser.city : null,
-  state: state.auth.currentUser ? state.auth.currentUser.state : null,
-  age: state.auth.currentUser ? state.auth.currentUser.age : null,
-  bio: state.auth.currentUser ? state.auth.currentUser.bio : null,
-  interests: state.auth.currentUser ? state.auth.currentUser.interests : null,
-  music: state.auth.currentUser ? state.auth.currentUser.music : null,
-  movies: state.auth.currentUser ? state.auth.currentUser.movies : null,
-  tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
-  username: state.auth.currentUser ? state.auth.currentUser.username : null
-}};
+    loggedIn: state.auth.currentUser !== null,
+    firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null,
+    lastName: state.auth.currentUser ? state.auth.currentUser.lastName : null,
+    city: state.auth.currentUser ? state.auth.currentUser.city : null,
+    state: state.auth.currentUser ? state.auth.currentUser.state : null,
+    age: state.auth.currentUser ? state.auth.currentUser.age : null,
+    bio: state.auth.currentUser ? state.auth.currentUser.bio : null,
+    interests: state.auth.currentUser ? state.auth.currentUser.interests : null,
+    music: state.auth.currentUser ? state.auth.currentUser.music : null,
+    movies: state.auth.currentUser ? state.auth.currentUser.movies : null,
+    tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
+    username: state.auth.currentUser ? state.auth.currentUser.username : null
+  }
+};
 
 export default connect(mapStateToProps)(UserProfile);
 
