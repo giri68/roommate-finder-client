@@ -40,7 +40,7 @@ export class HeaderBar extends React.Component {
         let profileButton; 
         if(this.props.loggedIn) {
             profileButton = (
-                <p className="nav-item"><Link to="/profile">Main</Link></p>
+                <p className="nav-item"><Link to="/profile">Profile</Link></p>
             )
         }
         return (
