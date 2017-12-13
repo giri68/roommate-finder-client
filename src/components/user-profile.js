@@ -4,7 +4,6 @@ import { saveQuestions } from '../actions/user';
 import {Redirect} from 'react-router-dom'; 
 import '../styles/profile.css';
 
-
 export class UserProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -18,22 +17,20 @@ export class UserProfile extends React.Component {
       movieInputDislayed: false,
       tvInputDisplayed: false,
     }
-    // this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
-closeForm(){
-  console.log(this)
-  this.setState({
-    cityInputDisplayed: false,
-    stateInputDisplayed: false,
-    ageInputDisplayed: false,
-    bioInputDisplayed: false,
-    interestsInputDisplayed: false,
-    musicInputDisplayed: false,
-    movieInputDislayed: false,
-    tvInputDisplayed: false
-  })
-  console.log(this)
-}
+
+  closeForm(){
+    this.setState({
+      cityInputDisplayed: false,
+      stateInputDisplayed: false,
+      ageInputDisplayed: false,
+      bioInputDisplayed: false,
+      interestsInputDisplayed: false,
+      musicInputDisplayed: false,
+      movieInputDislayed: false,
+      tvInputDisplayed: false
+    }); 
+  }
  
   handleFormSubmit(event, nextField) {
     event.preventDefault();
@@ -82,7 +79,6 @@ closeForm(){
     this.setState({ tvInputDisplayed: !this.state.tvInputDisplayed })
   }
   
-
   render() {
 
     if (!this.props.loggedIn) {
@@ -97,9 +93,8 @@ closeForm(){
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="City" ref={input => this.city = input}></input>
         <button className="button-inline" type="submit">Save</button>
-      </form>
-         
-        
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
+      </form>   
     } else {
       city = <div className="profile-section">
         <p className="profile-field">City: {this.props.city}</p>
@@ -111,6 +106,7 @@ closeForm(){
       state = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="State" ref={input => this.stateInput = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
 
     } else {
@@ -124,6 +120,7 @@ closeForm(){
       age = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Age" ref={input => this.age = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       age = <div>
@@ -136,6 +133,7 @@ closeForm(){
       bio = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Bio" ref={input => this.bio = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       bio = <div>
@@ -148,6 +146,7 @@ closeForm(){
       interests = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Interests" ref={input => this.interests = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       interests = <div>
@@ -160,6 +159,7 @@ closeForm(){
       movies = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Movies" ref={input => this.movies = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       movies = <div>
@@ -172,6 +172,7 @@ closeForm(){
       music = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="Music" ref={input => this.music = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       music = <div>
@@ -184,6 +185,7 @@ closeForm(){
       tv = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
         <input className="input" placeholder="TV" ref={input => this.tv = input}></input>
         <button className="button-inline" type="submit">Save</button>
+        <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       tv = <div>
@@ -193,6 +195,7 @@ closeForm(){
     }
 
     var fullName = `${this.props.firstName} ${this.props.lastName}`;
+
     return (
       <div className="search-user-profile">
         <div className="profile-picture">
@@ -247,7 +250,7 @@ export const mapStateToProps = (state) => {
     tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
     username: state.auth.currentUser ? state.auth.currentUser.username : null
   }
-};
+}
 
 export default connect(mapStateToProps)(UserProfile);
 
