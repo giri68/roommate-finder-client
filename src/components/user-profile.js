@@ -19,30 +19,34 @@ export class UserProfile extends React.Component {
     }
     // this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
-
+closeForm(){
+  this.setState({
+    cityInputDisplayed: false,
+    stateInputDisplayed: false,
+    ageInputDisplayed: false,
+    bioInputDisplayed: false,
+    interestsInputDisplayed: false,
+    musicInputDisplayed: false,
+    movieInputDislayed: false,
+    tvInputDisplayed: false
+  })
+}
  
   handleFormSubmit(event, nextField) {
     event.preventDefault();
-    console.log('testing value', this.city.value)
-    console.log('this.city', this.props.firstName);
+    //console.log('testing value', this.city.value)
+    //console.log('this.city', this.props.firstName);
 
-    const user = {
-      // city: '',
-      // state:'',
-      // // age: '',
-      // // bio: '',
-      // // interests: '',
-      // // music: '',
-      // // movie: '',
-      // // tv: ''
-    }
+    const user = {}
     user[nextField] = this[nextField].value
     // user.city = this.city.value
     // user.state = this.inputState.value
     user.username = this.props.username
-    console.log('inut city', this.city.value, user);
-    console.log('this', this.props)
+    //console.log('inut city', this.city.value, user);
+    //console.log('this', this.props)
+    //console.log('user', user.movies)
     this.props.dispatch(saveQuestions(user))
+    this.closeForm()
   }
 
   handlCityInputToggle() {
@@ -90,8 +94,9 @@ export class UserProfile extends React.Component {
       </div>
     }
     if (this.state.stateInputDisplayed) {
-      state = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputState = input}></input>
+      nextField = 'state'
+      state = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.state = input}></input>
         <button type="submit">save</button>
       </form>
 
@@ -102,8 +107,9 @@ export class UserProfile extends React.Component {
       </div>;
     }
     if (this.state.ageInputDisplayed) {
-      age = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputAge = input}></input>
+      nextField = 'age'
+      age = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.age = input}></input>
         <button type="submit">save</button>
       </form>
     } else {
@@ -113,8 +119,9 @@ export class UserProfile extends React.Component {
       </div>;
     }
     if (this.state.bioInputDisplayed) {
-      bio = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputBio = input}></input>
+      nextField = 'bio'
+      bio = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.bio = input}></input>
         <button type="submit">save</button>
       </form>
     } else {
@@ -124,8 +131,9 @@ export class UserProfile extends React.Component {
       </div>;
     }
     if (this.state.interestsInputDisplayed) {
-      interests = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputInterests = input}></input>
+      nextField = 'interests'
+      interests = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.interests = input}></input>
         <button type="submit">save</button>
       </form>
     } else {
@@ -135,8 +143,9 @@ export class UserProfile extends React.Component {
       </div>;
     }
     if (this.state.movieInputDislayed) {
-      movies = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputMovie = input}></input>
+      nextField = 'movies'
+      movies = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.movies = input}></input>
         <button type="submit">save</button>
       </form>
     } else {
@@ -146,8 +155,9 @@ export class UserProfile extends React.Component {
       </div>;
     }
     if (this.state.musicInputDisplayed) {
-      music = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputMusic = input}></input>
+      nextField = 'music'
+      music = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.music = input}></input>
         <button type="submit">save</button>
       </form>
     } else {
@@ -157,8 +167,9 @@ export class UserProfile extends React.Component {
       </div>;
     }
     if (this.state.tvInputDisplayed) {
-      tv = <form onSubmit={e => this.handleFormSubmit(e)}>
-        <input className="input" ref={input => this.inputTv = input}></input>
+      nextField = 'tv'
+      tv = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
+        <input className="input" ref={input => this.tv = input}></input>
         <button type="submit">save</button>
       </form>
     } else {
@@ -206,17 +217,17 @@ export class UserProfile extends React.Component {
 export const mapStateToProps = (state) => {
   console.log('state12344', state)
   return {
-   firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null
-  // lastName: state.auth.currentUser.lastName,
-  // city: state.auth.currentUser.city,
-  // state: state.auth.currentUser.state,
-  // age: state.auth.currentUser.age,
-  // bio: state.auth.currentUser.bio,
-  // interests: state.auth.currentUser.interests,
-  // music: state.auth.currentUser.music,
-  // movies: state.auth.currentUser.movies,
-  // tv: state.auth.currentUser.tv
-  //username: state.auth.currentUser
+   firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null,
+  lastName: state.auth.currentUser ? state.auth.currentUser.lastName : null,
+  city: state.auth.currentUser ? state.auth.currentUser.city : null,
+  state: state.auth.currentUser ? state.auth.currentUser.state : null,
+  age: state.auth.currentUser ? state.auth.currentUser.age : null,
+  bio: state.auth.currentUser ? state.auth.currentUser.bio : null,
+  interests: state.auth.currentUser ? state.auth.currentUser.interests : null,
+  music: state.auth.currentUser ? state.auth.currentUser.music : null,
+  movies: state.auth.currentUser ? state.auth.currentUser.movies : null,
+  tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
+  username: state.auth.currentUser ? state.auth.currentUser.username : null
 }};
 
 export default connect(mapStateToProps)(UserProfile);
