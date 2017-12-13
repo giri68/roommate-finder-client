@@ -19,6 +19,12 @@ export class UserProfile extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const user = {}
+    user.username = this.props.username
+    this.props.dispatch(saveQuestions(user))
+  }
+
   closeForm(){
     this.setState({
       cityInputDisplayed: false,
@@ -265,9 +271,6 @@ export class UserProfile extends React.Component {
           <div className="search-user-profile-age">
             {age}
           </div>
-          <div className="search-user-profile-bio">
-            {bio}
-          </div>
           <div className="search-user-profile-interests">
             {interests}
           </div>
@@ -279,6 +282,9 @@ export class UserProfile extends React.Component {
           </div>
           <div className="search-user-profile-tv">
             {tv}
+          </div>
+          <div className="search-user-profile-bio">
+            {bio}
           </div>
         </div>
       </div>
