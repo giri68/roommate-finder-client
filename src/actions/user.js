@@ -51,6 +51,11 @@ export const registerUser = user => dispatch => {
             }
         });
 };
+export const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
+export const updateCurrentUser = (currentUser) => ({
+    type: UPDATE_CURRENT_USER,
+    currentUser
+})
 
 export const saveQuestions = (user) => dispatch => {
     return fetch(`${API_BASE_URL}/api/users`, {
@@ -61,7 +66,8 @@ export const saveQuestions = (user) => dispatch => {
         body: JSON.stringify(user)
     })
         .then(res => normalizeResponseErrors(res))
-        .then(res => console.log(res.json()))
+        .then(res => {return res.json()})
+        .then(res => dispatch(updateCurrentUser(res.user)))
         .catch(err => {
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {

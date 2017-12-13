@@ -1,10 +1,13 @@
 import {
-    SET_AUTH_TOKEN,
+    SET_AUTH_TOKEN, 
     CLEAR_AUTH,
     AUTH_REQUEST,
     AUTH_SUCCESS,
     AUTH_ERROR
 } from '../actions/auth';
+import {
+    UPDATE_CURRENT_USER
+} from '../actions/user';
 
 const initialState = {
     authToken: null, // authToken !== null does not mean it has been validated
@@ -28,7 +31,8 @@ export default function reducer(state = initialState, action) {
             loading: true,
             error: null
         });
-    } else if (action.type === AUTH_SUCCESS) {
+    } else if (action.type === AUTH_SUCCESS || action.type === UPDATE_CURRENT_USER) {
+        console.log('currentusrr',action.currentUser);
         return Object.assign({}, state, {
             loading: false,
             currentUser: action.currentUser
