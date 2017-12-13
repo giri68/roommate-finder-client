@@ -99,7 +99,8 @@ closeForm(){
          
         
     } else {
-      city = <div>{this.props.city}
+      city = <div>
+        <p>City: {this.props.city}</p>
         <button onClick={() => this.handleCityInputToggle()}>edit</button>
       </div>
     }
@@ -112,7 +113,7 @@ closeForm(){
 
     } else {
       state = <div>
-        {this.props.state}
+        <p>State: {this.props.state}</p>
         <button onClick={() => this.handleStateInputToggle()}>edit</button>
       </div>;
     }
@@ -124,7 +125,7 @@ closeForm(){
       </form>
     } else {
       age = <div>
-        {this.props.age}
+        <p>Age: {this.props.age}</p>
         <button onClick={() => this.handleAgeInputToggle()}>edit</button>
       </div>;
     }
@@ -136,7 +137,7 @@ closeForm(){
       </form>
     } else {
       bio = <div>
-        {this.props.bio}
+        <p>Bio: {this.props.bio}</p>
         <button onClick={() => this.handleBioInputToggle()}>edit</button>
       </div>;
     }
@@ -148,7 +149,7 @@ closeForm(){
       </form>
     } else {
       interests = <div>
-        {this.props.interests}
+        <p>Interests: {this.props.interests}</p>
         <button onClick={() => this.handleInterestsInputToggle()}>edit</button>
       </div>;
     }
@@ -160,7 +161,7 @@ closeForm(){
       </form>
     } else {
       movies = <div>
-        {this.props.movies}
+        <p>Movies: {this.props.movies}</p>
         <button onClick={() => this.handleMovieInputToggle()}>edit</button>
       </div>;
     }
@@ -172,7 +173,7 @@ closeForm(){
       </form>
     } else {
       music = <div>
-        {this.props.music}
+        <p>Music: {this.props.music}</p>
         <button onClick={() => this.handleMusicInputToggle()}>edit</button>
       </div>;
     }
@@ -184,7 +185,7 @@ closeForm(){
       </form>
     } else {
       tv = <div>
-        {this.props.tv}
+        <p>TV: {this.props.tv}</p>
         <button onClick={() => this.handleTvInputToggle()}>edit</button>
       </div>;
     }
@@ -193,31 +194,31 @@ closeForm(){
     return (
       <div id="search-user-profile">
         <div className="search-user-profile-name">
-          <h3>Name: {fullName}</h3>
+          <h2>{fullName}</h2>
         </div>
         <div className="search-user-profile-city">
-          city: {city}
+          {city}
         </div>
         <div className="search-user-profile-state">
-          state: {state}
+          {state}
         </div>
         <div className="search-user-profile-age">
-          age: {age}
+          {age}
         </div>
         <div className="search-user-profile-bio">
-          bio: {bio}
+          {bio}
         </div>
         <div className="search-user-profile-interests">
-          interests: {interests}
+          {interests}
         </div>
         <div className="search-user-profile-music">
-          music: {music}
+          {music}
         </div>
         <div className="search-user-profile-movies">
-          movies: {movies}
+          {movies}
         </div>
         <div className="search-user-profile-tv">
-          tv: {tv}
+          {tv}
         </div>
       </div>
     )
