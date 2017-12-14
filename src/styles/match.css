@@ -18,7 +18,11 @@
     width: 70px; 
     height: 70px; 
     border-radius: 50%; 
-    background-color: rgb(218, 218, 218); 
+    background-color: rgb(218, 218, 218);
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
 }
 
 .profileName {

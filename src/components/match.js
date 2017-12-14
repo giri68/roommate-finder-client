@@ -17,9 +17,13 @@ export class Match extends React.Component {
         if (this.props.redirectDisplayed) {
             return <Redirect to="/search-user-profile" />;
         }
+
+        let sectionStyle = {
+            backgroundImage: `url(${this.props.user.picture})`, 
+        };
         return (
             <div className="match" onClick={() => this.handleMatchClick()}>
-                <div className="profilePic">
+                <div className="profilePic" style={sectionStyle}>
                 </div>
                 <p className="profileName"><strong>{this.props.user.username}</strong></p>
                 <p className="matchScore">{this.props.user.score}% Match</p>
@@ -32,7 +36,7 @@ const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
         redirectDisplayed: state.user.redirectDisplayed, 
-        username: state.auth.currentUser ? state.auth.currentUser.username : null
+        username: state.auth.currentUser ? state.auth.currentUser.username : null, 
     };
 };
 
