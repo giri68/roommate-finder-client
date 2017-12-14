@@ -35,8 +35,9 @@ export class Dashboard extends React.Component {
         if (!this.props.loggedIn) {
             return;
         }
-
-        this.props.dispatch(getAllUsers());
+        const user = this.props.currentUser
+        console.log(user)
+        this.props.dispatch(getAllUsers(user));
     }
 
     render() {
@@ -101,7 +102,8 @@ const mapStateToProps = state => {
         username: state.auth.currentUser ? state.auth.currentUser.username : null,
         name: state.auth.currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : null,
         protectedData: state.protectedData.data,
-        profileMatches: state.user.profileMatches
+        profileMatches: state.user.profileMatches,
+        currentUser: state.auth.currentUser
     };
 };
 

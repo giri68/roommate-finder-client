@@ -22,6 +22,7 @@ export class Match extends React.Component {
                 <div className="profilePic">
                 </div>
                 <p className="profileName"><strong>{this.props.user.username}</strong></p>
+                <p className="matchScore">{this.props.user.score}% Match</p>
             </div>
         );
     }

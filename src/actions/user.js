@@ -13,9 +13,14 @@ export const displayAllUsers = users => ({
 
 // THIS IS OURS. VERY GENERAL, NEEDS TO BE EDITED TO RUN ALGORITHM. RIGHT NOW JUST FETCHES ALL
 
-export const getAllUsers = () => dispatch => {
-    return fetch(`${API_BASE_URL}/api/users`, {
-        method: 'GET', 
+export const getAllUsers = (user) => dispatch => {
+    console.log(user)
+    return fetch(`${API_BASE_URL}/api/users/filter`, {
+        method: 'PUT', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
     })
     .then(res => res.json())
     .then(users => {

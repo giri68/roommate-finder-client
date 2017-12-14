@@ -6,10 +6,12 @@ import {required, nonEmpty} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import {getSelectedUser} from '../actions/user'; 
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
-        return this.props.dispatch(login(values.username, values.password));
+        return this.props.dispatch(login(values.username, values.password))
+        .then(() => this.props.dispatch(getSelectedUser(values.username)))
         
     }
 
