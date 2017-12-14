@@ -29,6 +29,7 @@ export class Questions extends React.Component {
     user.username = this.props.currentUser.username
     console.log(user)
     return this.props.dispatch(saveQuestions(user))
+    .then(() => this.props.history.push('/dashboard'))
   }
 
   render() {
