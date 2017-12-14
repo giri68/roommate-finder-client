@@ -38,6 +38,7 @@ export class LoginForm extends React.Component {
                         this.onSubmit(values)
                     )}>
                     {error}
+                    
                     <label htmlFor="username">Username</label>
                     <Field
                         component={Input}
@@ -60,7 +61,7 @@ export class LoginForm extends React.Component {
                     
                 </form>
                 <p><Link className="login-link" to="/">Back</Link></p>
-                <p><Link className="login-link" to="/searchPage">Create Account</Link></p>   
+                <p><Link className="login-link" to="/start">Create Account</Link></p>   
             </div>
         );
     }

@@ -14,6 +14,10 @@ html {
   text-align: center; 
 }
 
+.form-input {
+  
+}
+
 .fa-pencil-square-o {
   color: rgb(113, 113, 136); 
   font-size: 20px; 
@@ -47,8 +51,8 @@ input {
   padding: 8px; 
   border: 1px solid rgb(155, 155, 155); 
   border-radius: 4px; 
-  margin-top: 0px; 
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  margin-top: 20px;   
   margin-right: 7px; 
   font-size: 14px; 
   width: 300px; 
