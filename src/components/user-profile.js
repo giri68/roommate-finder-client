@@ -110,9 +110,8 @@ export class UserProfile extends React.Component {
       return <Redirect to="/login" />;
     }
 
+    // controls form display for all inputs
     let state, city, age, movies, music, tv, interests, bio, field, nextField, picture;
-   
-
     if (this.state.cityInputDisplayed) {
       nextField = 'city'
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
@@ -185,7 +184,6 @@ export class UserProfile extends React.Component {
         <button className="button-inline" type="submit">Save</button>
         <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
-
     } else {
       state = <div>
         <p className="profile-field">State: {this.props.state}</p>
@@ -274,24 +272,22 @@ export class UserProfile extends React.Component {
       nextField = 'picture'
       picture = <ImageUpload onUploadSuccess={() => this.closeForm()}/>
     } else {
-
+      // sets this.props.picture to background of div through styling
       let sectionStyle = {
-       
         backgroundImage: `url(${this.props.picture})`, 
-
       };
-
       picture = <div className="profile-picture" style={sectionStyle}>
           <i className="fa fa-pencil-square-o edit-picture" aria-hidden="true" onClick={() => this.handlePictureInputToggle()}></i>
         </div>;
     }
 
-
-    var fullName = `${this.props.firstName} ${this.props.lastName}`;
+    let fullName = `${this.props.firstName} ${this.props.lastName}`;
 
     return (
       <div className="search-user-profile">
-        { picture }
+        <div className="left-section">
+          { picture }
+        </div>
         <div className="right-section">
           <div className="search-user-profile-name">
             <h1>{fullName}</h1>
