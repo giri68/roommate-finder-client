@@ -41,10 +41,10 @@ export class Dashboard extends React.Component {
     }
 
     render() {
-
         if (!this.props.loggedIn) {
             return <Redirect to="/login" />;
         }
+
 
         let currentMatches = this.props.profileMatches.map((match, index) => (
             <Match key={index} user={match} />
@@ -53,7 +53,14 @@ export class Dashboard extends React.Component {
 
         const indexOfLastData = currentPage * dataPerPage;
         const indexOfFirstData = indexOfLastData - dataPerPage;
-        const renderCurrent = currentMatches.slice(indexOfFirstData, indexOfLastData);
+         
+        let renderCurrent;
+        if (this.props.profileMatches.length === 0){
+           renderCurrent = <p>Sorry, there are no apartments or roommates that match your search critera.</p>
+       }
+       else {
+        renderCurrent = currentMatches.slice(indexOfFirstData, indexOfLastData);
+       }
 
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(currentMatches.length / dataPerPage); i++) {
