@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { saveQuestions } from '../actions/user';
 import {Redirect} from 'react-router-dom'; 
 import '../styles/profile.css';
+import ImageUpload from './image-upload'; 
 
 export class UserProfile extends React.Component {
   constructor(props) {
@@ -16,8 +17,10 @@ export class UserProfile extends React.Component {
       musicInputDisplayed: false,
       movieInputDislayed: false,
       tvInputDisplayed: false,
+      pictureInputDisplayed: false,
     }
   }
+
 
   componentDidMount() {
     const user = {}
@@ -34,7 +37,8 @@ export class UserProfile extends React.Component {
       interestsInputDisplayed: false,
       musicInputDisplayed: false,
       movieInputDislayed: false,
-      tvInputDisplayed: false
+      tvInputDisplayed: false, 
+      pictureInputDisplayed: false
     }); 
   }
  
@@ -43,11 +47,15 @@ export class UserProfile extends React.Component {
     const user = {}
     if (nextField === 'state') {
       user.state = this.stateInput.value
+    } else if (nextField === 'picture') {
+      user[nextField] = this.state.file
+      user.username = this.props.username
+      return this.closeForm();
     } else {
       user[nextField] = this[nextField].value
     }
-    // user[nextField] = this.refs[nextField].value
     user.username = this.props.username
+    console.log('HERE IS THE USER', user)
     this.props.dispatch(saveQuestions(user))
     this.closeForm(); 
   }
@@ -84,6 +92,17 @@ export class UserProfile extends React.Component {
     this.closeForm();
     this.setState({ tvInputDisplayed: !this.state.tvInputDisplayed })
   }
+  handlePictureInputToggle() {
+    this.closeForm();
+    this.setState({ pictureInputDisplayed: !this.state.pictureInputDisplayed })
+  }
+
+
+
+
+
+
+
   
   render() {
 
@@ -91,7 +110,7 @@ export class UserProfile extends React.Component {
       return <Redirect to="/login" />;
     }
 
-    var state, city, age, movies, music, tv, interests, bio, field, nextField;
+    let state, city, age, movies, music, tv, interests, bio, field, nextField, picture;
    
 
     if (this.state.cityInputDisplayed) {
@@ -251,13 +270,24 @@ export class UserProfile extends React.Component {
         <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleTvInputToggle()}></i>
       </div>;
     }
+    if (this.state.pictureInputDisplayed) {
+      nextField = 'picture'
+      picture = <ImageUpload />
+    } else {
+      picture = <div className="profile-picture">
+          <i className="fa fa-pencil-square-o edit-picture" aria-hidden="true" onClick={() => this.handlePictureInputToggle()}></i>
+        </div>;
+    }
+
+
+
+
 
     var fullName = `${this.props.firstName} ${this.props.lastName}`;
 
     return (
       <div className="search-user-profile">
-        <div className="profile-picture">
-        </div>
+        { picture }
         <div className="right-section">
           <div className="search-user-profile-name">
             <h1>{fullName}</h1>

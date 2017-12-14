@@ -28,7 +28,7 @@ export class Questions extends React.Component {
       guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode, common_areas, common_areas_bothered
     };
     user.username = this.props.currentUser.username
-    console.log(user)
+    console.log("USER AS SUBMITTED", user)
     return this.props.dispatch(saveQuestions(user))
     .then(() => this.props.history.push('/dashboard'))
   }
