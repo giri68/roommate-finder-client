@@ -274,14 +274,17 @@ export class UserProfile extends React.Component {
       nextField = 'picture'
       picture = <ImageUpload onUploadSuccess={() => this.closeForm()}/>
     } else {
-      picture = <div className="profile-picture-container">
-              <img className="pic" src={this.props.picture} />
+
+      let sectionStyle = {
+       
+        backgroundImage: `url(${this.props.picture})`, 
+
+      };
+
+      picture = <div className="profile-picture" style={sectionStyle}>
           <i className="fa fa-pencil-square-o edit-picture" aria-hidden="true" onClick={() => this.handlePictureInputToggle()}></i>
         </div>;
     }
-
-
-
 
 
     var fullName = `${this.props.firstName} ${this.props.lastName}`;
