@@ -1,12 +1,14 @@
 import {Image, CloudinaryContext, Transformation} from 'cloudinary-react';
 import React from 'react'; 
+import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import { saveQuestions } from '../actions/user'
 
 const CLOUDINARY_UPLOAD_PRESET = 'ggzuxadq' 
 const CLOUDINARY_UPLOAD_URL= 'https://api.cloudinary.com/v1_1/dkksqcvlg/upload' 
 
-export default class ImageUpload extends React.Component {
+export class ImageUpload extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +39,11 @@ export default class ImageUpload extends React.Component {
               uploadedFileCloudinaryUrl: response.body.secure_url
             });
 
-            console.log("THIS IS THE POST UPLOAD STATE", this.state)
+            let user = {}
+            user.username = this.props.username; 
+            user.picture = response.body.secure_url
+            this.props.dispatch(saveQuestions(user))
+            this.props.onUploadSuccess(); 
           }
         });
     }
@@ -46,24 +52,34 @@ export default class ImageUpload extends React.Component {
         return (
             <div> 
                 <Dropzone
-                multiple={false}
-                accept="image/*"
-                onDrop={this.onImageDrop.bind(this)}>
-                <p>Drop an image or click to select a file to upload.</p>
+                    multiple={false}
+                    accept="image/*"
+                    onDrop={this.onImageDrop.bind(this)}>
+                    <p className="center">Drop an image or click to select a file to upload.</p>
                 </Dropzone>
 
                 <div className="FileUpload">
                         ...
                 </div>
 
-                <div>
+                {/* <div>
                     {this.state.uploadedFileCloudinaryUrl === '' ? null :
                     <div>
                     <p>{this.state.uploadedFile.name}</p>
                     <img src={this.state.uploadedFileCloudinaryUrl} />
                     </div>}
-                </div>
+                </div> */}
             </div>
         ); 
     }
 }
+
+export const mapStateToProps = (state) => {
+    console.log('State in ImageUpload: ', state)
+    return {
+      loggedIn: state.auth.currentUser !== null,
+      username: state.auth.currentUser ? state.auth.currentUser.username : null
+    }
+  }
+  
+export default connect(mapStateToProps)(ImageUpload);

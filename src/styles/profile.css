@@ -33,16 +33,35 @@
     background-color: rgb(202, 202, 202); 
     display: flex; 
     justify-content: flex-end; 
-    align-items: flex-end; 
+    align-items: flex-end;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
 }
 
-.preview {
+.pic {
+    width: 100%; 
+}
+
+.profile-picture-container {
+    float: left; 
     width: 300px; 
+    height: 300px;  
     margin-right: 70px; 
     margin-bottom: 50px; 
     border: 10px solid white; 
-    background-color: rgb(202, 202, 202); 
+    background-color: rgb(255, 6, 6); 
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: flex-end;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
 }
+
+
 
 .right-section {
     float: right;

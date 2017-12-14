@@ -272,9 +272,10 @@ export class UserProfile extends React.Component {
     }
     if (this.state.pictureInputDisplayed) {
       nextField = 'picture'
-      picture = <ImageUpload />
+      picture = <ImageUpload onUploadSuccess={() => this.closeForm()}/>
     } else {
-      picture = <div className="profile-picture">
+      picture = <div className="profile-picture-container">
+              <img className="pic" src={this.props.picture} />
           <i className="fa fa-pencil-square-o edit-picture" aria-hidden="true" onClick={() => this.handlePictureInputToggle()}></i>
         </div>;
     }
@@ -323,7 +324,6 @@ export class UserProfile extends React.Component {
 }
 
 export const mapStateToProps = (state) => {
-  console.log('The current state is: ', state)
   return {
     loggedIn: state.auth.currentUser !== null,
     firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null,
@@ -336,7 +336,8 @@ export const mapStateToProps = (state) => {
     music: state.auth.currentUser ? state.auth.currentUser.music : null,
     movies: state.auth.currentUser ? state.auth.currentUser.movies : null,
     tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
-    username: state.auth.currentUser ? state.auth.currentUser.username : null
+    username: state.auth.currentUser ? state.auth.currentUser.username : null, 
+    picture: state.auth.currentUser.picture ? state.auth.currentUser.picture : ''
   }
 }
 
