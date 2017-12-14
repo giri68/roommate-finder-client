@@ -48,9 +48,15 @@ export class SearchUserProfile extends React.Component {
       tv = <div className="search-user-profile-tv"><p><strong>TV:</strong> {this.props.tv}</p></div>
     }
 
+    let sectionStyle = {
+      backgroundImage: `url(${this.props.picture})`, 
+    };
+
     return (
       <div className="search-user-profile">
-        <div className="profile-picture">
+        <div className="left-section">
+          <div style={sectionStyle} className="profile-picture">
+          </div>
         </div>
         <div className="right-section">
           { name }
@@ -62,15 +68,6 @@ export class SearchUserProfile extends React.Component {
           { music }
           { movies }
           { tv }
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa 
-            quae ab illo inventore veritatis et quasi architecto beatae vitae 
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit 
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores 
-            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam 
-            est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci 
-            velit, sed quia non numquam eius modi tempora incidunt ut labore 
-            et dolore magnam aliquam quaerat voluptatem.</p>
           </div>
       </div>
     )
@@ -91,7 +88,8 @@ export const mapStateToProps = state => {
       interests: state.user.selectedUser.interests,
       music: state.user.selectedUser.music,
       movies: state.user.selectedUser.movies,
-      tv: state.user.selectedUser.tv
+      tv: state.user.selectedUser.tv, 
+      picture: state.user.selectedUser.picture
     }
   }
   return {
