@@ -8,6 +8,7 @@ import Chat from './Chat';
 
 import LoginForm from './login-form';
 import Dashboard from './dashboard';
+import ChatDashboard from './chat-dashboard';
 import Questions from './questions';
 import UserProfile from './user-profile';
 import RegistrationPage from './registration-page';
@@ -52,6 +53,7 @@ export class App extends React.Component {
                 <div className="view-window">
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/chat" component={Chat} />
+                    <Route exact path="/messages" component={ChatDashboard} />
                     
                     <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/start" component={Start} />
