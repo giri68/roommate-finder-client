@@ -73,7 +73,7 @@ export class Dashboard extends React.Component {
 
         let renderPageNumbers; 
         if (pageNumbers.length > 1) {
-            renderPageNumbers = pageNumbers.map(number => {
+        renderPageNumbers = pageNumbers.map(number => {
                 return (
                     <li className="pagination-number" key={number} id={number} onClick={this.handleClick}>
                         {number}
