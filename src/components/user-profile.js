@@ -206,7 +206,7 @@ export class UserProfile extends React.Component {
     } else {
       bio = <div>
         <p className="profile-field">Bio: {this.props.bio}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleBioInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleBioInputToggle()}></i>
       </div>;
     }
     if (this.state.interestsInputDisplayed) {

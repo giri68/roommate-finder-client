@@ -45,8 +45,10 @@
 
 .left-section {
     float: left; 
-    width: 300px; 
-    text-align: center; 
+    width: 320px; 
+    height: 00px; 
+    text-align: center;
+    background-color: black; 
 }
 
 .right-section {
