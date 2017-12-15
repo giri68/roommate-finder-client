@@ -82,7 +82,7 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
-                    <div>
+                    <div className="map-container">
                         <DisplayMap/>
                     </div>
                 </div>
@@ -93,8 +93,6 @@ export class Dashboard extends React.Component {
                         {renderPageNumbers}
                         {next}
                     </ul>
-                   
-                    
                 </div>
             </div>
         );
