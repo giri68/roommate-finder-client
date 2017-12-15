@@ -116,6 +116,11 @@ export const setSelectedUser = user => ({
     user
 }); 
 
+export const SET_SELECTED_USER_MATCH = "SET_SELECTED_USER_MATCH"; 
+export const setSelectedUserMatch = match => ({
+    type: SET_SELECTED_USER_MATCH, 
+    match
+}); 
 
 export const SET_REDIRECT_DISPLAY_FALSE = "SET_REDIRECT_DISPLAY_FALSE"; 
 export const setRedirectDisplayFalse = user => ({

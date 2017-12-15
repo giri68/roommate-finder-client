@@ -15,37 +15,39 @@ export class SearchUserProfile extends React.Component {
     if(this.props.firstName && this.props.lastName){
       name = <div className="search-user-profile-name"><h1>{this.props.firstName} {this.props.lastName}</h1></div>
     }
-    let city; 
-    if(this.props.city){
-      city = <div className="search-user-profile-city"><p><strong>City:</strong> {this.props.city}</p></div>
-    }
-    let state; 
-    if(this.props.state){
-      state =  <div className="search-user-profile-state"><p><strong>State:</strong> {this.props.state}</p></div>
-    }
     let age; 
     if(this.props.age){
-      age = <div className="search-user-profile-age"><p><strong>Age:</strong> {this.props.age}</p></div>
+      age = <div className="search-user-profile-age"><strong>Age:</strong> {this.props.age}</div>
     }
     let bio; 
     if(this.props.bio){
-      bio = <div className="search-user-profile-bio"><p><strong>Bio:</strong> {this.props.bio}</p></div>
+      bio = <div className="search-user-profile-bio"><strong>Bio:</strong> {this.props.bio}</div>
     }
     let interests; 
     if(this.props.interests){
-      interests = <div className="search-user-profile-interests"><p><strong>Interests:</strong> {this.props.interests}</p></div>
+      interests = <div className="search-user-profile-interests"><strong>Interests:</strong> {this.props.interests}</div>
     }
     let music; 
     if(this.props.music){
-      music = <div className="search-user-profile-music"><p><strong>Music:</strong> {this.props.music}</p></div>
+      music = <div className="search-user-profile-music"><strong>Music:</strong> {this.props.music}</div>
     }
     let movies; 
     if(this.props.movies){
-      movies = <div className="search-user-profile-movies"><p><strong>Movies:</strong> {this.props.movies}</p></div>
+      movies = <div className="search-user-profile-movies"><strong>Movies:</strong> {this.props.movies}</div>
     }
     let tv; 
     if(this.props.tv){
-      tv = <div className="search-user-profile-tv"><p><strong>TV:</strong> {this.props.tv}</p></div>
+      tv = <div className="search-user-profile-tv"><strong>TV:</strong> {this.props.tv}</div>
+    }
+    let looking_for; 
+    if(this.props.looking_for){
+      if (this.props.looking_for === 'fill_a_room') {
+        looking_for = <div className="search-user-profile-looking-for"><strong>Status: </strong>Has a room available for rent</div> 
+      } else if (this.props.looking_for === 'find_a_room') {
+        looking_for = <div className="search-user-profile-looking-for"><strong>Status: </strong>Looking for a room to rent</div>
+      } else {
+        looking_for = <div className="search-user-profile-looking-for"><strong>Status: </strong>Looking for a roommate</div>
+      }
     }
 
     let sectionStyle = {
@@ -60,14 +62,18 @@ export class SearchUserProfile extends React.Component {
         </div>
         <div className="right-section">
           { name }
-          { city }
-          { state }
-          { age }
+          <p><strong>Location:</strong> {this.props.city}, {this.props.state}
+          <br />
+          {age}
+          { looking_for }</p>
+          {/* { age } */}
+          <p>
           { bio }
           { interests }
           { music }
           { movies }
           { tv }
+          </p>
           </div>
       </div>
     )
@@ -76,6 +82,8 @@ export class SearchUserProfile extends React.Component {
 
 export const mapStateToProps = state => {
   if (state.auth.currentUser) {
+    console.log("MATCH:", state.user.selectedUserMatch)
+    console.log("SEL USER:", state.user.selectedUser)
     return {
       loggedIn: state.auth.currentUser !== null,
       id: state.user.selectedUser.id,
@@ -89,7 +97,8 @@ export const mapStateToProps = state => {
       music: state.user.selectedUser.music,
       movies: state.user.selectedUser.movies,
       tv: state.user.selectedUser.tv, 
-      picture: state.user.selectedUser.picture
+      picture: state.user.selectedUser.picture,
+      looking_for: state.user.selectedUser.looking_for
     }
   }
   return {
