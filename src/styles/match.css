@@ -24,10 +24,12 @@
     -o-background-size: cover; 
     background-size: cover; 
 }
-
-.profileName {
-    display: inline; 
-    margin-left: 30px;
+.match-text {
     position: relative; 
-    top: -30px; 
+    top: -5px; 
+}
+
+.picture-container {
+    float: left; 
+    margin-right: 20px; 
 }

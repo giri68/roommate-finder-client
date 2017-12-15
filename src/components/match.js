@@ -23,10 +23,14 @@ export class Match extends React.Component {
         };
         return (
             <div className="match" onClick={() => this.handleMatchClick()}>
-                <div className="profilePic" style={sectionStyle}>
+                <div className="picture-container">    
+                    <div className="profilePic" style={sectionStyle}>
+                    </div>
                 </div>
-                <p className="profileName"><strong>{this.props.user.username}</strong></p>
-                <p className="matchScore">{this.props.user.score}% Match</p>
+                <div>
+                    <p className="match-text">{this.props.user.username}<br /> {this.props.user.score}% Match</p>
+                   
+                </div>
             </div>
         );
     }
