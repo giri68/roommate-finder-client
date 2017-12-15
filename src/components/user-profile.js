@@ -96,13 +96,6 @@ export class UserProfile extends React.Component {
     this.closeForm();
     this.setState({ pictureInputDisplayed: !this.state.pictureInputDisplayed })
   }
-
-
-
-
-
-
-
   
   render() {
 

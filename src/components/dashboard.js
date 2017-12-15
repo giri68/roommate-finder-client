@@ -57,24 +57,23 @@ export class Dashboard extends React.Component {
         let renderCurrent;
         if (this.props.profileMatches.length === 0){
            renderCurrent = <p>Sorry, there are no apartments or roommates that match your search critera.</p>
-       }
-       else {
+        }
+        else {
         renderCurrent = currentMatches.slice(indexOfFirstData, indexOfLastData);
-       }
+        }
 
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(currentMatches.length / dataPerPage); i++) {
             pageNumbers.push(i);
         }
-       const next = (pageNumbers.length > currentPage) ? <button onClick= {() => this.handleNext()}>next</button> : null;
-       const previous = (currentPage > 1) ? <button onClick= {() => this.handlePrevious()}>previous</button> : null;
+        const next = (pageNumbers.length > currentPage) ? <i className="fa fa-arrow-circle-right pagination-navigation" onClick= {() => this.handleNext()} aria-hidden="true"></i> : null;
+        const previous = (currentPage > 1) ? <i className="fa fa-arrow-circle-left pagination-navigation" onClick= {() => this.handlePrevious()} aria-hidden="true"></i>: null;
           
         
         const renderPageNumbers = pageNumbers.map(number => {
             return (
-                <li  key={number} id={number} onClick={this.handleClick}>
+                <li className="pagination-number" key={number} id={number} onClick={this.handleClick}>
                     {number}
-                   
                 </li>
             );
         });
@@ -88,7 +87,6 @@ export class Dashboard extends React.Component {
                 </div>
                 <div className="dashboard-half">
                     {renderCurrent}
-
                     <ul id='page-numbers'>
                         {previous}
                         {renderPageNumbers}
