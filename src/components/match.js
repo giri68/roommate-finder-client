@@ -8,10 +8,8 @@ import '../styles/match.css';
 export class Match extends React.Component {
 
     handleMatchClick() {
-        // console.log("ITS WORKING", this.props.user.username)
         this.props.dispatch(getSelectedUser(this.props.user.username))
             .then(() => this.props.dispatch(setSelectedUserMatch(this.props.user.score)))
-            // .then(this.setState({redirectDisplayed: true}))
     }
 
     render() {

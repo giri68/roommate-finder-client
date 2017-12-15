@@ -25,12 +25,12 @@ export default function reducer(state = initialState, action) {
         }); 
     } else if (action.type === SET_SELECTED_USER) {
         return Object.assign({}, state, {
-            selectedUser: action.user
+            selectedUser: action.user, 
+            redirectDisplayed: true
         })
     } else if (action.type === SET_SELECTED_USER_MATCH) {
         return Object.assign({}, state, {
             selectedUserMatch: action.match, 
-            redirectDisplayed: true
     })
   } else if (action.type === SET_REDIRECT_DISPLAY_FALSE) {
         return Object.assign({}, state, {

@@ -126,6 +126,7 @@ export const SET_REDIRECT_DISPLAY_FALSE = "SET_REDIRECT_DISPLAY_FALSE";
 export const setRedirectDisplayFalse = user => ({
     type: SET_REDIRECT_DISPLAY_FALSE 
 }); 
+ 
 
 export const getSelectedUser = (username) => dispatch => {
     return fetch(`${API_BASE_URL}/api/users/${username}`, {
@@ -135,7 +136,10 @@ export const getSelectedUser = (username) => dispatch => {
     .then(user => {
         dispatch(setSelectedUser(user))
     })
-    .then(() => dispatch(setRedirectDisplayFalse()));  
+    .then(() => {
+        console.log("DISPATCHING")
+        dispatch(setRedirectDisplayFalse())
+    });  
 }
 
 export const lookupLatLong = (city, state) => dispatch => {
