@@ -1,10 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'; 
+import { Redirect, Link } from 'react-router-dom'; 
+import { saveCurrentChat } from '../actions/user';
 import '../styles/profile.css'; 
 
 export class SearchUserProfile extends React.Component {
-  
+
+  handleChatRoom(){
+    let chatRoom = `${this.props.username}-${this.props.selectedUsername}`
+    let data = {}
+    data.user1 = this.props.username
+    data.user2 = this.props.selectedUsername
+    data.currentChat = chatRoom
+    console.log('chatroom', data);
+    this.props.dispatch(saveCurrentChat(data));
+    
+  }
+
   render() {
 
     if (!this.props.loggedIn) {
@@ -54,6 +66,8 @@ export class SearchUserProfile extends React.Component {
       backgroundImage: `url(${this.props.picture})`, 
     };
 
+    
+
     return (
       <div className="search-user-profile">
         <div className="left-section">
@@ -73,7 +87,9 @@ export class SearchUserProfile extends React.Component {
           { music }
           { movies }
           { tv }
+
           </p>
+          <Link onClick={() => this.handleChatRoom()} to='/chat'>message</Link>
           </div>
       </div>
     )
@@ -84,6 +100,7 @@ export const mapStateToProps = state => {
   if (state.auth.currentUser) {
     console.log("MATCH:", state.user.selectedUserMatch)
     console.log("SEL USER:", state.user.selectedUser)
+    console.log('current user', state.user.currentChat)
     return {
       loggedIn: state.auth.currentUser !== null,
       id: state.user.selectedUser.id,
@@ -98,7 +115,9 @@ export const mapStateToProps = state => {
       movies: state.user.selectedUser.movies,
       tv: state.user.selectedUser.tv, 
       picture: state.user.selectedUser.picture,
-      looking_for: state.user.selectedUser.looking_for
+      looking_for: state.user.selectedUser.looking_for,
+      username: state.auth.currentUser.username,
+      selectedUsername: state.user.selectedUser.username
     }
   }
   return {

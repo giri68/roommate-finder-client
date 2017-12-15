@@ -17,7 +17,8 @@ export class Chat extends React.Component{
 
         
         this.socket = io.connect(API_BASE_URL);
-        this.socket.emit('create', 'roomgiri');
+        //this.props.currentchat is the current chat room (string)
+        this.socket.emit('create', this.props.currentChat);
 
         this.socket.on('RECEIVE_MESSAGE', function(data){
             addMessage(data);
@@ -76,7 +77,8 @@ export class Chat extends React.Component{
 }
 
 export const mapStateToProps = (state) => ({
-  username: state.auth.currentUser ? state.auth.currentUser.username : null
+  username: state.auth.currentUser ? state.auth.currentUser.username : null,
+  currentChat: state.auth.currentUser ? state.auth.currentUser.currentChat : null
 })
 
 export default connect(mapStateToProps)(Chat);
