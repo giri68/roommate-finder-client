@@ -6,16 +6,23 @@
     "react-scripts": "1.0.17"
   },
   "dependencies": {
+    "cloudinary": "^1.9.1",
     "cloudinary-react": "^1.0.4",
     "jwt-decode": "^2.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-dropzone": "^4.2.3",
+    "react-google-maps": "^9.4.3",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-form": "^6.6.3",
     "redux-thunk": "^2.2.0",
+<<<<<<< HEAD
     "socket.io-client": "^2.0.4",
+=======
+    "superagent": "^3.8.2",
+>>>>>>> f9ef83e87ffa57f0335a18c7ec7d009faddba1ab
     "validator": "^7.0.0"
   },
   "scripts": {

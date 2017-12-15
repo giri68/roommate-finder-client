@@ -13,9 +13,14 @@ export const displayAllUsers = users => ({
 
 // THIS IS OURS. VERY GENERAL, NEEDS TO BE EDITED TO RUN ALGORITHM. RIGHT NOW JUST FETCHES ALL
 
-export const getAllUsers = () => dispatch => {
-    return fetch(`${API_BASE_URL}/api/users`, {
-        method: 'GET', 
+export const getAllUsers = (user) => dispatch => {
+    console.log(user)
+    return fetch(`${API_BASE_URL}/api/users/filter`, {
+        method: 'PUT', 
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
     })
     .then(res => res.json())
     .then(users => {
@@ -81,6 +86,7 @@ export const saveQuestions = (user) => dispatch => {
         });
 };
 
+
 export const filterUsers = (user) => dispatch => {
     return fetch(`${API_BASE_URL}/api/users/filter`, {
         method: 'PUT',
@@ -110,11 +116,17 @@ export const setSelectedUser = user => ({
     user
 }); 
 
+export const SET_SELECTED_USER_MATCH = "SET_SELECTED_USER_MATCH"; 
+export const setSelectedUserMatch = match => ({
+    type: SET_SELECTED_USER_MATCH, 
+    match
+}); 
 
 export const SET_REDIRECT_DISPLAY_FALSE = "SET_REDIRECT_DISPLAY_FALSE"; 
 export const setRedirectDisplayFalse = user => ({
     type: SET_REDIRECT_DISPLAY_FALSE 
 }); 
+ 
 
 export const getSelectedUser = (username) => dispatch => {
     return fetch(`${API_BASE_URL}/api/users/${username}`, {
@@ -124,7 +136,20 @@ export const getSelectedUser = (username) => dispatch => {
     .then(user => {
         dispatch(setSelectedUser(user))
     })
-    .then(() => dispatch(setRedirectDisplayFalse()));  
+    .then(() => {
+        console.log("DISPATCHING")
+        dispatch(setRedirectDisplayFalse())
+    });  
 }
 
-
+export const lookupLatLong = (city, state) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city},+${state}`, {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(location => {
+        console.log(location);
+        // dispatch(setSelectedUser(location))
+    })
+    // .then(() => dispatch(setRedirectDisplayFalse()));  
+}

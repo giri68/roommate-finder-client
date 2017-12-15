@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { saveQuestions } from '../actions/user';
 import {Redirect} from 'react-router-dom'; 
 import '../styles/profile.css';
+import ImageUpload from './image-upload'; 
 
 export class UserProfile extends React.Component {
   constructor(props) {
@@ -16,7 +17,15 @@ export class UserProfile extends React.Component {
       musicInputDisplayed: false,
       movieInputDislayed: false,
       tvInputDisplayed: false,
+      pictureInputDisplayed: false,
     }
+  }
+
+
+  componentDidMount() {
+    const user = {}
+    user.username = this.props.username
+    this.props.dispatch(saveQuestions(user))
   }
 
   closeForm(){
@@ -28,7 +37,8 @@ export class UserProfile extends React.Component {
       interestsInputDisplayed: false,
       musicInputDisplayed: false,
       movieInputDislayed: false,
-      tvInputDisplayed: false
+      tvInputDisplayed: false, 
+      pictureInputDisplayed: false
     }); 
   }
  
@@ -37,11 +47,15 @@ export class UserProfile extends React.Component {
     const user = {}
     if (nextField === 'state') {
       user.state = this.stateInput.value
+    } else if (nextField === 'picture') {
+      user[nextField] = this.state.file
+      user.username = this.props.username
+      return this.closeForm();
     } else {
       user[nextField] = this[nextField].value
     }
-    // user[nextField] = this.refs[nextField].value
     user.username = this.props.username
+    console.log('HERE IS THE USER', user)
     this.props.dispatch(saveQuestions(user))
     this.closeForm(); 
   }
@@ -78,6 +92,10 @@ export class UserProfile extends React.Component {
     this.closeForm();
     this.setState({ tvInputDisplayed: !this.state.tvInputDisplayed })
   }
+  handlePictureInputToggle() {
+    this.closeForm();
+    this.setState({ pictureInputDisplayed: !this.state.pictureInputDisplayed })
+  }
   
   render() {
 
@@ -85,9 +103,8 @@ export class UserProfile extends React.Component {
       return <Redirect to="/login" />;
     }
 
-    var state, city, age, movies, music, tv, interests, bio, field, nextField;
-   
-
+    // controls form display for all inputs
+    let state, city, age, movies, music, tv, interests, bio, field, nextField, picture;
     if (this.state.cityInputDisplayed) {
       nextField = 'city'
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
@@ -98,7 +115,7 @@ export class UserProfile extends React.Component {
     } else {
       city = <div className="profile-section">
         <p className="profile-field">City: {this.props.city}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleCityInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleCityInputToggle()}></i>
       </div>
     }
     if (this.state.stateInputDisplayed) {
@@ -160,11 +177,10 @@ export class UserProfile extends React.Component {
         <button className="button-inline" type="submit">Save</button>
         <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
-
     } else {
       state = <div>
         <p className="profile-field">State: {this.props.state}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleStateInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleStateInputToggle()}></i>
       </div>;
     }
     if (this.state.ageInputDisplayed) {
@@ -177,20 +193,20 @@ export class UserProfile extends React.Component {
     } else {
       age = <div>
         <p className="profile-field">Age: {this.props.age}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleAgeInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleAgeInputToggle()}></i>
       </div>;
     }
     if (this.state.bioInputDisplayed) {
       nextField = 'bio'
       bio = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>
-        <input className="input" placeholder="Bio" ref={input => this.bio = input}></input>
+        <textarea className="input" placeholder="Bio" ref={input => this.bio = input}></textarea>
         <button className="button-inline" type="submit">Save</button>
         <i className="fa fa-times-circle" aria-hidden="true" onClick={() => this.closeForm()}></i>
       </form>
     } else {
       bio = <div>
         <p className="profile-field">Bio: {this.props.bio}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleBioInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleBioInputToggle()}></i>
       </div>;
     }
     if (this.state.interestsInputDisplayed) {
@@ -203,7 +219,7 @@ export class UserProfile extends React.Component {
     } else {
       interests = <div>
         <p className="profile-field">Interests: {this.props.interests}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleInterestsInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleInterestsInputToggle()}></i>
       </div>;
     }
     if (this.state.movieInputDislayed) {
@@ -216,7 +232,7 @@ export class UserProfile extends React.Component {
     } else {
       movies = <div>
         <p className="profile-field">Movies: {this.props.movies}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleMovieInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleMovieInputToggle()}></i>
       </div>;
     }
     if (this.state.musicInputDisplayed) {
@@ -229,7 +245,7 @@ export class UserProfile extends React.Component {
     } else {
       music = <div>
         <p className="profile-field">Music: {this.props.music}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleMusicInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleMusicInputToggle()}></i>
       </div>;
     }
     if (this.state.tvInputDisplayed) {
@@ -242,15 +258,28 @@ export class UserProfile extends React.Component {
     } else {
       tv = <div>
         <p className="profile-field">TV: {this.props.tv}</p>
-        <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={() => this.handleTvInputToggle()}></i>
+        <i className="fa fa-pencil-square-o margin-left" aria-hidden="true" onClick={() => this.handleTvInputToggle()}></i>
       </div>;
     }
+    if (this.state.pictureInputDisplayed) {
+      nextField = 'picture'
+      picture = <ImageUpload onUploadSuccess={() => this.closeForm()}/>
+    } else {
+      // sets this.props.picture to background of div through styling
+      let sectionStyle = {
+        backgroundImage: `url(${this.props.picture})`, 
+      };
+      picture = <div className="profile-picture" style={sectionStyle}>
+          <i className="fa fa-pencil-square-o edit-picture" aria-hidden="true" onClick={() => this.handlePictureInputToggle()}></i>
+        </div>;
+    }
 
-    var fullName = `${this.props.firstName} ${this.props.lastName}`;
+    let fullName = `${this.props.firstName} ${this.props.lastName}`;
 
     return (
       <div className="search-user-profile">
-        <div className="profile-picture">
+        <div className="left-section">
+          { picture }
         </div>
         <div className="right-section">
           <div className="search-user-profile-name">
@@ -265,9 +294,6 @@ export class UserProfile extends React.Component {
           <div className="search-user-profile-age">
             {age}
           </div>
-          <div className="search-user-profile-bio">
-            {bio}
-          </div>
           <div className="search-user-profile-interests">
             {interests}
           </div>
@@ -280,6 +306,9 @@ export class UserProfile extends React.Component {
           <div className="search-user-profile-tv">
             {tv}
           </div>
+          <div className="search-user-profile-bio">
+            {bio}
+          </div>
         </div>
       </div>
     )
@@ -287,7 +316,6 @@ export class UserProfile extends React.Component {
 }
 
 export const mapStateToProps = (state) => {
-  console.log('The current state is: ', state)
   return {
     loggedIn: state.auth.currentUser !== null,
     firstName: state.auth.currentUser ? state.auth.currentUser.firstName : null,
@@ -300,7 +328,8 @@ export const mapStateToProps = (state) => {
     music: state.auth.currentUser ? state.auth.currentUser.music : null,
     movies: state.auth.currentUser ? state.auth.currentUser.movies : null,
     tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
-    username: state.auth.currentUser ? state.auth.currentUser.username : null
+    username: state.auth.currentUser ? state.auth.currentUser.username : null, 
+    picture: state.auth.currentUser.picture ? state.auth.currentUser.picture : ''
   }
 }
 

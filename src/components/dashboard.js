@@ -6,6 +6,7 @@ import { getAllUsers } from '../actions/user';
 import { Redirect } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Match from './match';
+import DisplayMap from './google-map';
 
 export class Dashboard extends React.Component {
     constructor() {
@@ -35,15 +36,16 @@ export class Dashboard extends React.Component {
         if (!this.props.loggedIn) {
             return;
         }
-
-        this.props.dispatch(getAllUsers());
+        const user = this.props.currentUser
+        console.log(user)
+        this.props.dispatch(getAllUsers(user));
     }
 
     render() {
-
         if (!this.props.loggedIn) {
             return <Redirect to="/login" />;
         }
+
 
         let currentMatches = this.props.profileMatches.map((match, index) => (
             <Match key={index} user={match} />
@@ -52,42 +54,48 @@ export class Dashboard extends React.Component {
 
         const indexOfLastData = currentPage * dataPerPage;
         const indexOfFirstData = indexOfLastData - dataPerPage;
-        const renderCurrent = currentMatches.slice(indexOfFirstData, indexOfLastData);
+         
+        let renderCurrent;
+        if (this.props.profileMatches.length === 0){
+           renderCurrent = <p>Sorry, there are no apartments or roommates that match your search critera.</p>
+        }
+        else {
+        renderCurrent = currentMatches.slice(indexOfFirstData, indexOfLastData);
+        }
 
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(currentMatches.length / dataPerPage); i++) {
             pageNumbers.push(i);
         }
-       const next = (pageNumbers.length > currentPage) ? <button onClick= {() => this.handleNext()}>next</button> : null;
-       const previous = (currentPage > 1) ? <button onClick= {() => this.handlePrevious()}>previous</button> : null;
+        const next = (pageNumbers.length > currentPage) ? <i className="fa fa-arrow-circle-right pagination-navigation" onClick= {() => this.handleNext()} aria-hidden="true"></i> : null;
+        const previous = (currentPage > 1) ? <i className="fa fa-arrow-circle-left pagination-navigation" onClick= {() => this.handlePrevious()} aria-hidden="true"></i>: null;
           
-        
-        const renderPageNumbers = pageNumbers.map(number => {
-            return (
-                <li  key={number} id={number} onClick={this.handleClick}>
-                    {number}
-                   
-                </li>
-            );
-        });
+
+        let renderPageNumbers; 
+        if (pageNumbers.length > 1) {
+        renderPageNumbers = pageNumbers.map(number => {
+                return (
+                    <li className="pagination-number" key={number} id={number} onClick={this.handleClick}>
+                        {number}
+                    </li>
+                );
+            });
+        }
 
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
-                    <div className="map">
-                        
+                    <div className="map-container">
+                        <DisplayMap/>
                     </div>
                 </div>
                 <div className="dashboard-half">
                     {renderCurrent}
-
                     <ul id='page-numbers'>
                         {previous}
                         {renderPageNumbers}
                         {next}
                     </ul>
-                   
-                    
                 </div>
             </div>
         );
@@ -101,7 +109,8 @@ const mapStateToProps = state => {
         username: state.auth.currentUser ? state.auth.currentUser.username : null,
         name: state.auth.currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : null,
         protectedData: state.protectedData.data,
-        profileMatches: state.user.profileMatches
+        profileMatches: state.user.profileMatches,
+        currentUser: state.auth.currentUser
     };
 };
 
