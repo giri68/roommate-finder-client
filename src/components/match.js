@@ -28,7 +28,7 @@ export class Match extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <p className="match-text">{this.props.user.username}<br /> {this.props.user.score}% Match</p>
+                    <p className="match-text">{this.props.user.firstName} {this.props.user.lastName}<br /> {this.props.user.score}% Match</p>
                    
                 </div>
             </div>
