@@ -2,6 +2,7 @@ import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { connect } from 'react-redux';
+import { lookupLatLong } from '../actions/user';
 
 
 const MyMapComponent = compose(
@@ -25,6 +26,13 @@ const MyMapComponent = compose(
 class DisplayMap extends React.PureComponent {
   state = {
     isMarkerShown: false,
+  }
+
+  componentDidMount() {
+    const city = this.props.currentUser.city
+    const state = this.props.currentUser.state
+    console.log(city, state);
+    this.props.dispatch(lookupLatLong(city, state))
   }
 
   // componentDidMount() {
@@ -53,7 +61,7 @@ class DisplayMap extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser
+  currentUser: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(DisplayMap);

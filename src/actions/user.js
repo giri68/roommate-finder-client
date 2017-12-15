@@ -133,4 +133,14 @@ export const getSelectedUser = (username) => dispatch => {
     .then(() => dispatch(setRedirectDisplayFalse()));  
 }
 
-
+export const lookupLatLong = (city, state) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city},+${state}`, {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(location => {
+        console.log(location);
+        // dispatch(setSelectedUser(location))
+    })
+    // .then(() => dispatch(setRedirectDisplayFalse()));  
+}
