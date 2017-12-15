@@ -1,5 +1,5 @@
 .search-user-profile {
-    width: 100%; 
+    width: 70%; 
     margin-left: auto; 
     margin-right: auto; 
 }
@@ -8,6 +8,10 @@
     content: "";
     display: table;
     clear: both;
+}
+
+.margin-left {
+    margin-left: 20px; 
 }
 
 .buttonEdit {

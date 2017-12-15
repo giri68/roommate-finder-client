@@ -24,7 +24,7 @@
 #page-numbers {
     list-style: none;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .pagination-number {
