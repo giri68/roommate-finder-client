@@ -4,6 +4,7 @@ import {Route, withRouter} from 'react-router-dom';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Start from './start';
+import Chat from './Chat';
 
 import LoginForm from './login-form';
 import Dashboard from './dashboard';
@@ -50,6 +51,7 @@ export class App extends React.Component {
                 <HeaderBar />
                 <div className="view-window">
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/chat" component={Chat} />
                     
                     <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/start" component={Start} />

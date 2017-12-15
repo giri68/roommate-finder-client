@@ -3,7 +3,8 @@ import {
     DISPLAY_ALL_USERS,
     SET_SELECTED_USER,
     SET_SELECTED_USER_MATCH, 
-    SET_REDIRECT_DISPLAY_FALSE
+    SET_REDIRECT_DISPLAY_FALSE,
+    SET_CURRENT_CHAT
 } from '../actions/user';
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
     profileMatches: [], 
     selectedUser: null,
     selectedUserMatch: null, 
-    redirectDisplayed: false
+    redirectDisplayed: false,
+    currentChat: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -36,6 +38,10 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             redirectDisplayed: false
         })
+    } else if (action.type === SET_CURRENT_CHAT) {
+        return Object.assign({}, state, {
+            currentChat: action.currentChat 
+    })
   }
   return state;
 }
