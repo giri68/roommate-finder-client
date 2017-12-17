@@ -70,19 +70,22 @@ export class Dashboard extends React.Component {
         const next = (pageNumbers.length > currentPage) ? <i className="fa fa-arrow-circle-right pagination-navigation" onClick= {() => this.handleNext()} aria-hidden="true"></i> : null;
         const previous = (currentPage > 1) ? <i className="fa fa-arrow-circle-left pagination-navigation" onClick= {() => this.handlePrevious()} aria-hidden="true"></i>: null;
           
-        
-        const renderPageNumbers = pageNumbers.map(number => {
-            return (
-                <li className="pagination-number" key={number} id={number} onClick={this.handleClick}>
-                    {number}
-                </li>
-            );
-        });
+
+        let renderPageNumbers; 
+        if (pageNumbers.length > 1) {
+        renderPageNumbers = pageNumbers.map(number => {
+                return (
+                    <li className="pagination-number" key={number} id={number} onClick={this.handleClick}>
+                        {number}
+                    </li>
+                );
+            });
+        }
 
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
-                    <div>
+                    <div className="map-container">
                         <DisplayMap/>
                     </div>
                 </div>
@@ -93,8 +96,6 @@ export class Dashboard extends React.Component {
                         {renderPageNumbers}
                         {next}
                     </ul>
-                   
-                    
                 </div>
             </div>
         );

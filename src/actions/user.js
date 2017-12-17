@@ -116,11 +116,42 @@ export const setSelectedUser = user => ({
     user
 }); 
 
+export const SET_SELECTED_USER_MATCH = "SET_SELECTED_USER_MATCH"; 
+export const setSelectedUserMatch = match => ({
+    type: SET_SELECTED_USER_MATCH, 
+    match
+}); 
 
 export const SET_REDIRECT_DISPLAY_FALSE = "SET_REDIRECT_DISPLAY_FALSE"; 
 export const setRedirectDisplayFalse = user => ({
     type: SET_REDIRECT_DISPLAY_FALSE 
 }); 
+
+export const SET_CURRENT_CHAT = "SET_CURRENT_CHAT"; 
+export const setCurrentChat = currentChat => ({
+    type: SET_CURRENT_CHAT,
+    currentChat
+}); 
+
+export const saveCurrentChat = (data) => dispatch => {
+    dispatch(setCurrentChat(data.currentChat))
+    return fetch(`${API_BASE_URL}/api/users/chat`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    // .then(res => res.json())
+    // .then(user => {
+    //     dispatch(setSelectedUser(user))
+    // })
+    // .then(() => {
+    //     console.log("DISPATCHING")
+    //     dispatch(setRedirectDisplayFalse())
+    // });  
+}
+ 
 
 export const getSelectedUser = (username) => dispatch => {
     return fetch(`${API_BASE_URL}/api/users/${username}`, {
@@ -130,7 +161,10 @@ export const getSelectedUser = (username) => dispatch => {
     .then(user => {
         dispatch(setSelectedUser(user))
     })
-    .then(() => dispatch(setRedirectDisplayFalse()));  
+    .then(() => {
+        console.log("DISPATCHING")
+        dispatch(setRedirectDisplayFalse())
+    });  
 }
 
 export const lookupLatLong = (city, state) => dispatch => {
