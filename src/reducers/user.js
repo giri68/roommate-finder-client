@@ -2,14 +2,16 @@ import {
     SET_LOOKING_FOR, 
     DISPLAY_ALL_USERS,
     SET_SELECTED_USER, 
-    SET_REDIRECT_DISPLAY_FALSE
+    SET_REDIRECT_DISPLAY_FALSE,
+    SAVE_LAT_LONG
 } from '../actions/user';
 
 const initialState = {
     looking_for: null,
     profileMatches: [], 
     selectedUser: null, 
-    redirectDisplayed: false
+    redirectDisplayed: false,
+    latLong: {}
 };
 
 export default function reducer(state = initialState, action) {
@@ -31,5 +33,10 @@ export default function reducer(state = initialState, action) {
         redirectDisplayed: false
       })
   }
+  else if (action.type === SAVE_LAT_LONG) {
+    return Object.assign({}, state, {
+      latLong: action.latLong
+    })
+}
   return state;
 }

@@ -139,8 +139,15 @@ export const lookupLatLong = (city, state) => dispatch => {
     })
     .then(res => res.json())
     .then(location => {
-        console.log(location);
-        // dispatch(setSelectedUser(location))
+        console.log(location.results[0].geometry.location);
+        dispatch(saveLatLong(location.results[0].geometry.location))
     })
-    // .then(() => dispatch(setRedirectDisplayFalse()));  
 }
+
+export const SAVE_LAT_LONG = "SAVE_LAT_LONG"; 
+export const saveLatLong = latLong => ( 
+    console.log(latLong),
+    {
+    type: SAVE_LAT_LONG, 
+    latLong
+}); 

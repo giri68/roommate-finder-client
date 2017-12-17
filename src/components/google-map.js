@@ -60,8 +60,9 @@ class DisplayMap extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.auth.currentUser
-});
+const mapStateToProps = state => (
+  console.log("this is latlong", state.user), 
+  {latLong: state.user.latLong}
+);
 
 export default connect(mapStateToProps)(DisplayMap);
