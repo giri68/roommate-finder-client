@@ -59,7 +59,8 @@ export const registerUser = user => dispatch => {
 export const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
 export const updateCurrentUser = (currentUser) => ({
     type: UPDATE_CURRENT_USER,
-    currentUser
+    currentUser,
+    updatedUser: true
 })
 
 export const saveQuestions = (user) => dispatch => {
@@ -72,7 +73,7 @@ export const saveQuestions = (user) => dispatch => {
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => {return res.json()})
-        .then(res => dispatch(updateCurrentUser(res.user)))
+        .then(res => dispatch(updateCurrentUser(res.user)))     
         .catch(err => {
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {
@@ -173,15 +174,13 @@ export const lookupLatLong = (city, state) => dispatch => {
     })
     .then(res => res.json())
     .then(location => {
-        console.log(location.results[0].geometry.location);
+        console.log("response latlong", location.results[0].geometry.location);
         dispatch(saveLatLong(location.results[0].geometry.location))
     })
 }
 
 export const SAVE_LAT_LONG = "SAVE_LAT_LONG"; 
-export const saveLatLong = latLong => ( 
-    console.log(latLong),
-    {
+export const saveLatLong = (latLong) => ({
     type: SAVE_LAT_LONG, 
     latLong
 }); 

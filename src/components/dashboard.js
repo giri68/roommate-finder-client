@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Match from './match';
 import DisplayMap from './google-map';
-import { lookupLatLong } from '../actions/user';
 
 export class Dashboard extends React.Component {
     constructor() {
@@ -37,8 +36,8 @@ export class Dashboard extends React.Component {
         if (!this.props.loggedIn) {
             return;
         }
-        console.log("USERRR", user)
-        .then( () => this.props.dispatch(getAllUsers(user)));
+        const user = this.props.currentUser
+        this.props.dispatch(getAllUsers(user));
     }
 
     render() {
@@ -82,11 +81,20 @@ export class Dashboard extends React.Component {
             });
         }
 
+        let displayMap;
+        if (this.props.currentUser.lat === undefined){
+            displayMap = ''
+        }
+        else {
+            displayMap = <DisplayMap/>
+        }
+        
+
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
                     <div className="map-container">
-                        <DisplayMap/>
+                        {displayMap}
                     </div>
                 </div>
                 <div className="dashboard-half">

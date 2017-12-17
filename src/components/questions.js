@@ -7,6 +7,7 @@ import { compose } from 'redux';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import { saveQuestions } from '../actions/user';
 import '../styles/questions.css'; 
+import { lookupLatLong } from '../actions/user';
 
 export class Questions extends React.Component {
 
@@ -28,14 +29,22 @@ export class Questions extends React.Component {
       guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode, common_areas, common_areas_bothered
     };
     user.username = this.props.currentUser.username
-    console.log("USER AS SUBMITTED", user)
-    return this.props.dispatch(saveQuestions(user))
-    .then(() => this.props.history.push('/dashboard'))
+    return this.props.dispatch(lookupLatLong(city, state))
+    .then(() => {
+      user.lat = this.props.latLong.lat
+      user.long = this.props.latLong.lng
+      // console.log("USER AS SUBMITTED", user)
+      this.props.dispatch(saveQuestions(user))
+    })
+    // .then(() => this.props.history.push('/dashboard'))
   }
 
   render() {
     if (!this.props.loggedIn) {
       return <Redirect to="/login" />;
+    }
+    if (this.props.updatedUser) {
+      return <Redirect to="/dashboard"/>;
     }
 
     const minValue = min => value =>
@@ -406,7 +415,9 @@ export class Questions extends React.Component {
 const mapStateToProps = (state) => ({
   loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser,
-  looking_for: state.user.looking_for
+  looking_for: state.user.looking_for,
+  latLong: state.user.latLong,
+  updatedUser: state.auth.updatedUser
 });
 
 export default compose(
