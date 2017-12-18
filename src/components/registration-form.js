@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {registerUser} from '../actions/user';
 import {login} from '../actions/auth';
 import Input from './input';
-import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {required, nonEmpty, matches, length, isTrimmed, email} from '../validators';
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
@@ -44,6 +44,13 @@ export class RegistrationForm extends React.Component {
                     type="password"
                     name="passwordConfirm"
                     validate={[required, nonEmpty, matches('password')]}
+                />
+                <label htmlFor="email">Email</label>
+                <Field
+                    component={Input}
+                    type="email"
+                    name="email"
+                    validate={email}
                 />
                 <button
                     className="button-blue"

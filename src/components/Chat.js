@@ -18,7 +18,9 @@ export class Chat extends React.Component{
         
         this.socket = io.connect(API_BASE_URL);
         //this.props.currentchat is the current chat room (string)
+       
         this.socket.emit('create', this.props.currentChat);
+        
 
         this.socket.on('RECEIVE_MESSAGE', function(data){
             addMessage(data);
