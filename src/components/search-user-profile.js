@@ -59,6 +59,9 @@ export class SearchUserProfile extends React.Component {
         <div className="left-section">
           <div style={sectionStyle} className="profile-picture">
           </div>
+          <div className="match-continer">
+            <p>{this.props.match}%</p>
+          </div>
         </div>
         <div className="right-section">
           { name }
@@ -98,7 +101,8 @@ export const mapStateToProps = state => {
       movies: state.user.selectedUser.movies,
       tv: state.user.selectedUser.tv, 
       picture: state.user.selectedUser.picture,
-      looking_for: state.user.selectedUser.looking_for
+      looking_for: state.user.selectedUser.looking_for, 
+      match: state.user.selectedUserMatch
     }
   }
   return {
