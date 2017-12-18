@@ -87,6 +87,17 @@ button {
   font-family: 'Roboto', sans-serif !important;
 }
 
+.button {
+  padding: 10px 20px; 
+  border: 0px; 
+  border-radius: 4px; 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+  transition: 0.3s; 
+  font-size: 14px; 
+  font-family: 'Roboto', sans-serif !important;
+}
+
 .button-blue {
   background-color: rgb(113, 113, 150); 
   color: white; 

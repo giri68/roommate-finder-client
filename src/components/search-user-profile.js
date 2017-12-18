@@ -1,20 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom'; 
-import { saveCurrentChat } from '../actions/user';
+import { saveCurrentChat } from '../actions/user'
+import '../styles/chat-form.css'; 
 import '../styles/profile.css'; 
+import ChatForm from './chat-form'; 
+
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+global.jQuery = $;
 
 export class SearchUserProfile extends React.Component {
+  constructor(props) {
+    super(props) 
+      this.state = {
+        displayed: false
+      }
+  }
 
-  handleChatRoom(){
-    let chatRoom = `${this.props.username}-${this.props.selectedUsername}`
-    let data = {}
-    data.user1 = this.props.username
-    data.user2 = this.props.selectedUsername
-    data.currentChat = chatRoom
-    console.log('chatroom', data);
-    this.props.dispatch(saveCurrentChat(data));
-    
+  toggleChat() {
+    console.log("IT FIRED")
+    this.setState({
+      displayed: !this.state.displayed
+    });
+    console.log(this.state.displayed)
   }
 
   render() {
@@ -73,9 +83,22 @@ export class SearchUserProfile extends React.Component {
         <div className="left-section">
           <div style={sectionStyle} className="profile-picture">
           </div>
-          <div className="match-continer">
-            <p>{this.props.match}%</p>
+
+          <div className="match-section">
+            <div className="match-continer">
+              <p>{this.props.match}%</p>
+            </div>
+            <div>
+              <p>&nbsp;&nbsp;Match</p>
+            </div>
           </div>
+          <div className="profile-info-section"> 
+            <p>Smokes Cigarettes: {this.props.cigarattes ? "Yes" : "No"}</p>
+          </div>
+          <div className="profile-info-section"> 
+            <p>Has Pets: {this.props.pets_have ? "Yes" : "No"}</p>
+          </div>
+
         </div>
         <div className="right-section">
           { name }
@@ -83,7 +106,6 @@ export class SearchUserProfile extends React.Component {
           <br />
           {age}
           { looking_for }</p>
-          {/* { age } */}
           <p>
           { bio }
           { interests }
@@ -92,8 +114,10 @@ export class SearchUserProfile extends React.Component {
           { tv }
 
           </p>
-          <Link onClick={() => this.handleChatRoom()} to='/chat'>message</Link>
+          <br />
+          <button onClick={() => this.toggleChat()} className="button-blue">Message</button>
           </div>
+          <ChatForm displayed={this.state.displayed} onHandleClose={() => this.toggleChat()}/>
       </div>
     )
   }
@@ -118,14 +142,12 @@ export const mapStateToProps = state => {
       movies: state.user.selectedUser.movies,
       tv: state.user.selectedUser.tv, 
       picture: state.user.selectedUser.picture,
-<<<<<<< HEAD
       looking_for: state.user.selectedUser.looking_for, 
-      match: state.user.selectedUserMatch
-=======
-      looking_for: state.user.selectedUser.looking_for,
+      match: state.user.selectedUserMatch,
       username: state.auth.currentUser.username,
-      selectedUsername: state.user.selectedUser.username
->>>>>>> 8592e69c4403cc49ea63e8a86fa7171c96242f33
+      selectedUsername: state.user.selectedUser.username, 
+      cigarettes: state.user.selectedUser.cigarettes, 
+      pets_have: state.user.selectedUser.pets_have
     }
   }
   return {
