@@ -8,8 +8,8 @@ import {required, nonEmpty, matches, length, isTrimmed, email} from '../validato
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
-        const {username, password} = values;
-        const user = {username, password, looking_for: this.props.looking_for};
+        const {username, password, email} = values;
+        const user = {username, password, looking_for: this.props.looking_for, email};
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
