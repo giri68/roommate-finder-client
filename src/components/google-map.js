@@ -2,8 +2,6 @@ import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { connect } from 'react-redux';
-import { lookupLatLong } from '../actions/user';
-
 
 const MyMapComponent = compose(
   withProps({
@@ -17,7 +15,7 @@ const MyMapComponent = compose(
 )((props) =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultCenter={{ lat: props.lat, lng: props.long }}
   >
     {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
   </GoogleMap>
@@ -28,12 +26,6 @@ class DisplayMap extends React.PureComponent {
     isMarkerShown: false,
   }
 
-  componentDidMount() {
-    const city = this.props.currentUser.city
-    const state = this.props.currentUser.state
-    console.log(city, state);
-    this.props.dispatch(lookupLatLong(city, state))
-  }
 
   // componentDidMount() {
   //   this.delayedShowMarker()
@@ -53,6 +45,8 @@ class DisplayMap extends React.PureComponent {
   render() {
     return (
       <MyMapComponent
+      lat={this.props.lat}
+      long={this.props.long}
         // isMarkerShown={this.state.isMarkerShown}
         // onMarkerClick={this.handleMarkerClick}
       />
@@ -60,8 +54,10 @@ class DisplayMap extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.auth.currentUser
-});
+const mapStateToProps = state => (
+  console.log("this is latlong", state.auth.currentUser.long), 
+  {long: state.auth.currentUser.long,
+  lat: state.auth.currentUser.lat}
+);
 
 export default connect(mapStateToProps)(DisplayMap);

@@ -37,7 +37,6 @@ export class Dashboard extends React.Component {
             return;
         }
         const user = this.props.currentUser
-        console.log(user)
         this.props.dispatch(getAllUsers(user));
     }
 
@@ -82,11 +81,20 @@ export class Dashboard extends React.Component {
             });
         }
 
+        let displayMap;
+        if (this.props.currentUser.lat === undefined){
+            displayMap = ''
+        }
+        else {
+            displayMap = <DisplayMap/>
+        }
+        
+
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
                     <div className="map-container">
-                        <DisplayMap/>
+                        {displayMap}
                     </div>
                 </div>
                 <div className="dashboard-half">

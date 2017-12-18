@@ -12,6 +12,7 @@ import {
 const initialState = {
     authToken: null, // authToken !== null does not mean it has been validated
     currentUser: null,
+    updatedUser: false,
     loading: false,
     error: null
 };
@@ -35,7 +36,8 @@ export default function reducer(state = initialState, action) {
         console.log('currentusrr',action.currentUser);
         return Object.assign({}, state, {
             loading: false,
-            currentUser: action.currentUser
+            currentUser: action.currentUser,
+            updatedUser: action.updatedUser
         });
     } else if (action.type === AUTH_ERROR) {
         return Object.assign({}, state, {

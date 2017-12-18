@@ -4,9 +4,11 @@ import {Route, withRouter} from 'react-router-dom';
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Start from './start';
+import Chat from './Chat';
 
 import LoginForm from './login-form';
 import Dashboard from './dashboard';
+import ChatDashboard from './chat-dashboard';
 import Questions from './questions';
 import UserProfile from './user-profile';
 import RegistrationPage from './registration-page';
@@ -50,6 +52,8 @@ export class App extends React.Component {
                 <HeaderBar />
                 <div className="view-window">
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/chat" component={Chat} />
+                    <Route exact path="/messages" component={ChatDashboard} />
                     
                     <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/start" component={Start} />
