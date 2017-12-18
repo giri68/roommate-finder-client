@@ -47,7 +47,7 @@
     float: left; 
     width: 320px; 
     height: 00px; 
-    text-align: center;
+    text-align: right;
     background-color: black; 
 }
 
@@ -67,6 +67,30 @@ h1 {
     margin-top: 0px;
     padding-top: 0px; 
     line-height: 110%;  
+}
+
+.match-continer {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 55px;  
+    height: 55px;
+    background-color: rgb(95, 128, 92); 
+    border-radius: 50%;   
+}
+
+.match-section {
+    height: 55px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    margin: 0px; 
+}
+.profile-info-section {
+    display: flex; 
+    width: 100%; 
+    align-items: center; 
+    justify-content: flex-start; 
 }
 
 

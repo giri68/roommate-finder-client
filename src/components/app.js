@@ -14,6 +14,7 @@ import UserProfile from './user-profile';
 import RegistrationPage from './registration-page';
 import searchUserProfile from './search-user-profile'; 
 import {refreshAuthToken} from '../actions/auth';
+
 import '../styles/app.css'; 
 
 export class App extends React.Component {
