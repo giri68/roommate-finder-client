@@ -8,7 +8,9 @@
     width: 50%; 
 }
 
-
+#js-map {
+    position: relative; 
+}
 
 .map-container {
     /* background: url('../images/map.png') no-repeat center top; 

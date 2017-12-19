@@ -14,3 +14,14 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+
+
+// controls map scroll
+function mapScroll(){
+    let ypos = window.pageYOffset;
+    let distanceTop = 100
+    if(ypos > distanceTop){
+        document.getElementById('js-map').style.top = ypos - 100 + 'px'; 
+    } 
+}
+window.addEventListener('scroll', mapScroll); 

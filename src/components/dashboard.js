@@ -89,11 +89,10 @@ export class Dashboard extends React.Component {
             displayMap = <DisplayMap/>
         }
         
-
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
-                    <div className="map-container">
+                    <div className="map-container" id="js-map">
                         {displayMap}
                     </div>
                 </div>
