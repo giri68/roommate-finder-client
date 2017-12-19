@@ -105,8 +105,6 @@ export class SearchUserProfile extends React.Component {
               </p>
             </div>
           </div>
-          
-
         </div>
         <div className="right-section">
           { name }
@@ -124,8 +122,8 @@ export class SearchUserProfile extends React.Component {
           </p>
           <br />
           <button onClick={() => this.toggleChat()} className="button-blue">Message</button>
-          </div>
           <ChatForm displayed={this.state.displayed} onHandleClose={() => this.toggleChat()}/>
+          </div>
       </div>
     )
   }
