@@ -45,9 +45,7 @@ html {
 input {
   padding: 8px; 
   border: 1px solid rgb(155, 155, 155); 
-  border-radius: 4px; 
-  margin-bottom: 20px;
-  margin-top: 20px;   
+  border-radius: 4px;    
   margin-right: 7px; 
   font-size: 14px; 
   width: 300px; 
@@ -57,7 +55,6 @@ textarea {
   padding: 8px; 
   border: 1px solid rgb(155, 155, 155); 
   border-radius: 4px; 
-  margin-bottom: 20px;
   margin-top: 20px;   
   margin-right: 7px; 
   font-size: 14px; 
@@ -138,6 +135,18 @@ p {
 
 a {
   text-decoration: none; 
+}
+
+label {
+  margin-bottom: 10px; 
+}
+
+.form-section {
+  margin-bottom: 20px; 
+}
+
+.form-container {
+  margin-bottom: 50px;
 }
 
 
