@@ -33,7 +33,7 @@ export class Questions extends React.Component {
     .then(() => {
       user.lat = this.props.latLong.lat
       user.long = this.props.latLong.lng
-      // console.log("USER AS SUBMITTED", user)
+      console.log("USER AS SUBMITTED", user)
       this.props.dispatch(saveQuestions(user))
     })
     // .then(() => this.props.history.push('/dashboard'))
@@ -46,6 +46,7 @@ export class Questions extends React.Component {
     if (this.props.updatedUser) {
       return <Redirect to="/dashboard"/>;
     }
+  
 
     const minValue = min => value =>
       value && value < min ? `Must be at least ${min}` : undefined
@@ -213,6 +214,7 @@ export class Questions extends React.Component {
             <label htmlFor="pets_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone who doesn't have pets?</label>
           </div>
           <div className="form-section">
+            {/* <input type="range" className="slider" min="1" max="5" name="pets_bothered" /> */}
             <Field
               component={Input}
               type="number"
