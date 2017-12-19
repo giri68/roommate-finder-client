@@ -6,11 +6,6 @@ import '../styles/chat-form.css';
 import '../styles/profile.css'; 
 import ChatForm from './chat-form'; 
 
-import $ from 'jquery';
-window.jQuery = $;
-window.$ = $;
-global.jQuery = $;
-
 export class SearchUserProfile extends React.Component {
   constructor(props) {
     super(props) 
@@ -20,11 +15,9 @@ export class SearchUserProfile extends React.Component {
   }
 
   toggleChat() {
-    console.log("IT FIRED")
     this.setState({
       displayed: !this.state.displayed
     });
-    console.log(this.state.displayed)
   }
 
   render() {
@@ -76,8 +69,6 @@ export class SearchUserProfile extends React.Component {
       backgroundImage: `url(${this.props.picture})`, 
     };
 
-    
-
     return (
       <div className="search-user-profile">
         <div className="left-section">
@@ -116,7 +107,6 @@ export class SearchUserProfile extends React.Component {
           { music }
           { movies }
           { tv }
-
           </p>
           <br />
           <button onClick={() => this.toggleChat()} className="button-blue">Message</button>
@@ -129,9 +119,8 @@ export class SearchUserProfile extends React.Component {
 
 export const mapStateToProps = state => {
   if (state.auth.currentUser) {
-    console.log("MATCH:", state.user.selectedUserMatch)
     console.log("SEL USER:", state.user.selectedUser)
-    console.log('current user', state.user.currentChat)
+    console.log('CUR USER:', state.user.currentChat)
     return {
       loggedIn: state.auth.currentUser !== null,
       id: state.user.selectedUser.id,
