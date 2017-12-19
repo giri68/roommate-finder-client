@@ -94,8 +94,6 @@ export class SearchUserProfile extends React.Component {
             <div className="profile-info-section"> 
               <p>Smokes Cigarettes {this.props.cigarattes ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
               <br />
-              Smokes Marijuana {this.props.alt_smoking ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
-              <br />
               Drinks Alcohol {this.props.alcohol ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
               <br />
               Loud Music {this.props.loud_music ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
