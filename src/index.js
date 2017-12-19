@@ -20,10 +20,13 @@ ReactDOM.render(
 function mapScroll(){
     let ypos = window.pageYOffset;
     let distanceTop = 100
-    if(ypos === 0) {
-        document.getElementById('js-map').style.top = '0px'; 
-    } else if(ypos > distanceTop){
-        document.getElementById('js-map').style.top = ypos - 100 + 'px'; 
-    } 
+    let map = document.getElementById('js-map'); 
+    if(map) {
+        if(ypos === 0) {
+            map.style.top = '0px'; 
+        } else if(ypos > distanceTop){
+            map.style.top = ypos - 100 + 'px'; 
+        } 
+    }
 }
 window.addEventListener('scroll', mapScroll); 
