@@ -91,13 +91,21 @@ export class SearchUserProfile extends React.Component {
             <div>
               <p>&nbsp;&nbsp;Match</p>
             </div>
+            <div className="profile-info-section"> 
+              <p>Smokes Cigarettes {this.props.cigarattes ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
+              <br />
+              Smokes Marijuana {this.props.alt_smoking ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
+              <br />
+              Drinks Alcohol {this.props.alcohol ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
+              <br />
+              Loud Music {this.props.loud_music ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
+              <br />
+              Has Pets {this.props.pets_have ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
+              <br />
+              </p>
+            </div>
           </div>
-          <div className="profile-info-section"> 
-            <p>Smokes Cigarettes: {this.props.cigarattes ? "Yes" : "No"}</p>
-          </div>
-          <div className="profile-info-section"> 
-            <p>Has Pets: {this.props.pets_have ? "Yes" : "No"}</p>
-          </div>
+          
 
         </div>
         <div className="right-section">
@@ -146,8 +154,11 @@ export const mapStateToProps = state => {
       match: state.user.selectedUserMatch,
       username: state.auth.currentUser.username,
       selectedUsername: state.user.selectedUser.username, 
-      cigarettes: state.user.selectedUser.cigarettes, 
-      pets_have: state.user.selectedUser.pets_have
+      cigarettes: state.user.selectedUser.cigarettes,
+      marijuana: state.user.selectedUser.alt_smoking, 
+      pets_have: state.user.selectedUser.pets_have, 
+      loud_music: state.user.selectedUser.loud_music, 
+      alcohol: state.user.selectedUser.drinking_day_per_week
     }
   }
   return {

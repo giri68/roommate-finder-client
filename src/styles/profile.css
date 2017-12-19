@@ -1,5 +1,5 @@
 .search-user-profile {
-    width: 70%; 
+    width: 700px; 
     margin-left: auto; 
     margin-right: auto; 
 }
@@ -86,11 +86,59 @@ h1 {
     justify-content: flex-start; 
     margin: 0px; 
 }
+
 .profile-info-section {
-    display: flex; 
-    width: 100%; 
-    align-items: center; 
-    justify-content: flex-start; 
+    display: flex;  
+    align-items: center;  
+    justify-content: flex-end;
+    width: 200px; 
+    margin-left: 11px;   
+}
+
+.yes {
+    color: rgb(95, 128, 92);
+    margin-left: 10px; 
+    font-size: 20px;  
+    position: relative; 
+    top: 1px;  
+}
+
+.no {
+    color: rgb(196, 99, 99); 
+    margin-left: 10px; 
+    font-size: 20px; 
+    position: relative; 
+    top: 1px;  
 }
 
 
+@media screen and (max-width: 1050px) {
+    .search-user-profile {
+        width: 600px; 
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .search-user-profile {
+        width: 90%; 
+        margin-left: auto; 
+        margin-right: auto; 
+        background-color: black; 
+    }
+
+    .left-section {
+        float: none; 
+        display: block; 
+        width: 320px; 
+        height: 00px; 
+        text-align: right;
+        background-color: black; 
+    }
+    
+    .right-section {
+        float: none;
+        display: block; 
+        width: calc(100% - 400px);
+        padding-top: 0px;    
+    }
+}
