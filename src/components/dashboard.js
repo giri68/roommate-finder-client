@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchProtectedData } from '../actions/protected-data';
 import { getAllUsers } from '../actions/user';
+import { resetUpdatedUser } from '../actions/auth';
 import { Redirect } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Match from './match';
@@ -36,6 +37,7 @@ export class Dashboard extends React.Component {
         if (!this.props.loggedIn) {
             return;
         }
+        this.props.dispatch(resetUpdatedUser())
         const user = this.props.currentUser
         this.props.dispatch(getAllUsers(user));
     }
@@ -110,6 +112,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log("STATE: ", state)
     const { currentUser } = state.auth;
     return {
         loggedIn: state.auth.currentUser !== null,
