@@ -13,15 +13,18 @@
 }
 
 .map-container {
-    /* background: url('../images/map.png') no-repeat center top; 
-    -webkit-background-size: cover; 
-    -moz-background-size: cover; 
-    -o-background-size: cover; 
-    background-size: cover; */
     background-color: rgb(226, 226, 226); 
     width: 85%; 
     margin-top: 0px; 
     border: 10px solid white;
+}
+
+.message-container {
+    background-color: rgb(26, 26, 26); 
+    width: 70%;  
+    padding: 50px; 
+    margin-top: 0px;
+    border-radius: 5px;  
 }
 
 #page-numbers {

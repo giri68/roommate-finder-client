@@ -4,7 +4,7 @@ import requiresLogin from './requires-login';
 import { fetchProtectedData } from '../actions/protected-data';
 import { getAllUsers } from '../actions/user';
 import { resetUpdatedUser } from '../actions/auth';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Match from './match';
 import DisplayMap from './google-map';
@@ -85,18 +85,22 @@ export class Dashboard extends React.Component {
 
         let displayMap;
         if (this.props.currentUser.lat === undefined){
-            displayMap = ''
+            displayMap = <div className="message-container">
+                <h1>Welcome!</h1>
+                <p>Roommate Finder uses a series of personality questions to match you with your perfect roommate!
+                    <br /><br />
+                    To begin the matching process, please fill out the question form. A link 
+                    to the question form can be found in the navigation bar or <Link to="/questions">here</Link>.</p>
+            </div>
         }
         else {
-            displayMap = <DisplayMap/>
+            displayMap = <div className="map-container" id="js-map"><DisplayMap/></div>
         }
         
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
-                    <div className="map-container" id="js-map">
                         {displayMap}
-                    </div>
                 </div>
                 <div className="dashboard-half">
                     {renderCurrent}
