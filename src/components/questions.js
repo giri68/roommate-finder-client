@@ -215,6 +215,13 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">
             {/* <input type="range" className="slider" min="1" max="5" name="pets_bothered" /> */}
+            {/* <Field
+              component={Input}
+              type="range"
+              input={{className:'slider', min: '1', max: '5'}}
+              name="pets_bothered"
+              validate={[required, nonEmpty]}
+            /> */}
             <Field
               component={Input}
               type="number"
