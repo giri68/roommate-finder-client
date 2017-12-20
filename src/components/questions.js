@@ -9,6 +9,7 @@ import { saveQuestions } from '../actions/user';
 import '../styles/questions.css'; 
 import { lookupLatLong, lookupLatLong2 } from '../actions/user';
 import Range from './range'; 
+import StateSelect from './state-select'; 
 
 export class Questions extends React.Component {
 
@@ -158,10 +159,10 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <Field
-            component={Input}
+            component={StateSelect}
             type="text"
             name="state"
-            validate={[required, nonEmpty, isTrimmed]}
+            // validate={[required]}
           />
         </div>
         <div className="form-section">
@@ -267,6 +268,7 @@ export class Questions extends React.Component {
               id="value-slider"
               name="pets_bothered"
               component={Range}
+              // input={{defaultValue: "5"}}
               // validate={[required]}
             />
           </div>
@@ -528,7 +530,7 @@ export class Questions extends React.Component {
 const mapStateToProps = (state) => ({
   loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser,
-  looking_for: state.user.looking_for,
+  looking_for: state.auth.currentUser.looking_for,
   latLong: state.user.latLong,
   updatedUser: state.auth.updatedUser
 });
