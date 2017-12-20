@@ -177,12 +177,11 @@ export class Questions extends React.Component {
 
     return (
       <div className="container">
+        <form className="profile" onSubmit={this.props.handleSubmit(values =>
+          this.onSubmit(values))}>
           <h1 className="center" >Match Questions</h1>
           <p className="center" >To help us better match you with potential roommates, please tell us a little bit about yourself and what you're looking for.</p>
           <br />
-        <form className="profile" onSubmit={this.props.handleSubmit(values =>
-          this.onSubmit(values))}>
-
           <div className="form-container">
             <h2>Basic Info</h2>
             <div className="form-section">
