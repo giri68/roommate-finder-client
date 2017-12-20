@@ -3,7 +3,8 @@ import {
     CLEAR_AUTH,
     AUTH_REQUEST,
     AUTH_SUCCESS,
-    AUTH_ERROR
+    AUTH_ERROR, 
+    RESET_UPDATED_USER
 } from '../actions/auth';
 import {
     UPDATE_CURRENT_USER
@@ -43,6 +44,10 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {
             loading: false,
             error: action.error
+        });
+    } else if (action.type === RESET_UPDATED_USER) {
+        return Object.assign({}, state, {
+            updatedUser: false
         });
     }
     return state;

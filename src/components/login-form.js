@@ -6,12 +6,23 @@ import {required, nonEmpty} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {getSelectedUser} from '../actions/user'; 
+import {getSelectedUser} from '../actions/user';
+import { PulseLoader } from 'react-spinners'; 
 
 export class LoginForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: false
+        }
+    }
+    
+    
     onSubmit(values) {
+        this.setState({ loading: true })
         return this.props.dispatch(login(values.username, values.password))
         .then(() => this.props.dispatch(getSelectedUser(values.username)))
+        .then(() => this.setState({ loading: false}))
         
     }
 
@@ -38,26 +49,30 @@ export class LoginForm extends React.Component {
                         this.onSubmit(values)
                     )}>
                     {error}
-                    
-                    <label htmlFor="username">Username</label>
-                    <Field
-                        component={Input}
-                        type="text"
-                        name="username"
-                        id="username"
-                        validate={[required, nonEmpty]}
-                    />
-                    <label htmlFor="password">Password</label>
-                    <Field
-                        component={Input}
-                        type="password"
-                        name="password"
-                        id="password"
-                        validate={[required, nonEmpty]}
-                    />
+                    <div className="form-section">
+                        <label htmlFor="username">Username</label>
+                        <Field
+                            component={Input}
+                            type="text"
+                            name="username"
+                            id="username"
+                            validate={[required, nonEmpty]}
+                        />
+                    </div>    
+                    <div className="form-section">
+                        <label htmlFor="password">Password</label>
+                        <Field
+                            component={Input}
+                            type="password"
+                            name="password"
+                            id="password"
+                            validate={[required, nonEmpty]}
+                        />
+                    </div>
                     <button className="button-blue" disabled={this.props.pristine || this.props.submitting}>
                         Log in
                     </button>
+                    <PulseLoader color={'#fff'} loading={this.state.loading} className="loading-graphic" />
                     
                 </form>
                 <p><Link className="login-link" to="/">Back</Link></p>

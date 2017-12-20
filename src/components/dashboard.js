@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchProtectedData } from '../actions/protected-data';
 import { getAllUsers } from '../actions/user';
-import { Redirect } from 'react-router-dom';
+import { resetUpdatedUser } from '../actions/auth';
+import { Redirect, Link } from 'react-router-dom';
 import '../styles/dashboard.css';
 import Match from './match';
 import DisplayMap from './google-map';
@@ -36,6 +37,7 @@ export class Dashboard extends React.Component {
         if (!this.props.loggedIn) {
             return;
         }
+        this.props.dispatch(resetUpdatedUser())
         const user = this.props.currentUser
         this.props.dispatch(getAllUsers(user));
     }
@@ -83,19 +85,22 @@ export class Dashboard extends React.Component {
 
         let displayMap;
         if (this.props.currentUser.lat === undefined){
-            displayMap = ''
+            displayMap = <div className="message-container">
+                <h1>Welcome!</h1>
+                <p>Roommate Finder uses a series of personality questions to match you with your perfect roommate!
+                    <br /><br />
+                    To begin the matching process, please fill out the question form. A link 
+                    to the question form can be found in the navigation bar or <Link to="/questions">here</Link>.</p>
+            </div>
         }
         else {
-            displayMap = <DisplayMap/>
+            displayMap = <div className="map-container" id="js-map"><DisplayMap/></div>
         }
         
-
         return (
             <div className="dashboard">
                 <div className="dashboard-half">
-                    <div className="map-container">
                         {displayMap}
-                    </div>
                 </div>
                 <div className="dashboard-half">
                     {renderCurrent}
@@ -111,6 +116,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log("STATE: ", state)
     const { currentUser } = state.auth;
     return {
         loggedIn: state.auth.currentUser !== null,

@@ -6,11 +6,6 @@ import '../styles/chat-form.css';
 import '../styles/profile.css'; 
 import ChatForm from './chat-form'; 
 
-import $ from 'jquery';
-window.jQuery = $;
-window.$ = $;
-global.jQuery = $;
-
 export class SearchUserProfile extends React.Component {
   constructor(props) {
     super(props) 
@@ -20,11 +15,9 @@ export class SearchUserProfile extends React.Component {
   }
 
   toggleChat() {
-    console.log("IT FIRED")
     this.setState({
       displayed: !this.state.displayed
     });
-    console.log(this.state.displayed)
   }
 
   render() {
@@ -76,8 +69,6 @@ export class SearchUserProfile extends React.Component {
       backgroundImage: `url(${this.props.picture})`, 
     };
 
-    
-
     return (
       <div className="search-user-profile">
         <div className="left-section">
@@ -94,8 +85,6 @@ export class SearchUserProfile extends React.Component {
             <div className="profile-info-section"> 
               <p>Smokes Cigarettes {this.props.cigarattes ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
               <br />
-              Smokes Marijuana {this.props.alt_smoking ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
-              <br />
               Drinks Alcohol {this.props.alcohol ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
               <br />
               Loud Music {this.props.loud_music ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
@@ -105,8 +94,6 @@ export class SearchUserProfile extends React.Component {
               </p>
             </div>
           </div>
-          
-
         </div>
         <div className="right-section">
           { name }
@@ -120,12 +107,11 @@ export class SearchUserProfile extends React.Component {
           { music }
           { movies }
           { tv }
-
           </p>
           <br />
           <button onClick={() => this.toggleChat()} className="button-blue">Message</button>
-          </div>
           <ChatForm displayed={this.state.displayed} onHandleClose={() => this.toggleChat()}/>
+          </div>
       </div>
     )
   }
@@ -133,9 +119,8 @@ export class SearchUserProfile extends React.Component {
 
 export const mapStateToProps = state => {
   if (state.auth.currentUser) {
-    console.log("MATCH:", state.user.selectedUserMatch)
     console.log("SEL USER:", state.user.selectedUser)
-    console.log('current user', state.user.currentChat)
+    console.log('CUR USER:', state.user.currentChat)
     return {
       loggedIn: state.auth.currentUser !== null,
       id: state.user.selectedUser.id,

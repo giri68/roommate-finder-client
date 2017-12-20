@@ -11,6 +11,12 @@ export const setAuthToken = authToken => ({
     authToken
 });
 
+export const RESET_UPDATED_USER = 'RESET_UPDATED_USER';
+export const resetUpdatedUser = () => ({
+    type: RESET_UPDATED_USER
+});
+
+
 export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const clearAuth = () => ({
     type: CLEAR_AUTH
