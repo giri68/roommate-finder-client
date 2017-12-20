@@ -68,74 +68,110 @@ export class Questions extends React.Component {
     let lookingFor;
     console.log("QUESTIONS PAGE LOOKING FOR", this.props.looking_for)
     if (this.props.looking_for === "find_a_room" || this.props.looking_for === "find_a_roommate") {
-      lookingFor = <div><h2>Apartment Criteria</h2>
-        <label htmlFor="city">City</label>
-        <Field
-          component={Input}
-          type="text"
-          name="city"
-          validate={[required, nonEmpty, isTrimmed]}
-        />
-        <label htmlFor="state">State</label>
-        <Field
-          component={Input}
-          type="text"
-          name="state"
-          validate={[required, nonEmpty, isTrimmed]}
-        />
-        <label htmlFor="max_distance">Search Radius(miles)</label>
-        <Field
-          component={Input}
-          type="number"
-          name="max_distance"
-          validate={[required, nonEmpty, minValue1]}
-        />
-        <label htmlFor="max_price">Maximum Price</label>
-        <Field
-          component={Input}
-          type="number"
-          name="max_price"
-          validate={[required, nonEmpty, minValue100]}
-        />
+      lookingFor = <div className="form-container"><h2>Apartment Criteria</h2>
+        <div className="form-section">
+          <label htmlFor="city">City</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="text"
+            name="city"
+            validate={[required, nonEmpty, isTrimmed]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="state">State</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="text"
+            name="state"
+            validate={[required, nonEmpty, isTrimmed]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="max_distance">Search Radius(miles)</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="number"
+            name="max_distance"
+            validate={[required, nonEmpty, minValue1]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="max_price">Maximum Price</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="number"
+            name="max_price"
+            validate={[required, nonEmpty, minValue100]}
+          />
+        </div>
       </div>
     }
     else if (this.props.looking_for === "fill_a_room") {
-      lookingFor = <div><h2>Apartment Listing</h2>
-        <label htmlFor="address">Address</label>
-        <Field
-          component={Input}
-          type="text"
-          name="address"
-          validate={[required, nonEmpty, isTrimmed]}
-        />
-        <label htmlFor="city">City</label>
-        <Field
-          component={Input}
-          type="text"
-          name="city"
-          validate={[required, nonEmpty, isTrimmed]}
-        />
-        <label htmlFor="state">State</label>
-        <Field
-          component={Input}
-          type="text"
-          name="state"
-          validate={[required, nonEmpty, isTrimmed]}
-        />
-        <label htmlFor="zipcode">Zip Code</label>
-        <Field
-          component={Input}
-          type="number"
-          name="zipcode"
-          validate={[required, nonEmpty]}
-        />
-        <label htmlFor="max_price">Room Price</label>
-        <Field
-          component={Input}
-          type="number"
-          name="max_price"
-          validate={[required, nonEmpty]}
-        />
+      lookingFor = <div className="form-container"><h2>Apartment Listing</h2>
+        <div className="form-section">
+          <label htmlFor="address">Address</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="text"
+            name="address"
+            validate={[required, nonEmpty, isTrimmed]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="city">City</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="text"
+            name="city"
+            validate={[required, nonEmpty, isTrimmed]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="state">State</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="text"
+            name="state"
+            validate={[required, nonEmpty, isTrimmed]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="zipcode">Zip Code</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="number"
+            name="zipcode"
+            validate={[required, nonEmpty]}
+          />
+        </div>
+        <div className="form-section">
+          <label htmlFor="max_price">Room Price</label>
+        </div>
+        <div className="form-section">
+          <Field
+            component={Input}
+            type="number"
+            name="max_price"
+            validate={[required, nonEmpty]}
+          />
+        </div>
       </div>
     }
 
