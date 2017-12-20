@@ -168,8 +168,8 @@ export const getSelectedUser = (username) => dispatch => {
     });  
 }
 
-export const lookupLatLong = (city, state) => dispatch => {
-    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city},+${state}`, {
+export const lookupLatLong = (city, state, address) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city},+${state},+${address}`, {
         method: 'GET'
     })
     .then(res => res.json())

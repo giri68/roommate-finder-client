@@ -1,7 +1,10 @@
 import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { compose, withProps, withStateHandlers } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 import { connect } from 'react-redux';
+import TextBox from './text-box';
+
+const FaAnchor = require("react-icons/lib/fa/anchor");
 
 const MyMapComponent = compose(
   withProps({
@@ -10,16 +13,34 @@ const MyMapComponent = compose(
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
+  withStateHandlers(() => ({
+    isOpen: false,
+  }), {
+    onToggleOpen: ({ isOpen }) => () => ({
+      isOpen: !isOpen,
+    })
+  }),
   withScriptjs,
   withGoogleMap
-)((props) =>
-  <GoogleMap
-    defaultZoom={8}
+)((props) => {
+  return <GoogleMap
+    defaultZoom={12}
     defaultCenter={{ lat: props.lat, lng: props.long }}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+    {props.profileMatches.map((profile) => {
+    return <Marker 
+    position={{ lat: profile.lat, lng: profile.long }} 
+    onClick={props.onToggleOpen}
+  > {props.isOpen && <InfoWindow onClick={props.onToggleOpen}
+  > 
+  <TextBox profile={profile}/>
+  </InfoWindow>} 
+  </Marker> 
+ 
+})}
+
   </GoogleMap>
-)
+})
 
 class DisplayMap extends React.PureComponent {
   state = {
@@ -27,28 +48,24 @@ class DisplayMap extends React.PureComponent {
   }
 
 
-  // componentDidMount() {
-  //   this.delayedShowMarker()
-  // }
+  componentDidMount() {
+    this.delayedShowMarker()
+  }
 
-  // delayedShowMarker = () => {
-  //   setTimeout(() => {
-  //     this.setState({ isMarkerShown: true })
-  //   }, 3000)
-  // }
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({})
+    }, 3000)
+  }
 
-  // handleMarkerClick = () => {
-  //   this.setState({ isMarkerShown: false })
-  //   this.delayedShowMarker()
-  // }
 
   render() {
     return (
       <MyMapComponent
       lat={this.props.lat}
       long={this.props.long}
-        // isMarkerShown={this.state.isMarkerShown}
-        // onMarkerClick={this.handleMarkerClick}
+      profileMatches={this.props.profileMatches}
+        isMarkerShown={this.state.isMarkerShown}
       />
     )
   }
@@ -56,8 +73,11 @@ class DisplayMap extends React.PureComponent {
 
 const mapStateToProps = state => (
   console.log("this is latlong", state.auth.currentUser.long), 
-  {long: state.auth.currentUser.long,
-  lat: state.auth.currentUser.lat}
+  {
+  long: state.auth.currentUser.long,
+  lat: state.auth.currentUser.lat,
+  profileMatches: state.user.profileMatches
+  }
 );
 
 export default connect(mapStateToProps)(DisplayMap);
