@@ -6,12 +6,23 @@ import {required, nonEmpty} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {getSelectedUser} from '../actions/user'; 
+import {getSelectedUser} from '../actions/user';
+import { PulseLoader } from 'react-spinners'; 
 
 export class LoginForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: false
+        }
+    }
+    
+    
     onSubmit(values) {
+        this.setState({ loading: true })
         return this.props.dispatch(login(values.username, values.password))
         .then(() => this.props.dispatch(getSelectedUser(values.username)))
+        .then(() => this.setState({ loading: false}))
         
     }
 
@@ -61,6 +72,7 @@ export class LoginForm extends React.Component {
                     <button className="button-blue" disabled={this.props.pristine || this.props.submitting}>
                         Log in
                     </button>
+                    <PulseLoader color={'#fff'} loading={this.state.loading} className="loading-graphic" />
                     
                 </form>
                 <p><Link className="login-link" to="/">Back</Link></p>
