@@ -7,7 +7,7 @@ import { compose } from 'redux';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import { saveQuestions } from '../actions/user';
 import '../styles/questions.css'; 
-import { lookupLatLong } from '../actions/user';
+import { lookupLatLong, lookupLatLong2 } from '../actions/user';
 import Range from './range'; 
 
 export class Questions extends React.Component {
@@ -30,14 +30,24 @@ export class Questions extends React.Component {
       guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode, common_areas, common_areas_bothered
     };
     user.username = this.props.currentUser.username
-    return this.props.dispatch(lookupLatLong(city, state, address))
+    if (this.props.currentUser.looking_for === "find_a_room" || this.props.currentUser.looking_for === "find_a_roommate") {
+      return this.props.dispatch(lookupLatLong2(city, state))
+      .then(() => {
+        user.lat = this.props.latLong.lat
+        user.long = this.props.latLong.lng
+        console.log("USER AS SUBMITTED", user)
+        this.props.dispatch(saveQuestions(user))
+      })
+    }
+    else {
+      return this.props.dispatch(lookupLatLong(city, state, address))
     .then(() => {
       user.lat = this.props.latLong.lat
       user.long = this.props.latLong.lng
       console.log("USER AS SUBMITTED", user)
       this.props.dispatch(saveQuestions(user))
     })
-    // .then(() => this.props.history.push('/dashboard'))
+  }
   }
 
   render() {
@@ -70,8 +80,8 @@ export class Questions extends React.Component {
 
 
     let lookingFor;
-    console.log("QUESTIONS PAGE LOOKING FOR", this.props.looking_for)
-    if (this.props.looking_for === "find_a_room" || this.props.looking_for === "find_a_roommate") {
+    console.log("QUESTIONS PAGE LOOKING FOR", this.props.currentUser.looking_for)
+    if (this.props.currentUser.looking_for === "find_a_room" || this.props.currentUser.looking_for === "find_a_roommate") {
       lookingFor = <div className="form-container"><h2>Apartment Criteria</h2>
         <div className="form-section">
           <label htmlFor="city">City</label>
@@ -119,7 +129,7 @@ export class Questions extends React.Component {
         </div>
       </div>
     }
-    else if (this.props.looking_for === "fill_a_room") {
+    else if (this.props.currentUser.looking_for === "fill_a_room") {
       lookingFor = <div className="form-container"><h2>Apartment Listing</h2>
         <div className="form-section">
           <label htmlFor="address">Address</label>

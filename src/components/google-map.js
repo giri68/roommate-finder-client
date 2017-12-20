@@ -24,7 +24,7 @@ const MyMapComponent = compose(
   withGoogleMap
 )((props) => {
   return <GoogleMap
-    defaultZoom={12}
+    defaultZoom={10}
     defaultCenter={{ lat: props.lat, lng: props.long }}
   >
     {props.profileMatches.map((profile) => {

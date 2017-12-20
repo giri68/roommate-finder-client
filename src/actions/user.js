@@ -179,6 +179,17 @@ export const lookupLatLong = (city, state, address) => dispatch => {
     })
 }
 
+export const lookupLatLong2 = (city, state) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city},+${state}`, {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(location => {
+        console.log("response latlong", location.results[0].geometry.location);
+        dispatch(saveLatLong(location.results[0].geometry.location))
+    })
+}
+
 export const SAVE_LAT_LONG = "SAVE_LAT_LONG"; 
 export const saveLatLong = (latLong) => ({
     type: SAVE_LAT_LONG, 
