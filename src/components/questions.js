@@ -30,7 +30,7 @@ export class Questions extends React.Component {
       guests_frequency, guests_bothered, cleanliness, cleanliness_bothered, address, zipcode, common_areas, common_areas_bothered
     };
     user.username = this.props.currentUser.username
-    return this.props.dispatch(lookupLatLong(city, state))
+    return this.props.dispatch(lookupLatLong(city, state, address))
     .then(() => {
       user.lat = this.props.latLong.lat
       user.long = this.props.latLong.lng
