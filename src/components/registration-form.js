@@ -24,34 +24,42 @@ export class RegistrationForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <label htmlFor="username">Username</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-                <label htmlFor="password">Password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="password"
-                    validate={[required, length({min: 10, max: 72}), isTrimmed]}
-                />
-                <label htmlFor="passwordConfirm">Confirm password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="passwordConfirm"
-                    validate={[required, nonEmpty, matches('password')]}
-                />
-                <label htmlFor="email">Email</label>
-                <Field
-                    component={Input}
-                    type="email"
-                    name="email"
-                    validate={email}
-                />
+                <div className="form-section">
+                    <label htmlFor="username">Username</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="username"
+                        validate={[required, nonEmpty, isTrimmed]}
+                    />
+                </div>
+                <div className="form-section">
+                    <label htmlFor="password">Password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="password"
+                        validate={[required, length({min: 10, max: 72}), isTrimmed]}
+                    />
+                </div>
+                <div className="form-section">
+                    <label htmlFor="passwordConfirm">Confirm password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="passwordConfirm"
+                        validate={[required, nonEmpty, matches('password')]}
+                    />
+                </div>
+                <div className="form-section">
+                    <label htmlFor="email">Email</label>
+                    <Field
+                        component={Input}
+                        type="email"
+                        name="email"
+                        validate={email}
+                    />
+                </div>
                 <button
                     className="button-blue"
                     type="submit"
