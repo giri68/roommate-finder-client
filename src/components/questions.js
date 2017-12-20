@@ -8,6 +8,7 @@ import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import { saveQuestions } from '../actions/user';
 import '../styles/questions.css'; 
 import { lookupLatLong } from '../actions/user';
+import Range from './range'; 
 
 export class Questions extends React.Component {
 
@@ -46,7 +47,10 @@ export class Questions extends React.Component {
     if (this.props.updatedUser) {
       return <Redirect to="/dashboard"/>;
     }
-  
+
+
+
+
 
     const minValue = min => value =>
       value && value < min ? `Must be at least ${min}` : undefined
@@ -249,20 +253,12 @@ export class Questions extends React.Component {
             <label htmlFor="pets_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone who doesn't have pets?</label>
           </div>
           <div className="form-section">
-            {/* <input type="range" className="slider" min="1" max="5" name="pets_bothered" /> */}
             <Field
-              component={Input}
-              type="range"
-              input={{className:'slider', min: '1', max: '5' }}
+              id="value-slider"
               name="pets_bothered"
-              validate={[required, nonEmpty]}
+              component={Range}
+              // validate={[required]}
             />
-            {/* <Field
-              component={Input}
-              type="number"
-              name="pets_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
           </div>
           <div className="form-section">
             <label>Do you listen to loud music, tv, or movies in your living space?</label>
@@ -280,11 +276,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">
             <Field
+              id="value-slider"
+              name="loud_music_bothered"
+              component={Range}
+              // validate={[required]}
+            />
+            {/* <Field
               component={Input}
               type="number"
               name="loud_music_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
           <div className="form-section">
             <label>Do you smoke cigarettes?</label>
@@ -302,11 +304,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">
             <Field
+              id="value-slider"
+              name="cigarettes_bothered"
+              component={Range}
+              // validate={[required]}
+            />
+            {/* <Field
               component={Input}
               type="number"
               name="cigarettes_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
           <div className="form-section">
             <label>Do you consume alcohol?</label>
@@ -324,11 +332,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">   
             <Field
+              id="value-slider"
+              name="drinking_bothered"
+              component={Range}
+              // validate={[required]}
+            />
+            {/* <Field
                 component={Input}
                 type="number"
                 name="drinking_bothered"
                 validate={[required, nonEmpty]}
-              />
+              /> */}
           </div>
           <div className="form-section"> 
             <label>Do you smoke marijuana?</label>
@@ -346,11 +360,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
+              id="value-slider"
+              name="alt_smoking_bothered"
+              component={Range}
+              // validate={[required]}
+            />
+            {/* <Field
               component={Input}
               type="number"
               name="alt_smoking_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
           <div className="form-section"> 
             <label>Are you awake at odd hours of the morning/evening?</label>
@@ -368,11 +388,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
-              component={Input}
-              type="number"
+              id="value-slider"
               name="hours_bothered"
-              validate={[required, nonEmpty]}
+              component={Range}
+              // validate={[required]}
             />
+              {/* <Field
+                component={Input}
+                type="number"
+                name="hours_bothered"
+                validate={[required, nonEmpty]}
+              /> */}
           </div>
 
           <div className="form-section"> 
@@ -391,11 +417,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
+              id="value-slider"
+              name="guests_bothered"
+              component={Range}
+              // validate={[required]}
+            />
+            {/* <Field
               component={Input}
               type="number"
               name="guests_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
 
           <div className="form-section"> 
@@ -414,11 +446,17 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
+              id="value-slider"
+              name="cleanliness_bothered"
+              component={Range}
+              // validate={[required]}
+            />
+            {/* <Field
               component={Input}
               type="number"
               name="cleanliness_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
           <div className="form-section"> 
             <label>Do you spend a lot of time in common areas such as the kitchen and living room?</label>
@@ -434,24 +472,36 @@ export class Questions extends React.Component {
           <div className="form-section"> 
             <label htmlFor="common_areas_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone who keeps to themself?</label>
           </div>
-          <div className="form-section"> 
+          <div className="form-section">
             <Field
+              id="value-slider"
+              name="common_areas_bothered"
+              component={Range}
+              // validate={[required]}
+            /> 
+            {/* <Field
               component={Input}
               type="number"
               name="common_areas_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
           <div className="form-section"> 
             <label htmlFor="gender_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone of the same sex?</label>
           </div>
           <div className="form-section"> 
             <Field
+              id="value-slider"
+              name="gender_bothered"
+              component={Range}
+              // validate={[required]}
+            /> 
+            {/* <Field
               component={Input}
               type="number"
               name="gender_bothered"
               validate={[required, nonEmpty]}
-            />
+            /> */}
           </div>
           <button
             type="submit"
