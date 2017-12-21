@@ -432,6 +432,8 @@ export class Questions extends React.Component {
               id="value-slider"
               name="guests_bothered"
               component={Range}
+              initialValues="3"
+              initialValue="3"
               // validate={[required]}
             />
             {/* <Field
