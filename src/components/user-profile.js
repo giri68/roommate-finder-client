@@ -20,9 +20,13 @@ export class UserProfile extends React.Component {
       pictureInputDisplayed: false,
     }
   }
+  
 
 
   componentDidMount() {
+    if (!this.props.loggedIn) {
+      return;
+  }
     const user = {}
     user.username = this.props.username
     this.props.dispatch(saveQuestions(user))
@@ -329,7 +333,7 @@ export const mapStateToProps = (state) => {
     movies: state.auth.currentUser ? state.auth.currentUser.movies : null,
     tv: state.auth.currentUser ? state.auth.currentUser.tv : null,
     username: state.auth.currentUser ? state.auth.currentUser.username : null, 
-    picture: state.auth.currentUser.picture ? state.auth.currentUser.picture : ''
+    picture: state.auth.currentUser ? state.auth.currentUser.picture : ''
   }
 }
 
