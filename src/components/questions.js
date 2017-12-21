@@ -8,7 +8,6 @@ import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import { saveQuestions } from '../actions/user';
 import '../styles/questions.css'; 
 import { lookupLatLong, lookupLatLong2 } from '../actions/user';
-import Range from './range'; 
 import StateSelect from './state-select'; 
 import Rating from './rating'; 
 
