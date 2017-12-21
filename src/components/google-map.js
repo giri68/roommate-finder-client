@@ -3,6 +3,7 @@ import { compose, withProps, withStateHandlers } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 import { connect } from 'react-redux';
 import TextBox from './text-box';
+import MarkerWrapper from './marker-wrapper';
 
 const FaAnchor = require("react-icons/lib/fa/anchor");
 
@@ -27,15 +28,11 @@ const MyMapComponent = compose(
     defaultZoom={10}
     defaultCenter={{ lat: props.lat, lng: props.long }}
   >
-    {props.profileMatches.map((profile) => {
-    return <Marker 
-    position={{ lat: profile.lat, lng: profile.long }} 
-    onClick={props.onToggleOpen}
-  > {props.isOpen && <InfoWindow onClick={props.onToggleOpen}
-  > 
-  <TextBox profile={profile}/>
-  </InfoWindow>} 
-  </Marker> 
+    {props.profileMatches.map((profile, index) => {
+    return <MarkerWrapper
+    profile={profile}
+    key={index}>
+    </MarkerWrapper>
  
 })}
 
