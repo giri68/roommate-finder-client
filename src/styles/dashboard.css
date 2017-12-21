@@ -58,3 +58,26 @@
     opacity: 1; 
 }
 
+
+
+
+@media screen and (max-width: 1000px) {
+    .dashboard-half {
+        display: block; 
+        width: 100%;  
+    }
+
+    .dashboard {
+        display: block; 
+    }
+
+    .message-container {
+        width:  calc(100% - 100px);  
+        margin-bottom: 40px;   
+    }
+
+    .map-container {
+        width: calc(100% - 20px); 
+        margin-bottom: 40px; 
+    }
+}

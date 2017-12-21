@@ -15,7 +15,9 @@
 
 @media screen and (max-width: 800px) {
     .view-window {
-        margin: auto; 
+        margin-left: auto; 
+        margin-right: auto; 
         width: 90%;  
+        margin-bottom: 50px; 
     }
 }
