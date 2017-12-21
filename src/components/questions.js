@@ -10,6 +10,8 @@ import '../styles/questions.css';
 import { lookupLatLong, lookupLatLong2 } from '../actions/user';
 import Range from './range'; 
 import StateSelect from './state-select'; 
+import Rating from './rating'; 
+
 
 export class Questions extends React.Component {
 
@@ -59,12 +61,8 @@ export class Questions extends React.Component {
       return <Redirect to="/dashboard"/>;
     }
 
-
-
-
-
     const minValue = min => value =>
-      value && value < min ? `Must be at least ${min}` : undefined
+    value && value < min ? `Must be at least ${min}` : undefined
     const minValue18 = minValue(18)
     const minValue1 = minValue(1)
     const minValue100 = minValue(100)
@@ -103,7 +101,7 @@ export class Questions extends React.Component {
             component={StateSelect}
             type="text"
             name="state"
-            // validate={[required, nonEmpty, isTrimmed]}
+            validate={[required, nonEmpty, isTrimmed]}
           />
         </div>
         <div className="form-section">
@@ -162,7 +160,7 @@ export class Questions extends React.Component {
             component={StateSelect}
             type="text"
             name="state"
-            // validate={[required]}
+            validate={[required]}
           />
         </div>
         <div className="form-section">
@@ -264,12 +262,11 @@ export class Questions extends React.Component {
             <label htmlFor="pets_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone who doesn't have pets?</label>
           </div>
           <div className="form-section">
-            <Field
-              id="value-slider"
+          <Field
+              component={Rating}
+              type="text"
               name="pets_bothered"
-              component={Range}
-              // input={{defaultValue: "5"}}
-              // validate={[required]}
+              validate={[required]}
             />
           </div>
           <div className="form-section">
@@ -288,17 +285,11 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="loud_music_bothered"
-              component={Range}
-              // validate={[required]}
+              validate={[required]}
             />
-            {/* <Field
-              component={Input}
-              type="number"
-              name="loud_music_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
           </div>
           <div className="form-section">
             <label>Do you smoke cigarettes?</label>
@@ -316,17 +307,11 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="cigarettes_bothered"
-              component={Range}
-              // validate={[required]}
+              validate={[required]}
             />
-            {/* <Field
-              component={Input}
-              type="number"
-              name="cigarettes_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
           </div>
           <div className="form-section">
             <label>Do you consume alcohol?</label>
@@ -344,17 +329,11 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">   
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="drinking_bothered"
-              component={Range}
-              // validate={[required]}
+              validate={[required]}
             />
-            {/* <Field
-                component={Input}
-                type="number"
-                name="drinking_bothered"
-                validate={[required, nonEmpty]}
-              /> */}
           </div>
           <div className="form-section"> 
             <label>Do you smoke marijuana?</label>
@@ -372,17 +351,11 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="alt_smoking_bothered"
-              component={Range}
-              // validate={[required]}
+              validate={[required]}
             />
-            {/* <Field
-              component={Input}
-              type="number"
-              name="alt_smoking_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
           </div>
           <div className="form-section"> 
             <label>Are you awake at odd hours of the morning/evening?</label>
@@ -400,17 +373,11 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="hours_bothered"
-              component={Range}
-              // validate={[required]}
+              validate={[required]}
             />
-              {/* <Field
-                component={Input}
-                type="number"
-                name="hours_bothered"
-                validate={[required, nonEmpty]}
-              /> */}
           </div>
 
           <div className="form-section"> 
@@ -429,21 +396,12 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="guests_bothered"
-              component={Range}
-              initialValues="3"
-              initialValue="3"
-              // validate={[required]}
+              validate={[required]}
             />
-            {/* <Field
-              component={Input}
-              type="number"
-              name="guests_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
           </div>
-
           <div className="form-section"> 
             <label>Would you consider yourself a slob? (Be honest!)</label>
           </div>
@@ -460,17 +418,11 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section"> 
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="cleanliness_bothered"
-              component={Range}
-              // validate={[required]}
+              validate={[required]}
             />
-            {/* <Field
-              component={Input}
-              type="number"
-              name="cleanliness_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
           </div>
           <div className="form-section"> 
             <label>Do you spend a lot of time in common areas such as the kitchen and living room?</label>
@@ -488,34 +440,22 @@ export class Questions extends React.Component {
           </div>
           <div className="form-section">
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="common_areas_bothered"
-              component={Range}
-              // validate={[required]}
-            /> 
-            {/* <Field
-              component={Input}
-              type="number"
-              name="common_areas_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
+              validate={[required]}
+            />
           </div>
           <div className="form-section"> 
             <label htmlFor="gender_bothered">On a scale from 1-5, where 1 is not important and 5 is very important, how important is it to live with someone of the same sex?</label>
           </div>
           <div className="form-section"> 
             <Field
-              id="value-slider"
+              component={Rating}
+              type="text"
               name="gender_bothered"
-              component={Range}
-              // validate={[required]}
-            /> 
-            {/* <Field
-              component={Input}
-              type="number"
-              name="gender_bothered"
-              validate={[required, nonEmpty]}
-            /> */}
+              validate={[required]}
+            />
           </div>
           <button
             type="submit"

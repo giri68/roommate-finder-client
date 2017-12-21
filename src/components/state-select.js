@@ -6,8 +6,20 @@ export default class StateSelect extends React.Component {
   }
 
   render() {
+
+    let error;
+    if (this.props.meta.touched && this.props.meta.error) {
+        error = <div className="form-error">{this.props.meta.error}</div>;
+    }
+
     return (
+      <div>
+        <label htmlFor={this.props.input.name}>
+            {this.props.label}
+            {error}
+        </label>
         <select value={this.props.input.value} onChange={this.props.input.onChange}>
+            <option value="" disabled selected>Select your option</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -59,7 +71,8 @@ export default class StateSelect extends React.Component {
             <option value="WV">West Virginia</option>
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option> 
-        </select>	
+        </select>
+      </div>	
     )
   }
 
