@@ -100,10 +100,10 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <Field
-            component={Input}
+            component={StateSelect}
             type="text"
             name="state"
-            validate={[required, nonEmpty, isTrimmed]}
+            // validate={[required, nonEmpty, isTrimmed]}
           />
         </div>
         <div className="form-section">
