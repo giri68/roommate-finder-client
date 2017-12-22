@@ -3,9 +3,9 @@
 <p><em>This document provides general information on the Roommate Finder client-side application.  For more information about the Roommate Finder API, please see <a href="https://github.com/brianjb-lfl/buzz-kill-back/blob/master/README.md">Buzz-Kill back end</a>.</em></p>
 
 
-Why Buzz-Kill
+Why Roommate Finder
 -------------
-Every restaurant, bar and club owner wants to provide a safe and enjoyable guest experience.  Buzz-Kill is an easy-to-use tool that helps managers and their staff monitor patrons' alcohol consumption and spot potential problems early.  It requires minimal additional effort by servers and presents information in a format that is easy for busy managers to process in a quick glance.
+There are many apps that can help you find an available room in your area, but only one app helps you find the perfect roommmate: Roommate Finder! Roommate Finder uses a series of personality questions to match you not only with a room in your area, but also with a perfect roommate. Simply fill out a quick questionaire and your feed will be populated with people looking for a roommate just like you! 
 
 How it Works
 ------------
