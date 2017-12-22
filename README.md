@@ -5,14 +5,14 @@
 
 Why Roommate Finder
 -------------
-There are many apps that can help you find an available room in your area, but only one app helps you find the perfect roommmate: Roommate Finder! Roommate Finder uses a series of personality questions to match you not only with a room in your area, but also with a perfect roommate. Simply fill out a quick questionaire and your feed will be populated with people looking for a roommate just like you! 
+Other apps help you find an available room in your area, but only one app helps you find the perfect roommate: Roommate Finder! Roommate Finder uses a series of personality questions to match you not only with a room in your area, but also with a perfect roommate. Simply fill out a quick questionaire and your feed will be populated with people looking for a roommate just like you! 
 
 How it Works
 ------------
 <table layout="fixed">
   <tr>
     <td>
-      <p>The login page has links for both logging in registered users and creating a new user</p>
+      <p>The login page has links for both logging in registered users and creating a new user. To create a new account, click "Get Started."</p>
     </td>
     <td>
       <img src="/src/images/readme1.png" max-height="240px" witdh="auto">
@@ -20,7 +20,7 @@ How it Works
   </tr>
   <tr>
     <td>
-      <p>To create a new account, click "Get Started." Then select what type of roommate you are looking for. You can select to offer a room, find a roommate you would like to move into your present living space or find a roommate without a current apartment.</p>
+      <p>Then select what type of roommate you are looking for. You can select to offer a room, find a roommate you would like to move into your present living space or find a roommate without a current apartment.</p>
     </td>
     <td>
       <img src="/src/images/readme2.png" max-height="240px" witdh="auto">
@@ -28,10 +28,10 @@ How it Works
   </tr>
   <tr>
     <td>
-      <p>The large numbers and color coding make the patron tile easy to understand.  Additionl information available includes seat location, time of stay, and a graphic representation of drink purchases.</p>
+      <p>After registration, you will be redirected to your dashboard. Without filling out your question form, your dashboard will be blank. To fill out your question profile, click the link at the top labeled "Questions."</p>
     </td>
     <td>
-      <img src="/img/buzz-kill-patrondet.png" max-height="240px" witdh="auto">
+      <img src="/src/images/readme3.png" max-height="240px" witdh="auto">
     </td>
   </tr>
   <tr>
