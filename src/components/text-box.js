@@ -10,9 +10,9 @@ export class TextBox extends React.Component {
       render() {
           return (
               <div onClick={event => this.handleMatchClick(this.props.profile.username, this.props.profile.score)} className="textBox">
-              {"Username:"}{this.props.profile.username}
+              {"Name: "}{this.props.profile.firstName + ' ' + this.props.profile.lastName}
               <br/>
-              {"Score:"}{this.props.profile.score}
+              {"Score: "}{this.props.profile.score}
               </div>
           );
       }
