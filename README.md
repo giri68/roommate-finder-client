@@ -1,6 +1,6 @@
 
 <h1 align="center">ROOMMATE FINDER</h1>
-<p><em>This document provides general information on the Roommate Finder client-side application.  For more information about the Roommate Finder API, please see <a href="https://github.com/brianjb-lfl/buzz-kill-back/blob/master/README.md">Buzz-Kill back end</a>.</em></p>
+<p><em>This document provides general information on the Roommate Finder client-side application.  For more information about the Roommate Finder API, please see <a href="https://github.com/jackseabolt/roommate-finder-server">roommate-finder-server</a>.</em></p>
 
 
 Why Roommate Finder
@@ -44,10 +44,18 @@ How it Works
   </tr>
   <tr>
     <td>
-      <p>Once you fill out your questions, your dashboard will be populated with roommates that were matched with you that live in your area.</p>
+      <p>Once you fill out your questions, your dashboard will be populated with roommates that were matched with you that live in your area!</p>
     </td>
     <td>
       <img src="/src/images/readme5.png" max-height="240px" witdh="auto">
+    </td>
+  </tr>
+    <tr>
+      <td>
+        <p>Click on one of your matched roommates. You will be reirected to that users profile. If you like what you read, you can reach out to the user directly using the message button.</p>
+      </td>
+    <td>
+      <img src="/src/images/readme6.png" max-height="240px" witdh="auto">
     </td>
   </tr>
 </table>
@@ -57,10 +65,10 @@ For local use
 
 ```bash
 # Clone repository
-git clone https://github.com/jackseabolt/buzz-kill-frontend.git
+git clone https://github.com/giri68/roommate-finder-client.git
 
 # Change directory
-cd buzz-kill-frontend
+cd roommate-finder-client
 
 # Install NPM dependencies
 npm install
