@@ -11,19 +11,19 @@ How it Works
 ------------
 <table layout="fixed">
   <tr>
-    <td width="55%">
-      <p>Buzz-Kill's main screen displays colored boxes representing each patron in the establishment.</p>
+    <td>
+      <p>The login page has links for both logging in registered users and creating a new user</p>
     </td>
-    <td width = "40%">
-      <img src="/img/buzz-kill-main.png" max-height="240px" width="auto">
+    <td>
+      <img src="/src/images/readme1.png" max-height="240px" witdh="auto">
     </td>
   </tr>
   <tr>
     <td>
-      <p>When a new patron arrives, the server includes simple, additional information required for the ongoing bac calculation.          </p>
+      <p>To create a new account, click "Get Started." Then select what type of roommate you are looking for. You can select to offer a room, find a roommate you would like to move into your present living space or find a roommate without a current apartment.</p>
     </td>
     <td>
-      <img src="/src/images/readme1.png" max-height="240px" witdh="auto">
+      <img src="/src/images/readme2.png" max-height="240px" witdh="auto">
     </td>
   </tr>
   <tr>
