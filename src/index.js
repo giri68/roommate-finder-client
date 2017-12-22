@@ -21,7 +21,7 @@ function mapScroll(){
     let ypos = window.pageYOffset;
     let distanceTop = 100
     let map = document.getElementById('js-map'); 
-    if(map) {
+    if(map && window.innerWidth > 1000) {
         if(ypos === 0) {
             map.style.top = '0px'; 
         } else if(ypos > distanceTop){
