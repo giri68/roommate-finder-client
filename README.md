@@ -36,10 +36,18 @@ How it Works
   </tr>
   <tr>
     <td>
-      <p>And if someone goes too far, help is a click away.</p>
+      <p>Fill out the question form. The more honest you are, the better your matches will be!</p>
     </td>
     <td>
-      <img src="/img/buzz-kill-patronemergency.png" max-height="240px" witdh="auto">
+      <img src="/src/images/readme4.png" max-height="240px" witdh="auto">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>Once you fill out your questions, your dashboard will be populated with roommates that were matched with you that live in your area.</p>
+    </td>
+    <td>
+      <img src="/src/images/readme5.png" max-height="240px" witdh="auto">
     </td>
   </tr>
 </table>
