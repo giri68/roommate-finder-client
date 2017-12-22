@@ -23,7 +23,7 @@ How it Works
       <p>When a new patron arrives, the server includes simple, additional information required for the ongoing bac calculation.          </p>
     </td>
     <td>
-      <img src="/img/buzz-kill-addpatron.png" max-height="240px" witdh="auto">
+      <img src="/src/images/readme1.png" max-height="240px" witdh="auto">
     </td>
   </tr>
   <tr>
