@@ -7,6 +7,16 @@
     height: 100%; 
 }
 
+@media screen and (min-width: 1200px) {
+    .view-window {
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 60%;  
+        margin-bottom: 50px; 
+    }
+}
+
+
 @media screen and (max-width: 800px) {
     .view-window {
         margin: 40px; 
