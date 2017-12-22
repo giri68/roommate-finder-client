@@ -60,6 +60,11 @@ How it Works
   </tr>
 </table>
 
+
+Technology 
+------------
+This application was built using React, Node.js, Express, Mongo and Mongo. It also uses information from the Google Maps API. 
+
 For local use
 --------
 
