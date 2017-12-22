@@ -37,7 +37,6 @@ export class Questions extends React.Component {
       .then(() => {
         user.lat = this.props.latLong.lat
         user.long = this.props.latLong.lng
-        console.log("USER AS SUBMITTED", user)
         this.props.dispatch(saveQuestions(user))
       })
     }
@@ -46,7 +45,6 @@ export class Questions extends React.Component {
     .then(() => {
       user.lat = this.props.latLong.lat
       user.long = this.props.latLong.lng
-      console.log("USER AS SUBMITTED", user)
       this.props.dispatch(saveQuestions(user))
     })
   }
