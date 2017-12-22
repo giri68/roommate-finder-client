@@ -469,9 +469,9 @@ export class Questions extends React.Component {
 const mapStateToProps = (state) => ({
   loggedIn: state.auth.currentUser !== null,
   currentUser: state.auth.currentUser,
-  looking_for: state.auth.currentUser.looking_for,
+  looking_for: state.auth.currentUser ? state.auth.currentUser.looking_for : null,
   latLong: state.user.latLong,
-  updatedUser: state.auth.updatedUser
+  updatedUser: state.auth.updatedUser 
 });
 
 export default compose(
