@@ -63,11 +63,13 @@ export const updateCurrentUser = (currentUser) => ({
     updatedUser: true
 })
 
-export const saveQuestions = (user) => dispatch => {
+export const saveQuestions = (user) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/api/users`, {
         method: 'PUT',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         },
         body: JSON.stringify(user)
     })
