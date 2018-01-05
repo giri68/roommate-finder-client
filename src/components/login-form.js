@@ -12,18 +12,12 @@ import { PulseLoader } from 'react-spinners';
 export class LoginForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            loading: false
-        }
     }
     
     
     onSubmit(values) {
-        this.setState({ loading: true })
         return this.props.dispatch(login(values.username, values.password))
         .then(() => this.props.dispatch(getSelectedUser(values.username)))
-        .then(() => this.setState({ loading: false}))
-        
     }
 
     render() {
@@ -72,7 +66,7 @@ export class LoginForm extends React.Component {
                     <button className="button-blue" disabled={this.props.pristine || this.props.submitting}>
                         Log in
                     </button>
-                    <PulseLoader color={'#fff'} loading={this.state.loading} className="loading-graphic" />
+                    <PulseLoader color={'#fff'} loading={this.props.loading} className="loading-graphic" />
                     
                 </form>
                 <p><Link className="login-link" to="/">Back</Link></p>
@@ -83,7 +77,8 @@ export class LoginForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    loading: state.auth.loading
 });
 
 export default compose(
