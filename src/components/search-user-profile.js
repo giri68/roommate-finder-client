@@ -83,7 +83,6 @@ export class SearchUserProfile extends React.Component {
       matchPercentage = 'match-red';
     }
 
-
     return (
       <div className="search-user-profile">
         <div className="left-section">
