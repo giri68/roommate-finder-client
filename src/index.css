@@ -109,6 +109,17 @@ button {
   color: white; 
 }
 
+.button-dark {
+  background-color: rgb(39, 39, 39); 
+  color: white; 
+  cursor: pointer;
+  transition: 0.3s;  
+}
+
+.button-dark:hover {
+  background-color: rgb(48, 48, 48);  
+}
+
 .button-inline { 
   background-color: rgb(113, 113, 150); 
   color: white; 
