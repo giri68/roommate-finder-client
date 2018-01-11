@@ -65,7 +65,12 @@
     cursor: pointer; 
     position: relative; 
     top: 10px; 
-    margin: 10px 20px 10px 10px;  
+    margin: 10px 20px 10px 10px;
+    transition: 0.3s;   
+}
+
+.fa-plus-circle:hover {
+    opacity: 0.3; 
 }
 
 .login-link {
