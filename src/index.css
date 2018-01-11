@@ -212,8 +212,5 @@ label {
   margin-right: auto;
 }
 
-@media screnn and (max-width: 1000px) {
-  .limited-width {
-    width: 90%; 
-  }
-}
+
+

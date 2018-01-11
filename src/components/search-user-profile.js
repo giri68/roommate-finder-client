@@ -69,6 +69,21 @@ export class SearchUserProfile extends React.Component {
       backgroundImage: `url(${this.props.picture})`, 
     };
 
+    let matchPercentage; 
+    if(this.props.match >= 85) {
+      matchPercentage = 'match-green';
+    }
+    else if (this.props.match < 85 && this.props.match >= 75) {
+      matchPercentage = 'match-yellow';
+    }
+    else if (this.props.match < 75 && this.props.match >= 55) {
+      matchPercentage = 'match-orange';
+    }
+    else if (this.props.match < 55) {
+      matchPercentage = 'match-red';
+    }
+
+
     return (
       <div className="search-user-profile">
         <div className="left-section">
@@ -76,11 +91,11 @@ export class SearchUserProfile extends React.Component {
           </div>
 
           <div className="match-section">
-            <div className="match-continer">
+            <div className={matchPercentage}>
               <p>{this.props.match}%</p>
             </div>
             <div>
-              <p>&nbsp;&nbsp;Match</p>
+              <p className="match-label">&nbsp;&nbsp;Match</p>
             </div>
             <div className="profile-info-section"> 
               <p>Smokes Cigarettes {this.props.cigarattes ? <i className="fa fa-check yes" aria-hidden="true"></i> : <i className="fa fa-times no" aria-hidden="true"></i>}
