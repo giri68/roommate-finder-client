@@ -62,7 +62,7 @@ export default class LandingPage extends React.Component {
             howItWorks = (
                 <div className="popout-section">
                     <h1>Technology</h1>
-                    <p>This application was constructed using ES6, React, Redux, Node, Express, MongoDB, Mongoose, Cloudinary, Enzyme, Heroku and Netflify.  
+                    <p>This application was constructed using ES6, React, Redux, Node, Express, MongoDB, Mongoose, Cloudinary, Google Maps API, Mailgun, Enzyme, Heroku and Netflify.  
                     </p>
                     <button className="button-dark" onClick={() => this.handleTechnologyDisplay()}>Close</button>
                 </div>
@@ -113,7 +113,7 @@ export default class LandingPage extends React.Component {
                 <div className="landing-page">
                     <div className="text-section">
                         <h1>Roommate Finder</h1>
-                        <p>Don't just look for a great apartment, look for a great roommate.</p>
+                        <p>Don't just look for a great apartment, look for great roommates</p>
                         <Link to="/start"><button className="button-blue">Get Started</button></Link>
                         <div>
                         <p>Already have an account? <span className="login-link"><Link to="/login">Login</Link></span></p>
