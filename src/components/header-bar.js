@@ -63,7 +63,19 @@ export class HeaderBar extends React.Component {
                 <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/profile">Profile</Link></p>
             </div>
         }
-        
+
+        let hamburger; 
+        if(this.props.loggedIn) {
+            hamburger = <div onClick={() => this.handleMobileNav()} className="hamburger-container">
+                <div id="ham1" className="hamburger-stripe">
+                </div>
+                <div id="ham2" className="hamburger-stripe">
+                </div>
+                <div id="ham3" className="hamburger-stripe">
+                </div>                        
+            </div>
+        }
+
         return (
             <div>
                 <div className="header-bar">
@@ -71,14 +83,7 @@ export class HeaderBar extends React.Component {
                         {questionsButton}
                         {dashboardButton}
                         {profileButton}
-                        <div onClick={() => this.handleMobileNav()} className="hamburger-container">
-                            <div id="ham1" className="hamburger-stripe">
-                            </div>
-                            <div id="ham2" className="hamburger-stripe">
-                            </div>
-                            <div id="ham3" className="hamburger-stripe">
-                            </div>                        
-                        </div>
+                        {hamburger}
                 </div>
                 {mobileNav}
             </div>
