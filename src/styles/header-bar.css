@@ -8,8 +8,14 @@
     margin-bottom: 30px; 
 }
 
+.demo-info {
+    color: rgb(191, 197, 218); 
+    margin: 30px 0px; 
+}
+
 .nav-item {
     display: inline-block; 
+    cursor: pointer; 
 }
 
 .nav-item-mobile {
