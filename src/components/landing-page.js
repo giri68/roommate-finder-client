@@ -62,7 +62,7 @@ export default class LandingPage extends React.Component {
             howItWorks = (
                 <div className="popout-section">
                     <h1>Technology</h1>
-                    <p>This application was constructed using ES6, React, Redux, Node, Express, MongoDB, Mongoose, Cloudinary, Google Maps API, Mailgun, Enzyme, Heroku and Netflify.  
+                    <p>This application was constructed using ES6, React, Redux, Node, Express, MongoDB, Mongoose, Cloudinary, Google Maps API, Mailgun, Enzyme, Heroku and Netlify.  
                     </p>
                     <button className="button-dark" onClick={() => this.handleTechnologyDisplay()}>Close</button>
                 </div>
