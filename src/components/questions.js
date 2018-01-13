@@ -161,8 +161,6 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="max_price">Room Price</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="number"
