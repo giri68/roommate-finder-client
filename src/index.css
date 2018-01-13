@@ -52,7 +52,7 @@ input {
   border-radius: 4px;    
   margin-right: 7px; 
   font-size: 14px; 
-  width: 300px; 
+  width: calc(100% - 16px);
 }
 
 textarea {
@@ -152,10 +152,6 @@ a {
   text-decoration: none; 
 }
 
-label {
-  margin-bottom: 10px; 
-}
-
 .form-error {
   margin-top: 10px; 
   margin-bottom: 10px; 
@@ -213,8 +209,10 @@ label {
 
 @media screen and (max-width: 700px) {
   input {
-    margin-top: 20px; 
-    width: calc(100% - 38px); 
+    width: calc(100% - 16px); 
+  }
+  .limited-width {
+    width: 100%; 
   }
 }
 
