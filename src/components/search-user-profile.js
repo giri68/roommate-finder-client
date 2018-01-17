@@ -119,8 +119,6 @@ export class SearchUserProfile extends React.Component {
 
 export const mapStateToProps = state => {
   if (state.auth.currentUser) {
-    console.log("SEL USER:", state.user.selectedUser)
-    console.log('CUR USER:', state.user.currentChat)
     return {
       loggedIn: state.auth.currentUser !== null,
       id: state.user.selectedUser.id,

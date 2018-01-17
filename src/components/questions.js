@@ -76,7 +76,6 @@ export class Questions extends React.Component {
 
 
     let lookingFor;
-    console.log("QUESTIONS PAGE LOOKING FOR", this.props.currentUser.looking_for)
     if (this.props.currentUser.looking_for === "find_a_room" || this.props.currentUser.looking_for === "find_a_roommate") {
       lookingFor = <div className="form-container"><h2>Apartment Criteria</h2>
         <div className="form-section">

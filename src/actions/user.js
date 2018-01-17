@@ -14,7 +14,6 @@ export const displayAllUsers = users => ({
 // THIS IS OURS. VERY GENERAL, NEEDS TO BE EDITED TO RUN ALGORITHM. RIGHT NOW JUST FETCHES ALL
 
 export const getAllUsers = (user) => dispatch => {
-    console.log(user)
     return fetch(`${API_BASE_URL}/api/users/filter`, {
         method: 'PUT', 
         headers: {
@@ -150,7 +149,6 @@ export const saveCurrentChat = (data) => dispatch => {
     //     dispatch(setSelectedUser(user))
     // })
     // .then(() => {
-    //     console.log("DISPATCHING")
     //     dispatch(setRedirectDisplayFalse())
     // });  
 }
@@ -165,7 +163,6 @@ export const getSelectedUser = (username) => dispatch => {
         dispatch(setSelectedUser(user))
     })
     .then(() => {
-        console.log("DISPATCHING")
         dispatch(setRedirectDisplayFalse())
     });  
 }
@@ -176,7 +173,6 @@ export const lookupLatLong = (city, state, address) => dispatch => {
     })
     .then(res => res.json())
     .then(location => {
-        console.log("response latlong", location.results[0].geometry.location);
         dispatch(saveLatLong(location.results[0].geometry.location))
     })
 }
@@ -187,7 +183,6 @@ export const lookupLatLong2 = (city, state) => dispatch => {
     })
     .then(res => res.json())
     .then(location => {
-        console.log("response latlong", location.results[0].geometry.location);
         dispatch(saveLatLong(location.results[0].geometry.location))
     })
 }

@@ -16,8 +16,6 @@ export class RegistrationForm extends React.Component {
     }
 
     render() {
-
-        console.log("LOOKING_FOR", this.props.looking_for)
         return (
             <form
                 className="login-form"

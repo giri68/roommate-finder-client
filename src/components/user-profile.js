@@ -59,7 +59,6 @@ export class UserProfile extends React.Component {
       user[nextField] = this[nextField].value
     }
     user.username = this.props.username
-    console.log('HERE IS THE USER', user)
     this.props.dispatch(saveQuestions(user))
     this.closeForm(); 
   }

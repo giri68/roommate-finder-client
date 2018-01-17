@@ -16,7 +16,6 @@ export const submitContactForm = (senderEmail, receiverEmail, message) => dispat
         if(!res.ok) {
             return Promise.reject(res.statusText)
         }
-        console.log("Your message was successful")
     })
     .catch(err => {
         console.error(err)

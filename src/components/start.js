@@ -8,7 +8,6 @@ export  class Start extends React.Component {
 
     click(looking_for) {
         this.props.dispatch(setLookingFor(looking_for));
-        console.log(looking_for);
     }
     
     render(){  

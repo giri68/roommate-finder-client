@@ -69,7 +69,6 @@ class DisplayMap extends React.PureComponent {
 }
 
 const mapStateToProps = state => (
-  console.log("this is latlong", state.auth.currentUser.long), 
   {
   long: state.auth.currentUser.long,
   lat: state.auth.currentUser.lat,

@@ -11,7 +11,6 @@ export class ChatForm extends React.Component {
 
     handleSubmitForm(e) {
         e.preventDefault()
-        console.log(this.props.currentUser.email, this.props.selectedUser.email)
         this.props.dispatch(submitContactForm(this.props.currentUser.email, this.props.selectedUser.email, this.formInput.value))
         this.props.onHandleClose() 
     }
