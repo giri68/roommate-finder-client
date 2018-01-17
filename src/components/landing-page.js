@@ -72,7 +72,7 @@ export default class LandingPage extends React.Component {
             howItWorks = (
                 <div className="popout-section">
                     <h1>About Us</h1>
-                    <p>This application was constructed in 2018 by Jack Seabolt, Eric Pcholinsky and Giri Pandit.
+                    <p>This application was constructed in 2018 by Jack Seabolt, Eric Pcholinski and Giri Pandit.
                     </p>
                     <button className="button-dark" onClick={() => this.handleAboutUsDisplay()}>Close</button>
                 </div>
