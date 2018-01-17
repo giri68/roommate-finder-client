@@ -52,7 +52,7 @@ input {
   border-radius: 4px;    
   margin-right: 7px; 
   font-size: 14px; 
-  width: 300px; 
+  width: calc(100% - 16px);
 }
 
 textarea {
@@ -109,6 +109,17 @@ button {
   color: white; 
 }
 
+.button-dark {
+  background-color: rgb(39, 39, 39); 
+  color: white; 
+  cursor: pointer;
+  transition: 0.3s;  
+}
+
+.button-dark:hover {
+  background-color: rgb(48, 48, 48);  
+}
+
 .button-inline { 
   background-color: rgb(113, 113, 150); 
   color: white; 
@@ -139,10 +150,6 @@ p {
 
 a {
   text-decoration: none; 
-}
-
-label {
-  margin-bottom: 10px; 
 }
 
 .form-error {
@@ -193,7 +200,6 @@ label {
   cursor: pointer; /* Cursor on hover */
 }
 
-
 .limited-width {
   width: 300px; 
   margin-top: 100px; 
@@ -201,8 +207,14 @@ label {
   margin-right: auto;
 }
 
-@media screnn and (max-width: 1000px) {
+@media screen and (max-width: 700px) {
+  input {
+    width: calc(100% - 16px); 
+  }
   .limited-width {
-    width: 90%; 
+    width: 100%; 
   }
 }
+
+
+

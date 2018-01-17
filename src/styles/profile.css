@@ -58,14 +58,57 @@ h1 {
     line-height: 110%;  
 }
 
-.match-continer {
+.match-green {
     display: flex; 
     justify-content: center;
     align-items: center; 
     width: 55px;  
     height: 55px;
     background-color: rgb(95, 128, 92); 
-    border-radius: 50%;   
+    border-radius: 50%; 
+    position: relative; 
+    left: 20px;   
+}
+
+.match-yellow {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 55px;  
+    height: 55px;
+    background-color: rgb(161, 160, 94); 
+    border-radius: 50%; 
+    position: relative; 
+    left: 20px;   
+}
+
+.match-orange {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 55px;  
+    height: 55px;
+    background-color: rgb(175, 135, 97); 
+    border-radius: 50%; 
+    position: relative; 
+    left: 20px;   
+}
+
+.match-red {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 55px;  
+    height: 55px;
+    background-color: rgb(139, 91, 91); 
+    border-radius: 50%;  
+    position: relative; 
+    left: 20px;  
+}
+
+.match-label {
+    position: relative; 
+    left: 20px; 
 }
 
 .match-section {
@@ -148,7 +191,6 @@ h1 {
         margin-right: auto; 
     }
 }
-
 
 @media screen and (max-width: 700px) {
     .profile-picture { 

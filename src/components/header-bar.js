@@ -6,6 +6,22 @@ import {Link} from 'react-router-dom';
 import '../styles/header-bar.css';  
 
 export class HeaderBar extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.state = {
+            mobileNavDisplayed: false
+        }
+    }
+
+    handleMobileNav() {
+        this.setState({mobileNavDisplayed: !this.state.mobileNavDisplayed})
+    }
+
+    handleLogOut() {
+        this.handleMobileNav();
+        this.logOut(); 
+    }
+    
     logOut() {
         this.props.dispatch(clearAuth());
         clearAuthToken();
@@ -37,12 +53,39 @@ export class HeaderBar extends React.Component {
                 <p className="nav-item"><Link to="/profile">Profile</Link></p>
             )
         }
+
+        let mobileNav; 
+        if(this.state.mobileNavDisplayed && this.props.loggedIn) {
+            mobileNav = <div className="mobile-nav">
+                <p className="nav-item-mobile" onClick={() => this.handleLogOut()}>Log out</p>
+                <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/questions">Questions</Link></p>
+                <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/dashboard">Dashboard</Link></p>
+                <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/profile">Profile</Link></p>
+            </div>
+        }
+
+        let hamburger; 
+        if(this.props.loggedIn) {
+            hamburger = <div onClick={() => this.handleMobileNav()} className="hamburger-container">
+                <div id="ham1" className="hamburger-stripe">
+                </div>
+                <div id="ham2" className="hamburger-stripe">
+                </div>
+                <div id="ham3" className="hamburger-stripe">
+                </div>                        
+            </div>
+        }
+
         return (
-            <div className="header-bar">
-                    {logOutButton}
-                    {questionsButton}
-                    {dashboardButton}
-                    {profileButton}
+            <div>
+                <div className="header-bar">
+                        {logOutButton}
+                        {questionsButton}
+                        {dashboardButton}
+                        {profileButton}
+                        {hamburger}
+                </div>
+                {mobileNav}
             </div>
         );
     }

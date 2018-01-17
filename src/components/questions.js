@@ -80,8 +80,6 @@ export class Questions extends React.Component {
       lookingFor = <div className="form-container"><h2>Apartment Criteria</h2>
         <div className="form-section">
           <label htmlFor="city">City</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="text"
@@ -102,8 +100,6 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="max_distance">Search Radius(miles)</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="number"
@@ -113,8 +109,6 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="max_price">Maximum Price</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="number"
@@ -128,8 +122,6 @@ export class Questions extends React.Component {
       lookingFor = <div className="form-container"><h2>Apartment Listing</h2>
         <div className="form-section">
           <label htmlFor="address">Address</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="text"
@@ -139,8 +131,6 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="city">City</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="text"
@@ -161,8 +151,6 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="zipcode">Zip Code</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="number"
@@ -172,8 +160,6 @@ export class Questions extends React.Component {
         </div>
         <div className="form-section">
           <label htmlFor="max_price">Room Price</label>
-        </div>
-        <div className="form-section">
           <Field
             component={Input}
             type="number"
@@ -185,7 +171,7 @@ export class Questions extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div>
         <form className="profile" onSubmit={this.props.handleSubmit(values =>
           this.onSubmit(values))}>
           <h1 className="center" >Match Questions</h1>
@@ -195,19 +181,16 @@ export class Questions extends React.Component {
             <h2>Basic Info</h2>
             <div className="form-section">
               <label htmlFor="firstName">First Name</label>
-            </div>
-            <div className="form-section">
               <Field
                 component={Input}
                 type="text"
                 name="firstName"
+                id="firstName"
                 validate={[required, nonEmpty, isTrimmed]}
               />
             </div>
             <div className="form-section">
               <label htmlFor="lastName">Last Name</label>
-            </div>
-            <div className="form-section">
               <Field
                 component={Input}
                 type="text"
@@ -217,8 +200,6 @@ export class Questions extends React.Component {
             </div>
             <div className="form-section">
               <label htmlFor="age">Age</label>
-            </div>
-            <div className="form-section">
               <Field
                 component={Input}
                 type="number"

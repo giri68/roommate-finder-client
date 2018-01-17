@@ -14,7 +14,6 @@ export class LoginForm extends React.Component {
         super(props)
     }
     
-    
     onSubmit(values) {
         return this.props.dispatch(login(values.username, values.password))
         .then(() => this.props.dispatch(getSelectedUser(values.username)))
@@ -69,6 +68,11 @@ export class LoginForm extends React.Component {
                     <PulseLoader color={'#fff'} loading={this.props.loading} className="loading-graphic" />
                     
                 </form>
+                <p className="demo-info">
+                <b>Demo login:</b><br />
+                username: <i>johnsmith</i><br />
+                password: <i>mypassword</i>
+                </p>
                 <p><Link className="login-link" to="/">Back</Link></p>
                 <p><Link className="login-link" to="/start">Create Account</Link></p>   
             </div>
