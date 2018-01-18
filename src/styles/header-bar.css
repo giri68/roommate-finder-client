@@ -62,11 +62,28 @@
         left: 0px; 
         background-color: black;  
         width: 100%; 
-        padding: 50px; 
+        padding: 0px 50px; 
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+        height: 0px;  
+        overflow: hidden; 
+        transition: height 500ms 0ms, padding 500ms 0ms;  
     }
-    .nav-item-mobile {
-        display: block; 
+    .mobile-nav.show {
+        padding: 50px;
+        height: 232px;
+    } 
+    .nav-item-mobile { 
+        display: none;  
         margin-top: 30px; 
-        cursor: pointer; 
+        cursor: pointer;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s; 
+    }
+    .nav-item-mobile.show {
+        display: block;     
     }
 }

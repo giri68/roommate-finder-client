@@ -54,14 +54,21 @@ export class HeaderBar extends React.Component {
             )
         }
 
-        let mobileNav; 
-        if(this.state.mobileNavDisplayed && this.props.loggedIn) {
-            mobileNav = <div className="mobile-nav">
-                <p className="nav-item-mobile" onClick={() => this.handleLogOut()}>Log out</p>
-                <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/questions">Questions</Link></p>
-                <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/dashboard">Dashboard</Link></p>
-                <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/profile">Profile</Link></p>
-            </div>
+        // let mobileNav; 
+        // if(this.state.mobileNavDisplayed && this.props.loggedIn) {
+        //     mobileNav = <div className="mobile-nav">
+        //         <p className="nav-item-mobile" onClick={() => this.handleLogOut()}>Log out</p>
+        //         <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/questions">Questions</Link></p>
+        //         <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/dashboard">Dashboard</Link></p>
+        //         <p className="nav-item-mobile" onClick={() => this.handleMobileNav()}><Link to="/profile">Profile</Link></p>
+        //     </div>
+        // }
+
+        const mobileNavClasses = ['mobile-nav'];
+        const mobileNavItemClasses = ['nav-item-mobile']; 
+        if (this.state.mobileNavDisplayed && this.props.loggedIn) {
+            mobileNavClasses.push('show');
+            mobileNavItemClasses.push('show')
         }
 
         let hamburger; 
@@ -85,7 +92,12 @@ export class HeaderBar extends React.Component {
                         {profileButton}
                         {hamburger}
                 </div>
-                {mobileNav}
+                <div className={mobileNavClasses.join(' ')}>
+                    <p className={mobileNavItemClasses.join(' ')} onClick={() => this.handleLogOut()}>Log out</p>
+                    <p className={mobileNavItemClasses.join(' ')} onClick={() => this.handleMobileNav()}><Link to="/questions">Questions</Link></p>
+                    <p className={mobileNavItemClasses.join(' ')} onClick={() => this.handleMobileNav()}><Link to="/dashboard">Dashboard</Link></p>
+                    <p className={mobileNavItemClasses.join(' ')} onClick={() => this.handleMobileNav()}><Link to="/profile">Profile</Link></p>
+                </div>
             </div>
         );
     }
