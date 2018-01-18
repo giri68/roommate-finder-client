@@ -8,6 +8,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {getSelectedUser} from '../actions/user';
 import { PulseLoader } from 'react-spinners'; 
+import '../styles/login-form.css'; 
 
 export class LoginForm extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export class LoginForm extends React.Component {
         }
 
         return (
-            <div className="limited-width">
+            <div className="limited-width login-container">
                 <h1>Login</h1>
                 <form
                     className="login-form"
@@ -42,23 +43,23 @@ export class LoginForm extends React.Component {
                         this.onSubmit(values)
                     )}>
                     {error}
-                    <div className="form-section">
-                        <label htmlFor="username">Username</label>
+                    <div className="form-section-small">
                         <Field
                             component={Input}
                             type="text"
                             name="username"
                             id="username"
+                            placeholder="Username"
                             validate={[required, nonEmpty]}
                         />
                     </div>    
                     <div className="form-section">
-                        <label htmlFor="password">Password</label>
                         <Field
                             component={Input}
                             type="password"
                             name="password"
                             id="password"
+                            placeholder="Password"
                             validate={[required, nonEmpty]}
                         />
                     </div>
