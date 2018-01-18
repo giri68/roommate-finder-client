@@ -206,7 +206,7 @@ a {
 
 .limited-width {
   width: 300px; 
-  margin-top: 100px; 
+  margin-top:0px; 
   margin-left: auto; 
   margin-right: auto;
 }
@@ -216,7 +216,7 @@ a {
     width: calc(100% - 16px); 
   }
   .limited-width {
-    width: 100%; 
+    width: 100%;  
   }
 }
 
