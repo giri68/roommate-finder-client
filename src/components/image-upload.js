@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { saveQuestions } from '../actions/user'
-
-const CLOUDINARY_UPLOAD_PRESET = 'ggzuxadq' 
-const CLOUDINARY_UPLOAD_URL= 'https://api.cloudinary.com/v1_1/dkksqcvlg/upload' 
+import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL } from '../config'; 
 
 export class ImageUpload extends React.Component {
     constructor(props) {
@@ -20,7 +18,6 @@ export class ImageUpload extends React.Component {
         this.setState({
           uploadedFile: files[0]
         });
-    
         this.handleImageUpload(files[0]);
     }
 
@@ -28,7 +25,6 @@ export class ImageUpload extends React.Component {
         let upload = request.post(CLOUDINARY_UPLOAD_URL)
                             .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                             .field('file', file);
-    
         upload.end((err, response) => {
           if (err) {
             console.error(err);
@@ -57,18 +53,8 @@ export class ImageUpload extends React.Component {
                     onDrop={this.onImageDrop.bind(this)}>
                     <p className="center">Drop an image or click to select a file to upload.</p>
                 </Dropzone>
-
                 <div className="FileUpload">
-                        ...
                 </div>
-
-                {/* <div>
-                    {this.state.uploadedFileCloudinaryUrl === '' ? null :
-                    <div>
-                    <p>{this.state.uploadedFile.name}</p>
-                    <img src={this.state.uploadedFileCloudinaryUrl} />
-                    </div>}
-                </div> */}
             </div>
         ); 
     }
