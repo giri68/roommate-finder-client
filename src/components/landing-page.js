@@ -47,7 +47,7 @@ export default class LandingPage extends React.Component {
                 <div className="popout-section">
                     <h1>How It Works</h1>
                     <p>Have you ever rented a room only to find out that you hated your new roommate? 
-                    We can help! Roommate Finder is an application that not only helps you find available rooms
+                    We can help! Roommate Finder not only helps you find available rooms
                     in your area, it uses an algorithm to match you with the perfect roommate! 
                     <br /><br />
                     To start the process, create an account using the links above or by clicking <Link className="login-link" to="/start">here</Link>. Once you 
