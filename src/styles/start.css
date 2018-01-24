@@ -19,6 +19,16 @@
     background-color:rgb(118, 118, 139); 
 }
 
+.section h3 {
+    font-size: 25px; 
+}
+
 .section:hover {
     background-color:rgb(108, 108, 128);  
+}
+
+@media screen and (max-width: 1000px) {
+    .section h3 {
+        font-size: 20px; 
+    } 
 }
