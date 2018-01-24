@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {registerUser} from '../actions/user';
 import {login} from '../actions/auth';
 import Input from './input';
+import { PulseLoader } from 'react-spinners'; 
 import {required, nonEmpty, matches, length, isTrimmed, email} from '../validators';
 
 export class RegistrationForm extends React.Component {
@@ -64,6 +65,7 @@ export class RegistrationForm extends React.Component {
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
                 </button>
+                <PulseLoader color={'#fff'} loading={this.props.loading} className="loading-graphic" />
             </form>
         );
     }
@@ -72,7 +74,7 @@ export class RegistrationForm extends React.Component {
 
 export const mapStateToProps = state => ({
     looking_for: state.user.looking_for, 
-    apples: "HEY THERE"
+    loading: state.auth.loading
 }); 
 
 RegistrationForm = connect(mapStateToProps)(RegistrationForm);
