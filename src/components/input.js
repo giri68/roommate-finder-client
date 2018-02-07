@@ -22,7 +22,7 @@ export default class Input extends React.Component {
 
         return (
             <div>
-                <label htmlFor={this.props.input.name}>
+                <label htmlFor={this.props.id}>
                     {this.props.label}
                     {error}
                     {warning}
@@ -30,7 +30,7 @@ export default class Input extends React.Component {
                 <input
                     placeholder={this.props.placeholder}
                     {...this.props.input}
-                    id={this.props.input.name}
+                    id={this.props.id}
                     type={this.props.type}
                     ref={input => (this.input = input)}
                 />
