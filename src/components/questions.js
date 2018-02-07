@@ -212,7 +212,7 @@ export class Questions extends React.Component {
             </div>
             <div className="form-section">
                 <label> Male</label>
-                <Field name="gender" component="input" type="radio" value="male" />
+                <Field name="gender" component="input" type="radio" value="male" id="gender_male" label="male" />
             </div>
             <div className="form-section">
                 <label>Female</label>
