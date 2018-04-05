@@ -52,7 +52,7 @@ export class App extends React.Component {
         }
 
         return (
-            <Transition in={true} timeout={800} appear={true}>
+            <Transition in={true} timeout={600} appear={true}>
             {(state) => (
                 <div className="app" style={{
                     ...transitionStyles[state]
