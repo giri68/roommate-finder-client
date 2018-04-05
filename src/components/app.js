@@ -11,6 +11,7 @@ import UserProfile from './user-profile';
 import RegistrationPage from './registration-page';
 import searchUserProfile from './search-user-profile'; 
 import {refreshAuthToken} from '../actions/auth';
+import { Transition } from 'react-transition-group'; 
 import '../styles/app.css'; 
 
 export class App extends React.Component {
@@ -44,20 +45,32 @@ export class App extends React.Component {
     }
 
     render() {
+
+        const transitionStyles = {
+            entering: { opacity: 0 },
+            entered: { opacity: 1 }
+        }
+
         return (
-            <div className="app">
-                <HeaderBar />
-                <div className="view-window">
-                    <Route exact path="/" component={LandingPage} />
-                    <Route exact path="/login" component={LoginForm} />
-                    <Route exact path="/start" component={Start} />
-                    <Route exact path="/dashboard" component={Dashboard} />
-                    <Route exact path="/register" component={RegistrationPage} />
-                    <Route exact path="/questions" component={Questions} />
-                    <Route exact path="/profile" component={UserProfile} />
-                    <Route exact path="/search-user-profile" component={searchUserProfile} />
+            <Transition in={true} timeout={300} appear={true}>
+            {(state) => (
+                <div className="app" style={{
+                    ...transitionStyles[state]
+                }}>
+                    <HeaderBar />
+                    <div className="view-window">
+                        <Route exact path="/" component={LandingPage} />
+                        <Route exact path="/login" component={LoginForm} />
+                        <Route exact path="/start" component={Start} />
+                        <Route exact path="/dashboard" component={Dashboard} />
+                        <Route exact path="/register" component={RegistrationPage} />
+                        <Route exact path="/questions" component={Questions} />
+                        <Route exact path="/profile" component={UserProfile} />
+                        <Route exact path="/search-user-profile" component={searchUserProfile} />
+                    </div>
                 </div>
-            </div>
+            )}
+            </Transition>
         );
     }
 }

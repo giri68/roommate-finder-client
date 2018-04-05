@@ -107,7 +107,7 @@ export class UserProfile extends React.Component {
     }
 
     // controls form display for all inputs
-    let state, city, age, movies, music, tv, interests, bio, field, nextField, picture;
+    let state, city, age, movies, music, tv, interests, bio, nextField, picture;
     if (this.state.cityInputDisplayed) {
       nextField = 'city'
       city = <form onSubmit={e => this.handleFormSubmit(e, nextField)}>

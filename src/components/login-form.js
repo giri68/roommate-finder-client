@@ -11,9 +11,6 @@ import { PulseLoader } from 'react-spinners';
 import '../styles/login-form.css'; 
 
 export class LoginForm extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     
     onSubmit(values) {
         return this.props.dispatch(login(values.username, values.password))
